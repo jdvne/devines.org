@@ -1,0 +1,20 @@
+body {
+    background-color: rgb(250, 248, 243);
+}
+
+body glitter {
+    color: #222;
+    background: -webkit-linear-gradient(transparent, transparent), url(../images/glitter-dark.gif) repeat 100px 20px;
+    background: -o-linear-gradient(transparent, transparent) !important;
+    -webkit-background-clip: text !important;
+    -webkit-text-fill-color: transparent !important;
+  }
+
+.word {
+    display: inline;
+}
+
+.dfn {
+    display: none;
+    font-family: "Comic Sans MS", cursive, sans-serif;
+}
