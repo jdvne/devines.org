@@ -83,10 +83,3 @@ body glitter {
     -webkit-background-clip: text !important;
     -webkit-text-fill-color: transparent !important;
 }
-
-/* RESPONSIVE RULES */
-@media screen and (max-width: 640px) {
-    section {
-        background: pink;
-    }
-}
