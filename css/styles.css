@@ -1,21 +1,92 @@
 body {
-    background-color: rgb(250, 248, 243);
-    font-family: arial;
+    background: black;
+    font-family: courier;
+    color: white;
+    margin: 0;
+    padding: 0;
 }
 
+/* HEADER */
+header {
+    background-color: black;
+    background-position: center;
+    padding: 20px;
+}
+
+header a {
+    color: white;
+    text-decoration: none;
+    text-transform: uppercase;
+    margin-top: 50px;
+}
+
+header .logo a {
+    background-image: url("../images/logo.png");
+    background-size: 400px;
+    background-repeat: no-repeat;
+    display: inline-block;
+    height: 80px;
+    position: relative;
+    top: -60px;
+    text-indent: -99999px;
+    width: 400px;
+}
+
+nav ul {
+    margin: 0;
+    padding: 0;
+    list-style-type: none;
+}
+
+nav li {
+    display: inline-block;
+    align-items: right;
+    margin-right: 20px;
+}
+
+a:active {
+    color: rgb(180, 180, 180);
+}
+
+a:hover.highlightable {
+    color: #222;
+    background: -webkit-linear-gradient(transparent, transparent), url(../images/glitter-dark.gif) repeat 100px 20px;
+    background: -o-linear-gradient(transparent, transparent) !important;
+    -webkit-background-clip: text !important;
+    -webkit-text-fill-color: transparent !important;
+}
+
+section {
+    padding: 20px;
+    display: flex;
+    flex-direction: row;
+}
+
+footer {
+    padding: 10px 20px;
+    font-size: 12px;
+    text-align: center;
+    color: rgb(100, 100, 100)
+}
+
+div {
+    background: red;
+    margin: auto;
+    width: 100px;
+}
+
+/* FEATURES */
 body glitter {
     color: #222;
     background: -webkit-linear-gradient(transparent, transparent), url(../images/glitter-dark.gif) repeat 100px 20px;
     background: -o-linear-gradient(transparent, transparent) !important;
     -webkit-background-clip: text !important;
     -webkit-text-fill-color: transparent !important;
-  }
-
-.word {
-    display: inline;
 }
 
-.dfn {
-    display: none;
-    font-family: "Comic Sans MS", cursive, sans-serif;
+/* RESPONSIVE RULES */
+@media screen and (max-width: 640px) {
+    section {
+        background: pink;
+    }
 }
