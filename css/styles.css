@@ -44,10 +44,6 @@ nav li {
     margin-right: 20px;
 }
 
-a:active {
-    color: rgb(180, 180, 180);
-}
-
 a:hover.highlightable {
     color: #222;
     background: -webkit-linear-gradient(transparent, transparent), url(../images/glitter-dark.gif) repeat 100px 20px;
