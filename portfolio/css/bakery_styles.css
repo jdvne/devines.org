@@ -10,11 +10,10 @@ body {
   
   header {
     background-color: black;
-    /*  sorry for the strange urls, I had to upload them to google drive  */
-    background-image: url("http://gdurl.com/1glme");
+    background-image: url("../images/hero.jpg");
     background-size: 100%;
     background-position: center;
-    height: 400px;
+    height: 200px;
     padding: 20px;
     text-align: center;
   }
@@ -31,7 +30,7 @@ body {
   }
   
   header .logo a {
-    background-image: url("http://gdurl.com/b9cd");
+    background-image: url("../images/logo.png");
     background-size: 300px;
     background-repeat: no-repeat;
     display: inline-block;
@@ -55,10 +54,10 @@ body {
   
   /* RESPONSIVE RULES */
   
-  @media screen and (max-width: 715px) {
+  @media screen and (max-width: 720px) {
     header {
-      height: 250px;
-      background-position: 0 -30px;
+      height: 150px;
+      background-position: 0 0px;
     }
     header .mobile {
       display: inline-block;
@@ -70,10 +69,11 @@ body {
   
   @media screen and (max-width: 500px) {
     header {
-      height: 200px;
-      background-position: 0 -0px;
+      height: 100px;
+      background-position: 0 -30px;
     }
   }
+  
   
   /* FEATURES */
   
