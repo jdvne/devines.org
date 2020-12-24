@@ -33,15 +33,19 @@
 			renderer.setSize( window.innerWidth, window.innerHeight );
 			document.body.appendChild( renderer.domElement );
 
-			const geometry = new THREE.BoxGeometry(2, 2, 2)
-			const wireframe = new THREE.WireframeGeometry( geometry );
+      var lines = [];
+      const num_cubes = 3;
 
-			const line = new THREE.LineSegments( wireframe );
-			line.material.depthTest = false;
-			line.material.opacity = 0.25;
-			line.material.transparent = true;
-
-			scene.add( line );
+      for (let i = 0; i < num_cubes; i++){
+        var geometry = new THREE.BoxGeometry(2, 2, 2);
+        var wireframe = new THREE.WireframeGeometry( geometry );
+        lines[i] = new THREE.LineSegments( wireframe );
+        lines[i].position.x = 2 * i - (num_cubes - 1);
+        lines[i].material.depthTest = false;
+			  lines[i].material.opacity = 0.25;
+			  lines[i].material.transparent = true;
+        scene.add(lines[i]);
+      }
 
       camera.position.z = 5;
       
@@ -57,9 +61,11 @@
       }
 
 			function animate() {
-				requestAnimationFrame( animate );
-				line.rotation.x += 0.01;
-				line.rotation.y += 0.01;
+        requestAnimationFrame( animate );
+        for (const line of lines){
+          line.rotation.x += 0.01;
+          line.rotation.y += 0.01;
+        }
 				renderer.render( scene, camera );
 			}
 			animate();
