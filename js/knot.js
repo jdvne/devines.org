@@ -44,18 +44,18 @@ camera.position.z = (Math.random() - 0.5) * n * w / 2;
 controls.update();
 
 // knot variables
-const a1 = randint(0, 5);
-const a2 = randint(0, 5);
-const a3 = randint(0, 5);
-const b1 = randint(0, 5);
-const b2 = randint(0, 5);
-const b3 = randint(0, 5);
-const c1 = randint(0, 5);
-const c2 = randint(0, 5);
-const c3 = randint(0, 5);
-const d1 = randint(0, 5);
-const d2 = randint(0, 5);
-const d3 = randint(0, 5);
+const a1 = randrange(0, 5);
+const a2 = randrange(0, 5);
+const a3 = randrange(0, 5);
+const b1 = randrange(0, 5);
+const b2 = randrange(0, 5);
+const b3 = randrange(0, 5);
+const c1 = randrange(0, 5);
+const c2 = randrange(0, 5);
+const c3 = randrange(0, 5);
+const d1 = randrange(0, 5);
+const d2 = randrange(0, 5);
+const d3 = randrange(0, 5);
 
 function animate() {
     requestAnimationFrame( animate );
@@ -85,6 +85,10 @@ function randint(a, b) {
 
 function randbool() {
     return Math.random() < 0.5;
+}
+
+function randrange(a, b){
+    return a + Math.random() * (b - a);
 }
 
 function onWindowResize(){
