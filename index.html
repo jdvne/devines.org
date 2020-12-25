@@ -25,13 +25,17 @@
   </header>
 
   <script src="js/three.js"></script>
-		<script>
+		<script type="module">
+			import { OrbitControls } from './js/OrbitControls.js';
+
 			const scene = new THREE.Scene();
 			const camera = new THREE.PerspectiveCamera( 75, window.innerWidth / window.innerHeight, 0.1, 1000 );
 
 			const renderer = new THREE.WebGLRenderer();
 			renderer.setSize( window.innerWidth, window.innerHeight );
 			document.body.appendChild( renderer.domElement );
+
+      const controls = new OrbitControls( camera, renderer.domElement );
 
       var lines = [];
       const num_cubes = 3;
@@ -48,6 +52,7 @@
       }
 
       camera.position.z = 5;
+      controls.update();
       
       window.addEventListener( 'resize', onWindowResize, false );
 
@@ -55,6 +60,8 @@
 
         camera.aspect = window.innerWidth / window.innerHeight;
         camera.updateProjectionMatrix();
+
+        controls.update();
 
         renderer.setSize( window.innerWidth, window.innerHeight );
 
@@ -66,6 +73,9 @@
           line.rotation.x += 0.01;
           line.rotation.y += 0.01;
         }
+
+        controls.update();
+
 				renderer.render( scene, camera );
 			}
 			animate();
