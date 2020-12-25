@@ -12,6 +12,7 @@ body {
     overflow-x: hidden;
 }
 
+/* CANVAS */
 canvas {
     width: 100vw;
     height: 100vh;
