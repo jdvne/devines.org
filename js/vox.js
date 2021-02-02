@@ -1,6 +1,6 @@
-import * as THREE from 'https://unpkg.com/three/build/three.module.js';
-import { OrbitControls } from 'https://unpkg.com/three/examples/jsm/controls/OrbitControls.js';
-import { ImprovedNoise } from 'https://unpkg.com/three/examples/jsm/math/ImprovedNoise.js';
+import * as THREE from 'https://unpkg.com/three@0.119.0/build/three.module.js';
+import { OrbitControls } from 'https://unpkg.com/three@0.119.0/examples/jsm/controls/OrbitControls.js';
+import { ImprovedNoise } from 'https://unpkg.com/three@0.119.0/examples/jsm/math/ImprovedNoise.js';
 
 let container;
 
