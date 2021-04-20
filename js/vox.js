@@ -2,18 +2,40 @@ import * as THREE from 'https://unpkg.com/three@0.119.0/build/three.module.js';
 import { OrbitControls } from 'https://unpkg.com/three@0.119.0/examples/jsm/controls/OrbitControls.js';
 import { ImprovedNoise } from 'https://unpkg.com/three@0.119.0/examples/jsm/math/ImprovedNoise.js';
 
+class Spiral {
+    x = 0; y = 0; i = 0; j = 0; N = 0; n = 0; c = 0;
+
+    /* via https://oeis.org/A174344 */
+    next(){
+        if (this.n == 0) {
+            this.c += 1;
+            if (this.c > 3) this.c = 0;
+    
+            if (this.c == 0) { this.i = 0; this.j = 1; }
+            if (this.c == 1) { this.i = 1; this.j = 0; }
+            if (this.c == 2) { this.i = 0; this.j =-1; }
+            if (this.c == 3) { this.i =-1; this.j = 0; }
+    
+            if (this.c == 1 || this.c == 3) this.N += 1;
+            this.n = this.N;
+        }
+    
+        this.n -= 1;
+        this.x += this.i;
+        this.y += this.j;
+    }
+}
+
 let container;
 
 let camera, controls, scene, renderer;
 
-let position = 0;
-
-const worldWidth = 300, worldDepth = 300;
+const worldWidth = 200, worldDepth = 200;
 const worldHalfWidth = worldWidth / 2;
 const worldHalfDepth = worldDepth / 2;
 const data = generateHeight( worldWidth, worldDepth );
 
-const clock = new THREE.Clock();
+let spiral = new Spiral();
 
 init();
 animate();
@@ -27,61 +49,6 @@ function init() {
 
     scene = new THREE.Scene();
 
-    // sides
-    const matrix = new THREE.Matrix4();
-
-    const pyGeometry = new THREE.PlaneGeometry( 100, 100 );
-    pyGeometry.rotateX( - Math.PI / 2 );
-    pyGeometry.translate( 0, 50, 0 );
-
-    const py2Geometry = new THREE.PlaneGeometry( 100, 100 );
-    py2Geometry.rotateX( - Math.PI / 2 );
-    py2Geometry.rotateY( Math.PI / 2 );
-    py2Geometry.translate( 0, 50, 0 );
-
-    let geometry = new THREE.Geometry();
-
-    for ( let z = 0; z < worldDepth; z ++ ) {
-        for ( let x = 0; x < worldWidth; x ++ ) {
-
-            const h = getY( x, z );
-
-            matrix.makeTranslation(
-                x * 100 - worldHalfWidth * 100,
-                h * 100,
-                z * 100 - worldHalfDepth * 100
-            );
-
-            const px = getY( x + 1, z );
-            const nx = getY( x - 1, z );
-            const pz = getY( x, z + 1 );
-            const nz = getY( x, z - 1 );
-
-            const pxpz = getY( x + 1, z + 1 );
-            const nxpz = getY( x - 1, z + 1 );
-            const pxnz = getY( x + 1, z - 1 );
-            const nxnz = getY( x - 1, z - 1 );
-
-            const a = nx > h || nz > h || nxnz > h ? 0 : 1;
-            const b = nx > h || pz > h || nxpz > h ? 0 : 1;
-            const c = px > h || pz > h || pxpz > h ? 0 : 1;
-            const d = px > h || nz > h || pxnz > h ? 0 : 1;
-
-            if ( a + c > b + d ) {
-                geometry.merge( py2Geometry, matrix );
-            } else {
-                geometry.merge( pyGeometry, matrix );
-            }
-
-        }
-    }
-
-    geometry = new THREE.BufferGeometry().fromGeometry( geometry );
-    let wireframe = new THREE.WireframeGeometry( geometry );
-    let lines = new THREE.LineSegments( wireframe );
-
-    scene.add( lines );
-
     renderer = new THREE.WebGLRenderer();
     renderer.setPixelRatio( window.devicePixelRatio );
     renderer.setSize( window.innerWidth, window.innerHeight );
@@ -92,7 +59,6 @@ function init() {
     controls.autoRotateSpeed = 0.5;
 
     window.addEventListener( 'resize', onWindowResize, false );
-
 }
 
 function onWindowResize() {
@@ -129,6 +95,62 @@ function getY( x, z ) {
 
 function animate() {
     requestAnimationFrame( animate );
+        let geometry = new THREE.Geometry();
+    
+        for (let i=0; i<5; i++){
+            // sides
+            const matrix = new THREE.Matrix4();
+
+            const pyGeometry = new THREE.PlaneGeometry( 100, 100 );
+            pyGeometry.rotateX( - Math.PI / 2 );
+            pyGeometry.translate( 0, 50, 0 );
+        
+            const py2Geometry = new THREE.PlaneGeometry( 100, 100 );
+            py2Geometry.rotateX( - Math.PI / 2 );
+            py2Geometry.rotateY( Math.PI / 2 );
+            py2Geometry.translate( 0, 50, 0 );
+
+            const x = spiral.x + worldWidth / 2; 
+            const z = spiral.y + worldDepth / 2;
+            const h = getY( x, z );
+
+            matrix.makeTranslation(
+                x * 100 - worldHalfWidth * 100,
+                h * 100,
+                z * 100 - worldHalfDepth * 100
+            );
+
+            const px = getY( x + 1, z );
+            const nx = getY( x - 1, z );
+            const pz = getY( x, z + 1 );
+            const nz = getY( x, z - 1 );
+
+            const pxpz = getY( x + 1, z + 1 );
+            const nxpz = getY( x - 1, z + 1 );
+            const pxnz = getY( x + 1, z - 1 );
+            const nxnz = getY( x - 1, z - 1 );
+
+            spiral.next();
+
+            const a = nx > h || nz > h || nxnz > h ? 0 : 1;
+            const b = nx > h || pz > h || nxpz > h ? 0 : 1;
+            const c = px > h || pz > h || pxpz > h ? 0 : 1;
+            const d = px > h || nz > h || pxnz > h ? 0 : 1;
+
+            if ( a + c > b + d ) {
+                geometry.merge( py2Geometry, matrix );
+            } else {
+                geometry.merge( pyGeometry, matrix );
+            }
+        }
+    
+        geometry = new THREE.BufferGeometry().fromGeometry( geometry );
+        let wireframe = new THREE.WireframeGeometry( geometry );
+        let lines = new THREE.LineSegments( wireframe );
+    
+        scene.add( lines );
+    
+
     render();
 }
 
