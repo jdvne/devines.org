@@ -36,12 +36,13 @@ const worldHalfDepth = worldDepth / 2;
 const data = generateHeight( worldWidth, worldDepth );
 
 let spiral = new Spiral();
+let count = 0;
 
 init();
 animate();
 
 function init() {
-    container = document.getElementById( 'container' );
+    container = document.getElementById( 'canvas' );
 
     camera = new THREE.PerspectiveCamera( 50, window.innerWidth / window.innerHeight, 1, 20000 );
     camera.position.y = getY( worldHalfWidth, worldHalfDepth ) * 100 + 5000;
@@ -95,9 +96,11 @@ function getY( x, z ) {
 
 function animate() {
     requestAnimationFrame( animate );
+
+    if (count < data.length) {
         let geometry = new THREE.Geometry();
-    
-        for (let i=0; i<5; i++){
+
+        for (let i=0; i<5; i++) {
             // sides
             const matrix = new THREE.Matrix4();
 
@@ -142,14 +145,18 @@ function animate() {
             } else {
                 geometry.merge( pyGeometry, matrix );
             }
+
+            count += 1;
+            if (count >= worldWidth * worldDepth)
+                break;
         }
-    
+
         geometry = new THREE.BufferGeometry().fromGeometry( geometry );
         let wireframe = new THREE.WireframeGeometry( geometry );
         let lines = new THREE.LineSegments( wireframe );
-    
+
         scene.add( lines );
-    
+    }
 
     render();
 }
