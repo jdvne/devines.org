@@ -24,22 +24,6 @@ nav li {
     margin-left: 20px;
 }
 
-/* FEATURES */
-body glitter {
-    color: #222;
-    background: -webkit-linear-gradient(transparent, transparent), url(../images/glitter-dark.gif) repeat 100px 20px;
-    background: -o-linear-gradient(transparent, transparent) !important;
-    -webkit-background-clip: text !important;
-    -webkit-text-fill-color: transparent !important;
-}
-a:hover.highlightable {
-    color: #222;
-    background: -webkit-linear-gradient(transparent, transparent), url(../images/glitter-dark.gif) repeat 100px 20px;
-    background: -o-linear-gradient(transparent, transparent) !important;
-    -webkit-background-clip: text !important;
-    -webkit-text-fill-color: transparent !important;
-}
-
 .lt {
     color: rgba(255, 255, 255, .55);
 }
