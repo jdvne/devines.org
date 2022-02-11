@@ -8,8 +8,7 @@ class Spiral {
     /* via https://oeis.org/A174344 */
     next(){
         if (this.n == 0) {
-            this.c += 1;
-            if (this.c > 3) this.c = 0;
+            this.c = (this.c + 1) % 4;
     
             if (this.c == 0) { this.i = 0; this.j = 1; }
             if (this.c == 1) { this.i = 1; this.j = 0; }
@@ -27,13 +26,13 @@ class Spiral {
 }
 
 let container;
-
 let camera, controls, scene, renderer;
 
-const worldWidth = 200, worldDepth = 200;
+const worldWidth = 500, worldDepth = 500;
 const worldHalfWidth = worldWidth / 2;
 const worldHalfDepth = worldDepth / 2;
 const data = generateHeight( worldWidth, worldDepth );
+const worldScale = 200
 
 let spiral = new Spiral();
 let count = 0;
@@ -44,9 +43,9 @@ animate();
 function init() {
     container = document.getElementById( 'canvas' );
 
-    camera = new THREE.PerspectiveCamera( 50, window.innerWidth / window.innerHeight, 1, 20000 );
-    camera.position.y = getY( worldHalfWidth, worldHalfDepth ) * 100 + 5000;
-    camera.position.z = worldHalfWidth * 100;
+    camera = new THREE.PerspectiveCamera( 45, window.innerWidth / window.innerHeight, 1, worldScale * 1000 );
+    camera.position.y = getY( worldHalfWidth, worldHalfDepth ) * worldScale + 10000;
+    camera.position.z = worldHalfWidth * worldScale / 3;
 
     scene = new THREE.Scene();
 
@@ -100,51 +99,27 @@ function animate() {
     if (count < data.length) {
         let geometry = new THREE.Geometry();
 
-        for (let i=0; i<5; i++) {
+        for (let i=0; i<1; i++) {
             // sides
             const matrix = new THREE.Matrix4();
 
-            const pyGeometry = new THREE.PlaneGeometry( 100, 100 );
+            const pyGeometry = new THREE.PlaneGeometry( worldScale, worldScale);
             pyGeometry.rotateX( - Math.PI / 2 );
-            pyGeometry.translate( 0, 50, 0 );
-        
-            const py2Geometry = new THREE.PlaneGeometry( 100, 100 );
-            py2Geometry.rotateX( - Math.PI / 2 );
-            py2Geometry.rotateY( Math.PI / 2 );
-            py2Geometry.translate( 0, 50, 0 );
+            pyGeometry.translate( 0, worldScale / 2, 0 );
 
             const x = spiral.x + worldWidth / 2; 
             const z = spiral.y + worldDepth / 2;
             const h = getY( x, z );
 
             matrix.makeTranslation(
-                x * 100 - worldHalfWidth * 100,
-                h * 100,
-                z * 100 - worldHalfDepth * 100
+                (x - worldHalfWidth) * worldScale,
+                h * worldScale,
+                (z - worldHalfDepth) * worldScale
             );
-
-            const px = getY( x + 1, z );
-            const nx = getY( x - 1, z );
-            const pz = getY( x, z + 1 );
-            const nz = getY( x, z - 1 );
-
-            const pxpz = getY( x + 1, z + 1 );
-            const nxpz = getY( x - 1, z + 1 );
-            const pxnz = getY( x + 1, z - 1 );
-            const nxnz = getY( x - 1, z - 1 );
 
             spiral.next();
 
-            const a = nx > h || nz > h || nxnz > h ? 0 : 1;
-            const b = nx > h || pz > h || nxpz > h ? 0 : 1;
-            const c = px > h || pz > h || pxpz > h ? 0 : 1;
-            const d = px > h || nz > h || pxnz > h ? 0 : 1;
-
-            if ( a + c > b + d ) {
-                geometry.merge( py2Geometry, matrix );
-            } else {
-                geometry.merge( pyGeometry, matrix );
-            }
+            geometry.merge( pyGeometry, matrix );
 
             count += 1;
             if (count >= worldWidth * worldDepth)
