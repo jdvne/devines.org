@@ -7,7 +7,6 @@ import Home from './pages/Home.jsx';
 
 const router = createBrowserRouter([
   {
-    basename: '/devines.org',
     path: '/',
     element: <Home />
   },
@@ -15,9 +14,7 @@ const router = createBrowserRouter([
     path: '/wedding',
     element: <></> // <Wedding />
   }
-], {
-  basename: '/devines.org'
-});
+]);
 
 ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
