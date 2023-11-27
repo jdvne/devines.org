@@ -20,7 +20,7 @@ function Home() {
       </h1>
       <div>
         <h2 className={styles.comment}>
-          &#47;* TODO: let the world know what I'm up to 😳 *&#47;
+          &#47;* TODO: let the world know what I&apos;m up to 😳 *&#47;
         </h2>
       </div>
     </div>
