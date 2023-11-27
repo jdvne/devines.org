@@ -58,7 +58,7 @@ body {
   text-decoration: inherit;
 }
 
-.tag {
+.tag, .lt {
   color: rgba(255, 255, 255, .55);
 }
 
@@ -77,4 +77,54 @@ body {
   50% {
     opacity: 1;
   }
+}
+
+@media (max-width: 768px) {
+  body {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    font-size: 80%;
+  }
+  
+  .operator, .name::after {
+    display: none;
+  }
+
+  .lt, .tag { animation: mobile-hide-bracket 10s infinite; }
+  .gt { animation: mobile-turn-bracket 10s infinite; }
+  .error { animation: mobile-hide-error 10s infinite; }
+
+  
+@keyframes mobile-hide-bracket {
+  0%, 20%, 80%, 100% {
+    opacity: 1;
+  }
+  40%, 60% {
+    opacity: 0;
+    background: rgba(255, 255, 255, 0);
+  }
+}
+
+@keyframes mobile-turn-bracket {
+  0%, 20%, 80%, 100% { 
+    transform: rotate(0deg) scaleX(1) translateX(0);
+    color: rgba(255, 255, 255, .55);
+  }
+  40%, 60% {
+    transform: rotate(90deg) scaleX(0.75) translateX(0.05em);
+    color: white;
+  }
+}
+
+@keyframes mobile-hide-error {
+  0%, 20%, 80%, 100% {
+    text-decoration: underline wavy red 2px;
+  }
+  40%, 60% {
+    text-decoration: none;
+  }
+}
 }

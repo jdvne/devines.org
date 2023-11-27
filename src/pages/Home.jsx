@@ -10,7 +10,7 @@ function Home() {
           <span className={styles.tag}>&lt;&gt;</span>
           joshua
           <span className={styles.error}>
-            <span className={styles.tag}>&lt;</span>
+            <span className={styles.lt}>&lt;</span>
             de
             <span className={styles.gt}>&gt;</span>
           </span>
