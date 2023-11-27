@@ -1,0 +1,130 @@
+body {
+  background: black;
+  font-family: 'Courier New', Courier, monospace;
+  color: white;
+  padding: 0 20px;
+}
+
+.name {
+  text-decoration: none;
+  color: white;
+  position: relative;
+  display: inline-block;
+
+  &::after {
+    content: '';
+    position: absolute;
+    width: 0.1em;
+    height: 1em;
+    background: rgba(255, 255, 255, .55);
+    animation: blink 1s infinite;
+  }
+
+  &:hover {
+    .error {
+      text-decoration: rgba(255, 255, 255, 0);
+    }
+
+    .gt {
+      transform: rotate(90deg) scaleX(0.75) translateX(0.05em);
+      color: white;
+    }
+
+    .lt, .tag, .operator {
+      opacity: 0;
+    }
+
+    &::after {
+      background: rgba(255, 255, 255, 0);
+    }
+  }
+}
+
+.error {
+  transition: text-decoration 0.5s ease-in-out;
+  text-decoration: underline wavy red 2px;
+}
+
+.gt, .lt {
+  color: rgba(255, 255, 255, .55);
+  transition: transform 0.5s ease-in-out, opacity 0.5s ease-in-out;
+  display: inline-block;
+  text-decoration: inherit;
+}
+
+.tag, .operator {
+  transition: opacity 0.5s ease-in-out;
+  display: inline-block;
+  text-decoration: inherit;
+}
+
+.tag, .lt {
+  color: rgba(255, 255, 255, .55);
+}
+
+.operator {
+  color: #c586c0;
+}
+
+.comment {
+  color: #6a9955;
+}
+
+@keyframes blink {
+  0%, 100% {
+    opacity: 0;
+  }
+  50% {
+    opacity: 1;
+  }
+}
+
+@media (max-width: 768px) {
+  body {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    font-size: 80%;
+  }
+  
+  .operator, .name::after {
+    display: none;
+  }
+
+  .lt, .tag { animation: mobile-hide-bracket 10s infinite; }
+  .gt { animation: mobile-turn-bracket 10s infinite; }
+  .error { animation: mobile-hide-error 10s infinite; }
+
+  
+@keyframes mobile-hide-bracket {
+  0%, 20%, 80%, 100% {
+    opacity: 1;
+  }
+  40%, 60% {
+    opacity: 0;
+    background: rgba(255, 255, 255, 0);
+  }
+}
+
+@keyframes mobile-turn-bracket {
+  0%, 20%, 80%, 100% { 
+    transform: rotate(0deg) scaleX(1) translateX(0);
+    color: rgba(255, 255, 255, .55);
+  }
+  40%, 60% {
+    transform: rotate(90deg) scaleX(0.75) translateX(0.05em);
+    color: white;
+  }
+}
+
+@keyframes mobile-hide-error {
+  0%, 20%, 80%, 100% {
+    text-decoration: underline wavy red 2px;
+  }
+  40%, 60% {
+    text-decoration: none;
+  }
+}
+}
