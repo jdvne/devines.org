@@ -2,7 +2,7 @@ import styles from './Home.module.css';
 
 function Home() {
   return (
-    <div>
+    <main id={styles.main}>
       <h1>
         {/* () => <>joshua<dev>ine</>; */}
         <a className={styles.name} href="./">
@@ -23,7 +23,7 @@ function Home() {
           &#47;* TODO: let the world know what I&apos;m up to 😳 *&#47;
         </h2>
       </div>
-    </div>
+    </main>
   );
 }
 
