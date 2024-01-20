@@ -73,7 +73,6 @@ function Wedding() {
             className={styles.map}
             src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d5328.388867918014!2d-80.09943762283783!3d37.16114844726785!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x884d758af048ac67%3A0x4709c36b55e56fbd!2sSilver%20Hearth%20Lodge!5e1!3m2!1sen!2sus!4v1705777048739!5m2!1sen!2sus"
             width="100%" 
-            height="450" 
             allowFullScreen="" 
             loading="lazy" 
             referrerPolicy="no-referrer-when-downgrade" 
@@ -147,7 +146,7 @@ function Wedding() {
         />
 
         <Partier
-          name="Katie McCullough"
+          name="Kaity McCullough"
           role="Bridesmaid"
           bio="Kaity is from Powhatan, Virginia, but currently lives in Colorado Springs, Colorado. Stephanie and Kaity met in 2020 in the Virginia Tech Corps of Cadets. While they only lived together for a year, they were in each other’s rooms enough that you would never know."
           image="https://s3.amazonaws.com/37assets/svn/765-default-avatar.png"
