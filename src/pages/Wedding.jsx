@@ -33,7 +33,7 @@ function Wedding() {
           <img src={proposal} alt="Stephanie & Joshua's Proposal" />
           <img src={savannah} alt="Stephanie & Joshua in Savannah" />
         </div>
-        <h2>June 1st, 2024 - Silver Hearth Lodge</h2>
+        <h2>June 1st, 2024 - <span className={styles.no_wrap}>Silver Hearth Lodge</span></h2>
         <p>
           10231 Sugar Camp Creek Rd<br />
           Bent Mountain, VA 24059
@@ -260,33 +260,21 @@ function Wedding() {
 
 function Partier({ name, role, bio, image, right, quote }) {
   return (
-    <div className={styles.partier}>
-      { !right && 
-        <div className={styles.profile}>
-          <img 
-            src={image} 
-            alt={name} 
-          />
-          <h4>{name}</h4>
-          <h5>{role}</h5>
-        </div>
-      }
+    <div className={styles.partier + (right ? (' ' + styles.partier_right) : '')}>
+      <div className={styles.profile}>
+        <img 
+          src={image} 
+          alt={name} 
+        />
+        <h4>{name}</h4>
+        <h5>{role}</h5>
+      </div>
       <div className={styles.bio}>
         <p>{bio}</p>
         { quote && 
           <blockquote>&quot;{quote}&quot;</blockquote>
         }
       </div>
-      { right &&
-        <div className={styles.profile + ' ' + styles.right}>
-          <img 
-            src={image} 
-            alt={name} 
-          />
-          <h4>{name}</h4>
-          <h5>{role}</h5>
-        </div>
-      }
     </div>
   )
 }
@@ -296,7 +284,7 @@ function Vendor({ role, name, url }) {
     <div className={styles.vendor}>
       <h4 className={styles.left}>{role}</h4>
       <div className={styles.dotted_line} />
-      <Link to={url} className={styles.right}>{name}</Link>
+      <Link to={url}>{name}</Link>
     </div>
   )
 }
