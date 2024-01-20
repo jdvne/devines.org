@@ -1,4 +1,18 @@
 @import url('https://fonts.googleapis.com/css2?family=Shadows+Into+Light+Two&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Indie+Flower&display=swap');
+@font-face {
+  font-family: 'Precious';
+  src: url(../assets/fonts/Precious.ttf);
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'TheChairman';
+  src: url(../assets/fonts/TheChairman.otf);
+  font-weight: normal;
+  font-style: normal;
+}
 
 #main {
   position: absolute;
@@ -38,13 +52,27 @@
   font-size: 100%;
 }
 
-#main h4 {
+#main h4, #main h5 {
   font-family: 'Shadows Into Light Two', cursive;
   text-align: left;
 }
 
-#main p, #main blockquote {
+#main h4.right, #main .right > h4, #main .right > h5 {
+  text-align: right;
+}
+
+#main p, #main blockquote, #main a {
   font-family: 'Shadows Into Light Two', cursive;
+}
+
+#main a {
+  font-family: 'Shadows Into Light Two', cursive;
+  text-decoration: inherit;
+  color: inherit;
+
+  &:hover {
+    text-decoration: underline;
+  }
 }
 
 #main blockquote {
@@ -96,7 +124,7 @@
 }
 
 .container {
-  padding: 0 10% 10% 10%;
+  padding: 0 20% 10% 20%;
   background-image: url('../assets/images/leaves-bottom-left.webp');
   background-size: 100% auto;
   background-repeat: no-repeat;
@@ -104,12 +132,97 @@
 }
 
 /* a skeumorphic card with forest green accents */
-.answer {
+.card {
   background: #9aab89;
   border-radius: 1em;
   box-shadow: 0 0.25em 0.5em rgba(0, 0, 0, 0.25);
   padding: 1em;
   text-align: left;
+}
+
+.partier {
+  display: flex;
+  gap: 1em;
+  padding: 1em 0;
+  align-items: center;
+}
+
+
+.bio {
+  /* padding: 1em; */
+  text-align: left;
+  font-size: 75%;
+}
+
+.partier > img {
+  border-radius: 5px;
+  width: 15vw;
+  height: 15vw;
+  box-shadow: 0 0.25em 0.5em rgba(0, 0, 0, 0.25);
+}
+
+.partier > .profile {
+  flex: 1;
+  text-align: left
+}
+
+.profile.right {
+  text-align: right;
+
+  & > h4, & > h5 {
+    text-align: right;
+  }
+}
+
+.profile > img {
+  border-radius: 5px;
+  width: 15vw;
+  height: 15vw;
+  box-shadow: 0 0.25em 0.5em rgba(0, 0, 0, 0.25);
+}
+
+.profile > h4, .profile > h5 {
+  margin: 0.5em 0;
+}
+
+.partier > .bio {
+  flex: 1;
+  /* padding: 1em; */
+  text-align: left;
+}
+
+.pencil {
+  font-family: 'Indie Flower', cursive;
+  color: #cad1be;
+}
+
+.map {
+  border: 0;
+  border-radius: 5px;
+}
+
+.vendor {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+}
+
+.vendor > .left, .vendor > .right {
+  white-space: nowrap;
+}
+
+.right {
+  text-align: right;
+}
+
+.vendor > .dotted_line {
+  flex: 1;
+  text-align: center;
+  border-bottom: 4px dotted white;
+}
+
+.right > .church {
+  font-size: 70%;
 }
 
 .photos {
@@ -128,16 +241,4 @@
   margin: 10px;
 }
 
-@font-face {
-  font-family: 'Precious';
-  src: url(../assets/fonts/Precious.ttf);
-  font-weight: normal;
-  font-style: normal;
-}
-
-@font-face {
-  font-family: 'TheChairman';
-  src: url(../assets/fonts/TheChairman.otf);
-  font-weight: normal;
-  font-style: normal;
-}
+/* TODO: adjust styles for smaller screens */
