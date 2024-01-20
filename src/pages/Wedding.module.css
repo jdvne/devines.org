@@ -134,6 +134,24 @@
   text-align: left;
 }
 
+.collapsed {
+  display: none;
+}
+
+.collapse_title {
+  cursor: pointer;
+}
+
+.collapse_icon {
+  filter: invert(100%);
+  margin-right: 0.5em;
+  animation: none;
+}
+
+.collapse_icon_collapsed {
+  transform: rotate(-90deg);
+}
+
 .no_wrap {
   white-space: nowrap;
 }
@@ -278,6 +296,10 @@
     white-space: nowrap;
   }
 
+  #main hr {
+    margin: 1em 0;
+  }
+
   #main {
     .card blockquote {
       font-size: 70%;
@@ -286,6 +308,7 @@
 
     .card p {
       font-size: 80%;
+      margin: 0.5em 0;
     }
   }
 
