@@ -1,47 +1,41 @@
 /* eslint-disable react/prop-types */
-import { useEffect, useRef, useState } from 'react';
-import { Link, useLocation } from 'react-router-dom';
+import { useEffect, useRef, useState } from "react";
+import { Link, useLocation } from "react-router-dom";
 
-import styles from './Wedding.module.css';
+import styles from "./Wedding.module.css";
 
-import expand_more from '../assets/icons/expand_more.svg';
-import nyc from '../assets/images/nyc.jpg';
-import proposal from '../assets/images/proposal.jpg';
-import savannah from '../assets/images/savannah.jpg';
+import expand_more from "../assets/icons/expand_more.svg";
+import nyc from "../assets/images/nyc.jpg";
+import proposal from "../assets/images/proposal.jpg";
+import savannah from "../assets/images/savannah.jpg";
 
-function Wedding() {
-  useEffect(() => { document.title = 'A Devine Wedding' }, [])
+export function Wedding() {
+  useEffect(() => {
+    document.title = "A Devine Wedding";
+  }, []);
 
   return (
     <main id={styles.main}>
       <ScrollToAnchor />
       <div className={styles.container}>
         <h1>Stephanie & Joshua</h1>
-        <nav>
-          <ul>
-            <li><Link to="#lodging">Lodging</Link></li>
-            <li><Link to="#faq">FAQ</Link></li>
-            <li><Link to="#party">Bridal Party</Link></li>
-            <li>Pictures</li>
-            <li>Registry</li>
-            <li>RSVP</li>
-          </ul>
-        </nav>
-
+        <WeddingNav />
         {/* TODO: make this more dynamic */}
         <div className={styles.photos}>
           <img src={nyc} alt="Stephanie & Joshua in NYC" />
           <img src={proposal} alt="Stephanie & Joshua's Proposal" />
           <img src={savannah} alt="Stephanie & Joshua in Savannah" />
         </div>
-        <h2>June 1st, 2024 - <span className={styles.no_wrap}>Silver Hearth Lodge</span></h2>
+        <h2>
+          June 1st, 2024 -{" "}
+          <span className={styles.no_wrap}>Silver Hearth Lodge</span>
+        </h2>
         <p>
-          10231 Sugar Camp Creek Rd<br />
+          10231 Sugar Camp Creek Rd
+          <br />
           Bent Mountain, VA 24059
         </p>
-        <p>
-          Please arrive by 4:00pm to be seated for the ceremony.
-        </p>
+        <p>Please arrive by 4:00pm to be seated for the ceremony.</p>
 
         <CollapsibleSection title="Lodging" id="lodging" />
 
@@ -51,9 +45,9 @@ function Wedding() {
             <p>&gt; Cocktail Attire</p>
 
             <blockquote>
-              A small step above semi-formal, cocktail attire is a balance 
-              between elegant and comfortable and fancy and pared-back. 
-              Instead of a floor-length dress, women may opt for a tea-length, 
+              A small step above semi-formal, cocktail attire is a balance
+              between elegant and comfortable and fancy and pared-back. Instead
+              of a floor-length dress, women may opt for a tea-length,
               knee-length, or midi look. Men should wear a suit and tie.
             </blockquote>
           </div>
@@ -63,18 +57,19 @@ function Wedding() {
             <p>&gt; Follow the signs</p>
 
             <blockquote>
-              The venue is located in the mountains, so there is a bit of a drive to get there. 
-              We will have signs posted along the way to help guide you. 
-              There is a parking lot at the venue, so you won&apos;t have to worry about parking.
+              The venue is located in the mountains, so there is a bit of a
+              drive to get there. We will have signs posted along the way to
+              help guide you. There is a parking lot at the venue, so you
+              won&apos;t have to worry about parking.
             </blockquote>
 
-            <iframe 
+            <iframe
               className={styles.map}
               src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d5328.388867918014!2d-80.09943762283783!3d37.16114844726785!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x884d758af048ac67%3A0x4709c36b55e56fbd!2sSilver%20Hearth%20Lodge!5e1!3m2!1sen!2sus!4v1705777048739!5m2!1sen!2sus"
-              width="100%" 
-              allowFullScreen="" 
-              loading="lazy" 
-              referrerPolicy="no-referrer-when-downgrade" 
+              width="100%"
+              allowFullScreen=""
+              loading="lazy"
+              referrerPolicy="no-referrer-when-downgrade"
             />
           </div>
 
@@ -83,21 +78,21 @@ function Wedding() {
             <p>&gt; Only those written on your invite</p>
 
             <blockquote>
-              To maximize the presence of our loved ones, we kindly 
-              ask that only those listed on the invitation attend.
+              To maximize the presence of our loved ones, we kindly ask that
+              only those listed on the invitation attend.
             </blockquote>
 
             <p>&gt; No children</p>
             <blockquote>
-              Due to limitations set by the venue, we are unable to 
-              accommodate children at our wedding. Please enjoy an adults-only 
-              ceremony and reception.
+              Due to limitations set by the venue, we are unable to accommodate
+              children at our wedding. Please enjoy an adults-only ceremony and
+              reception.
             </blockquote>
-            
+
             <p>&gt; No pets</p>
             <blockquote>
-              Although we love all of our furry friends, animals are not 
-              allowed at the venue.
+              Although we love all of our furry friends, animals are not allowed
+              at the venue.
             </blockquote>
           </div>
 
@@ -112,8 +107,9 @@ function Wedding() {
             </blockquote>
 
             <p>
-              Please let us know when you RSVP if you have any strict dietary restrictions
-              the caterer should be made aware of.  We&apos;re happy to accommodate!
+              Please let us know when you RSVP if you have any strict dietary
+              restrictions the caterer should be made aware of. We&apos;re happy
+              to accommodate!
             </p>
           </div>
 
@@ -122,14 +118,14 @@ function Wedding() {
             <p>&gt; The venue has an indoor option</p>
 
             <blockquote>
-              We will be able to have the ceremony and reception 
-              there regardless of the weather.
+              We will be able to have the ceremony and reception there
+              regardless of the weather.
             </blockquote>
           </div>
         </CollapsibleSection>
 
         <CollapsibleSection title="Meet the Bridal Party" id="party">
-          <Partier 
+          <Partier
             name={
               <>
                 Stephanie Valencic<span className={styles.pencil}>‸Devine</span>
@@ -139,7 +135,7 @@ function Wedding() {
             bio="TODO"
             image="https://s3.amazonaws.com/37assets/svn/765-default-avatar.png"
           />
-          <Partier 
+          <Partier
             name="Anouk Rudd"
             role="Maid of Honor"
             bio="Anouk is from Floyd, Virginia. Stephanie and Anouk met in 2018 at Governor’s School in Pulaski, Virginia. Since then, they have been inseparable and always make time to grab a latte and a not-so-quick shopping trip."
@@ -222,11 +218,7 @@ function Wedding() {
               url="https://rebeccalynnphotog.mypixieset.com/"
             />
 
-            <Vendor
-              role="Catering"
-              name="Christian Catering"
-              url=""
-            />
+            <Vendor role="Catering" name="Christian Catering" url="" />
 
             <Vendor
               role="Coordinator"
@@ -236,7 +228,14 @@ function Wedding() {
 
             <Vendor
               role="Officiant"
-              name={<>Gary McCoy, <span className={styles.church}>Blacksburg Christian Church</span></>}
+              name={
+                <>
+                  Gary McCoy,{" "}
+                  <span className={styles.church}>
+                    Blacksburg Christian Church
+                  </span>
+                </>
+              }
               url="https://www.blacksburgchristian.org/"
             />
 
@@ -249,7 +248,54 @@ function Wedding() {
         </CollapsibleSection>
       </div>
     </main>
-  )
+  );
+}
+
+export function RSVP() {
+  return (
+    <main id={styles.main}>
+      <div className={styles.container}>
+        <h1>Stephanie & Joshua</h1>
+        <WeddingNav />
+
+        <div>
+          <iframe
+            src="https://docs.google.com/forms/d/e/1FAIpQLSfclalK_QuxLKod2JKHc86idcQ7pxF7iLqoVkFOoZIJRuFyfA/viewform?embedded=true"
+            height="1000"
+            frameBorder="0"
+            marginHeight="0"
+            marginWidth="0"
+            className={styles.rsvp}
+          >
+            RSVP Form is Loading…
+          </iframe>
+        </div>
+      </div>
+    </main>
+  );
+}
+
+function WeddingNav() {
+  return (
+    <nav>
+      <ul>
+        <li>
+          <Link to="/wedding#lodging">Lodging</Link>
+        </li>
+        <li>
+          <Link to="/wedding#faq">FAQ</Link>
+        </li>
+        <li>
+          <Link to="/wedding#party">Bridal Party</Link>
+        </li>
+        <li>Pictures</li>
+        <li>Registry</li>
+        <li>
+          <Link to="/rsvp">RSVP</Link>
+        </li>
+      </ul>
+    </nav>
+  );
 }
 
 function CollapsibleSection({ title, id, children }) {
@@ -258,44 +304,40 @@ function CollapsibleSection({ title, id, children }) {
   return (
     <>
       <hr />
-      <h3 
+      <h3
         className={styles.collapse_title}
         id={id}
         onClick={() => setIsCollapsed(!isCollapsed)}
       >
-        <img 
-          className={styles.collapse_icon + (isCollapsed ? (' ' + styles.collapse_icon_collapsed) : '')}
-          src={expand_more} 
-          alt="" 
+        <img
+          className={
+            styles.collapse_icon +
+            (isCollapsed ? " " + styles.collapse_icon_collapsed : "")
+          }
+          src={expand_more}
+          alt=""
         />
         {title}
       </h3>
-      <div className={isCollapsed ? styles.collapsed : ''}>
-        {children}
-      </div>
+      <div className={isCollapsed ? styles.collapsed : ""}>{children}</div>
     </>
-  )
+  );
 }
 
 function Partier({ name, role, bio, image, right, quote }) {
   return (
-    <div className={styles.partier + (right ? (' ' + styles.partier_right) : '')}>
+    <div className={styles.partier + (right ? " " + styles.partier_right : "")}>
       <div className={styles.profile}>
-        <img 
-          src={image} 
-          alt={name} 
-        />
+        <img src={image} alt={name} />
         <h4>{name}</h4>
         <h5>{role}</h5>
       </div>
       <div className={styles.bio}>
         <p>{bio}</p>
-        { quote && 
-          <blockquote>&quot;{quote}&quot;</blockquote>
-        }
+        {quote && <blockquote>&quot;{quote}&quot;</blockquote>}
       </div>
     </div>
-  )
+  );
 }
 
 function Vendor({ role, name, url }) {
@@ -305,12 +347,12 @@ function Vendor({ role, name, url }) {
       <div className={styles.dotted_line} />
       <Link to={url}>{name}</Link>
     </div>
-  )
+  );
 }
 
 function ScrollToAnchor() {
   const location = useLocation();
-  const lastHash = useRef('');
+  const lastHash = useRef("");
 
   // listen to location change using useEffect with location as dependency
   // https://jasonwatmore.com/react-router-v6-listen-to-location-route-change-without-history-listen
@@ -323,8 +365,8 @@ function ScrollToAnchor() {
       setTimeout(() => {
         document
           .getElementById(lastHash.current)
-          ?.scrollIntoView({ behavior: 'smooth', block: 'start' });
-        lastHash.current = '';
+          ?.scrollIntoView({ behavior: "smooth", block: "start" });
+        lastHash.current = "";
       }, 100);
     }
   }, [location]);

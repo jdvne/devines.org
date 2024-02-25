@@ -119,10 +119,16 @@
 
 .container {
   padding: 0 20% 10% 20%;
+  min-width: 60%;
   background-image: url('../assets/images/leaves-bottom-left.webp');
   background-size: 100% auto;
   background-repeat: no-repeat;
   background-position: bottom left;
+}
+
+.rsvp {
+  width: 100%;
+  margin-top: 5%;
 }
 
 /* a skeumorphic card with forest green accents */
