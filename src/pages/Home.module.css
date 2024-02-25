@@ -1,5 +1,8 @@
 .body {
   background: black;
+}
+
+#main {
   position: absolute;
   top: 0;
   left: 0;

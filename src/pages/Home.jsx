@@ -4,7 +4,7 @@ import styles from './Home.module.css';
 
 function Home() {
   return (
-    <main>
+    <main id={styles.main}>
       <Helmet bodyAttributes={{ class: styles.body }} >
         <title>Joshua Devine</title>
       </Helmet>
