@@ -13,7 +13,7 @@ import savannah from "../assets/images/savannah.jpg";
 export function Wedding() {
   return (
     <main id={styles.main}>
-      <Helmet bodyAttributes={{ class: styles.body }} >
+      <Helmet bodyAttributes={{ class: styles.body }}>
         <title>A Devine Wedding</title>
       </Helmet>
 
@@ -255,7 +255,7 @@ export function Wedding() {
 export function RSVP() {
   return (
     <main id={styles.main}>
-      <Helmet bodyAttributes={{ class: styles.body }} >
+      <Helmet bodyAttributes={{ class: styles.body }}>
         <title>A Devine Wedding</title>
       </Helmet>
 
@@ -294,7 +294,11 @@ function WeddingNav() {
           <Link to="/wedding#party">Bridal Party</Link>
         </li>
         <li>Pictures</li>
-        <li><Link to="https://www.theknot.com/stephanievalencicandjoshuadevine/registry">Registry</Link></li>
+        <li>
+          <Link to="https://www.theknot.com/stephanievalencicandjoshuadevine/registry">
+            Registry
+          </Link>
+        </li>
         <li>
           <Link to="/rsvp">RSVP</Link>
         </li>

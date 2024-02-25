@@ -1,14 +1,14 @@
-@import url('https://fonts.googleapis.com/css2?family=Shadows+Into+Light+Two&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Indie+Flower&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Shadows+Into+Light+Two&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Indie+Flower&display=swap");
 @font-face {
-  font-family: 'Precious';
+  font-family: "Precious";
   src: url(../assets/fonts/Precious.ttf);
   font-weight: normal;
   font-style: normal;
 }
 
 @font-face {
-  font-family: 'TheChairman';
+  font-family: "TheChairman";
   src: url(../assets/fonts/TheChairman.otf);
   font-weight: normal;
   font-style: normal;
@@ -19,7 +19,7 @@
 }
 
 #main {
-  background-image: url('../assets/images/leaves-top-right.webp');
+  background-image: url("../assets/images/leaves-top-right.webp");
   background-size: 100% auto;
   background-repeat: no-repeat;
   background-position: top right;
@@ -34,36 +34,40 @@
   text-shadow: 2px 2px 4px #3f5a36;
 }
 
-#main h1 { 
-  font-family: 'TheChairman';
+#main h1 {
+  font-family: "TheChairman";
   font-size: 300%;
 }
 
 #main h2 {
-  font-family: 'TheChairman';
+  font-family: "TheChairman";
   font-size: 150%;
 }
 
 #main h3 {
-  font-family: 'TheChairman';
+  font-family: "TheChairman";
   font-size: 100%;
 }
 
-#main h4, #main h5 {
-  font-family: 'Shadows Into Light Two', cursive;
+#main h4,
+#main h5 {
+  font-family: "Shadows Into Light Two", cursive;
   text-align: left;
 }
 
-#main .partier_right h4, #main .partier_right h5 {
+#main .partier_right h4,
+#main .partier_right h5 {
   text-align: right;
 }
 
-#main p, #main blockquote, #main a {
-  font-family: 'Shadows Into Light Two', cursive;
+#main p,
+#main blockquote,
+#main a {
+  font-family: "Shadows Into Light Two", cursive;
 }
 
 #main a {
-  font-family: 'Shadows Into Light Two', cursive;
+  font-family: "Shadows Into Light Two", cursive;
   text-decoration: inherit;
   color: inherit;
 
@@ -84,7 +88,7 @@
 }
 
 #main nav {
-  font-family: 'Shadows Into Light Two', cursive;
+  font-family: "Shadows Into Light Two", cursive;
   display: flex;
   flex-direction: row;
   justify-content: space-around;
@@ -103,7 +107,7 @@
   flex-direction: row;
   justify-content: space-around;
   align-items: center;
-  width: 100%;  
+  width: 100%;
 }
 
 #main nav ul li {
@@ -123,7 +127,7 @@
 .container {
   padding: 0 20% 10% 20%;
   min-width: 60%;
-  background-image: url('../assets/images/leaves-bottom-left.webp');
+  background-image: url("../assets/images/leaves-bottom-left.webp");
   background-size: 100% auto;
   background-repeat: no-repeat;
   background-position: bottom left;
@@ -171,7 +175,6 @@
   padding: 1em 0;
 }
 
-
 .bio {
   text-align: left;
   font-size: 75%;
@@ -186,13 +189,14 @@
 
 .partier > .profile {
   flex: 1;
-  text-align: left
+  text-align: left;
 }
 
 .partier.partier_right {
   flex-direction: row-reverse;
 
-  .profile > h4, .profile > h5 {
+  .profile > h4,
+  .profile > h5 {
     text-align: right;
   }
 }
@@ -204,7 +208,8 @@
   box-shadow: 0 0.25em 0.5em rgba(0, 0, 0, 0.25);
 }
 
-.profile > h4, .profile > h5 {
+.profile > h4,
+.profile > h5 {
   margin: 0.5em 0;
 }
 
@@ -215,7 +220,7 @@
 }
 
 .pencil {
-  font-family: 'Indie Flower', cursive;
+  font-family: "Indie Flower", cursive;
   color: #cad1be;
 }
 
@@ -283,7 +288,7 @@
   .vendor > .dotted_line {
     display: none;
   }
-  
+
   .vendor > h4 {
     margin: 0.5em 0;
   }
@@ -291,7 +296,6 @@
   .vendor > a {
     font-size: 90%;
   }
-
 }
 
 @media (max-width: 550px) {
