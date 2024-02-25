@@ -1,8 +1,13 @@
+import { Helmet } from "react-helmet";
+
 import styles from './Home.module.css';
 
 function Home() {
   return (
-    <main id={styles.main}>
+    <main>
+      <Helmet bodyAttributes={{ class: styles.body }} >
+        <title>Joshua Devine</title>
+      </Helmet>
       <div className={styles.container}>
         <h1>
           {/* () => <>joshua<dev>ine</>; */}

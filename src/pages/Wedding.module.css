@@ -14,8 +14,11 @@
   font-style: normal;
 }
 
-#main {
+.body {
   background: #9aab89;
+}
+
+#main {
   background-image: url('../assets/images/leaves-top-right.webp');
   background-size: 100% auto;
   background-repeat: no-repeat;

@@ -1,6 +1,7 @@
 /* eslint-disable react/prop-types */
 import { useEffect, useRef, useState } from "react";
 import { Link, useLocation } from "react-router-dom";
+import { Helmet } from "react-helmet";
 
 import styles from "./Wedding.module.css";
 
@@ -10,12 +11,12 @@ import proposal from "../assets/images/proposal.jpg";
 import savannah from "../assets/images/savannah.jpg";
 
 export function Wedding() {
-  useEffect(() => {
-    document.title = "A Devine Wedding";
-  }, []);
-
   return (
     <main id={styles.main}>
+      <Helmet bodyAttributes={{ class: styles.body }} >
+        <title>A Devine Wedding</title>
+      </Helmet>
+
       <ScrollToAnchor />
       <div className={styles.container}>
         <h1>Stephanie & Joshua</h1>
@@ -254,6 +255,10 @@ export function Wedding() {
 export function RSVP() {
   return (
     <main id={styles.main}>
+      <Helmet bodyAttributes={{ class: styles.body }} >
+        <title>A Devine Wedding</title>
+      </Helmet>
+
       <div className={styles.container}>
         <h1>Stephanie & Joshua</h1>
         <WeddingNav />
