@@ -294,7 +294,7 @@ function WeddingNav() {
           <Link to="/wedding#party">Bridal Party</Link>
         </li>
         <li>Pictures</li>
-        <li>Registry</li>
+        <li><Link to="https://www.theknot.com/stephanievalencicandjoshuadevine/registry">Registry</Link></li>
         <li>
           <Link to="/rsvp">RSVP</Link>
         </li>
