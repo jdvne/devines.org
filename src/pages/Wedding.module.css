@@ -169,6 +169,14 @@
   white-space: nowrap;
 }
 
+.booking_link {
+  text-decoration: underline !important;
+}
+
+.address {
+  text-align: center;
+}
+
 .partier {
   display: flex;
   gap: 1em;

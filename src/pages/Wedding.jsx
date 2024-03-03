@@ -38,7 +38,44 @@ export function Wedding() {
         </p>
         <p>Please arrive by 4:00pm to be seated for the ceremony.</p>
 
-        <CollapsibleSection title="Lodging" id="lodging" />
+        <CollapsibleSection title="Lodging" id="lodging">
+          <div className={styles.card}>
+            <p>Holiday Inn Tanglewood - Roanoke</p>
+
+            <blockquote>
+              For your convenience, we've blocked off rooms at a discounted rate
+              of $119/night.
+              <br />
+              To access this rate, please book via the link below. If booking
+              over the phone, please mention the "Devine Wedding" room block.
+              <br />
+            </blockquote>
+
+            <Link
+              className={styles.booking_link}
+              to="https://www.holidayinn.com/redirect?path=rates&brandCode=HI&localeCode=en&regionCode=1&hotelCode=roatw&checkInDate=31&checkInMonthYear=042024&checkOutDate=02&checkOutMonthYear=052024&_PMID=99801505&GPC=JDW&cn=no&viewfullsite=true"
+            >
+              Devine Wedding Booking Link
+            </Link>
+
+            <p className={styles.address}>
+              4468 Starkey Rd
+              <br />
+              Roanoke, VA 24018
+              <br />
+              540-774-4400
+            </p>
+
+            <iframe
+              className={styles.map}
+              src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d101705.32380296497!2d-80.1228544!3d37.1933083!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x884d0cc7c6853bbd%3A0x4680b214c4bd2895!2sHoliday%20Inn%20Roanoke-Tanglewood-Rt%20419%26I581%2C%20an%20IHG%20Hotel!5e0!3m2!1sen!2sus!4v1709496102991!5m2!1sen!2sus"
+              width="100%"
+              allowFullScreen=""
+              loading="lazy"
+              referrerPolicy="no-referrer-when-downgrade"
+            />
+          </div>
+        </CollapsibleSection>
 
         <CollapsibleSection title="FAQ" id="faq">
           <h4>What should I wear?</h4>
@@ -47,9 +84,10 @@ export function Wedding() {
 
             <blockquote>
               A small step above semi-formal, cocktail attire is a balance
-              between elegant and comfortable and fancy and pared-back. Instead
-              of a floor-length dress, women may opt for a tea-length,
-              knee-length, or midi look. Men should wear a suit and tie.
+              between elegant and comfortable. Instead of a floor-length dress,
+              women may opt for a tea-length, knee-length, or midi look. Men
+              should wear a suit and tie. Please be advised, the wedding colors
+              are dark and sage green.
             </blockquote>
           </div>
 
