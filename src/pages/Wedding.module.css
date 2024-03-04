@@ -188,13 +188,6 @@
   font-size: 75%;
 }
 
-.partier > img {
-  border-radius: 5px;
-  width: 15vw;
-  height: 15vw;
-  box-shadow: 0 0.25em 0.5em rgba(0, 0, 0, 0.25);
-}
-
 .partier > .profile {
   flex: 1;
   text-align: left;
@@ -213,6 +206,7 @@
   border-radius: 5px;
   width: 100%;
   height: auto;
+  object-fit: contain;
   box-shadow: 0 0.25em 0.5em rgba(0, 0, 0, 0.25);
 }
 

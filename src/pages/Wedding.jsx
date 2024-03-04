@@ -6,9 +6,23 @@ import { Helmet } from "react-helmet";
 import styles from "./Wedding.module.css";
 
 import expand_more from "../assets/icons/expand_more.svg";
+
 import nyc from "../assets/images/nyc.jpg";
 import proposal from "../assets/images/proposal.jpg";
 import savannah from "../assets/images/savannah.jpg";
+
+import steph from "../assets/images/steph.jpg";
+import josh from "../assets/images/josh.jpg";
+import anouk from "../assets/images/anouk.jpg";
+import gunner from "../assets/images/gunner.jpg";
+import ian from "../assets/images/ian.jpg";
+import jared from "../assets/images/jared.jpg";
+import joseph from "../assets/images/joseph.jpg";
+import julia from "../assets/images/julia.jpg";
+import kaity from "../assets/images/kaity.jpg";
+import lindsey from "../assets/images/lindsey.jpg";
+import lucy from "../assets/images/lucy.jpg";
+import noah from "../assets/images/noah.jpg";
 
 export function Wedding() {
   return (
@@ -43,11 +57,12 @@ export function Wedding() {
             <p>Holiday Inn Tanglewood - Roanoke</p>
 
             <blockquote>
-              For your convenience, we&apos;ve blocked off rooms at a discounted rate
-              of $119/night.
+              For your convenience, we&apos;ve blocked off rooms at a discounted
+              rate of $119/night.
               <br />
               To access this rate, please book via the link below. If booking
-              over the phone, please mention the &quot;Devine Wedding&quot; room block.
+              over the phone, please mention the &quot;Devine Wedding&quot; room
+              block.
               <br />
             </blockquote>
 
@@ -179,74 +194,86 @@ export function Wedding() {
             }
             role="Bride"
             bio="TODO"
-            image="https://s3.amazonaws.com/37assets/svn/765-default-avatar.png"
+            image={steph}
           />
           <Partier
             name="Anouk Rudd"
             role="Maid of Honor"
             bio="Anouk is from Floyd, Virginia. Stephanie and Anouk met in 2018 at Governor’s School in Pulaski, Virginia. Since then, they have been inseparable and always make time to grab a latte and a not-so-quick shopping trip."
-            image="https://s3.amazonaws.com/37assets/svn/765-default-avatar.png"
-            quote="insert quote here"
+            image={anouk}
+            fact="insert quote here"
           />
           <Partier
             name="Kaity McCullough"
             role="Bridesmaid"
             bio="Kaity is from Powhatan, Virginia, but currently lives in Colorado Springs, Colorado. Stephanie and Kaity met in 2020 in the Virginia Tech Corps of Cadets. While they only lived together for a year, they were in each other’s rooms enough that you would never know."
-            image="https://s3.amazonaws.com/37assets/svn/765-default-avatar.png"
-            quote="insert quote here"
+            image={kaity}
+            fact="insert quote here"
           />
           <Partier
             name="Julia Moschella"
             role="Bridesmaid"
             bio="Julia is from Christiansburg, Virginia, but currently lives in Charlottesville, Virginia, completing her Master’s degree at UVA. Stephanie and Julia met in middle school through band, soccer, basketball, and probably everything else."
-            image="https://s3.amazonaws.com/37assets/svn/765-default-avatar.png"
-            quote="insert quote here"
+            image={julia}
+            fact="insert quote here"
           />
           <Partier
             name="Lindsey Devine"
             role="Bridesmaid"
             bio="Lindsey is from Morganton, North Carolina. She is the second youngest of the Devine siblings and the only girl."
-            image="https://s3.amazonaws.com/37assets/svn/765-default-avatar.png"
-            quote="insert quote here"
+            image={lindsey}
+            fact="insert quote here"
           />
           <Partier
             name="Joshua Devine"
             role="Groom"
             bio="TODO"
-            image="https://s3.amazonaws.com/37assets/svn/765-default-avatar.png"
+            image={josh}
             right
           />
           <Partier
             name="Ian Switzer"
             role="Best Man"
             bio="TODO"
-            image="https://s3.amazonaws.com/37assets/svn/765-default-avatar.png"
-            quote="insert quote here"
+            image={ian}
+            fact="insert quote here"
             right
           />
           <Partier
             name="Jared Arnold"
             role="Groomsman"
             bio="Jarold is ... TODO"
-            image="https://s3.amazonaws.com/37assets/svn/765-default-avatar.png"
-            quote="insert quote here"
+            image={jared}
+            fact="insert quote here"
             right
           />
           <Partier
             name="Joseph Banks"
             role="Groomsman"
             bio="TODO"
-            image="https://s3.amazonaws.com/37assets/svn/765-default-avatar.png"
-            quote="insert quote here"
+            image={joseph}
+            fact="insert quote here"
             right
           />
           <Partier
             name="Noah Devine"
             role="Groomsman"
             bio="TODO"
-            image="https://s3.amazonaws.com/37assets/svn/765-default-avatar.png"
-            quote="insert quote here"
+            image={noah}
+            fact="insert quote here"
             right
+          />
+          <Partier
+            name="Gunner"
+            role="Honorable Mention"
+            bio="TODO"
+            image={gunner}
+          />
+          <Partier
+            name="Lucy"
+            role="Honorable Mention"
+            bio="TODO"
+            image={lucy}
           />
         </CollapsibleSection>
 
@@ -378,7 +405,7 @@ function CollapsibleSection({ title, id, children }) {
   );
 }
 
-function Partier({ name, role, bio, image, right, quote }) {
+function Partier({ name, role, bio, image, right, fact }) {
   return (
     <div className={styles.partier + (right ? " " + styles.partier_right : "")}>
       <div className={styles.profile}>
@@ -388,7 +415,7 @@ function Partier({ name, role, bio, image, right, quote }) {
       </div>
       <div className={styles.bio}>
         <p>{bio}</p>
-        {quote && <blockquote>&quot;{quote}&quot;</blockquote>}
+        {fact && <blockquote>&quot;{fact}&quot;</blockquote>}
       </div>
     </div>
   );
