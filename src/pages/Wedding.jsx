@@ -43,11 +43,11 @@ export function Wedding() {
             <p>Holiday Inn Tanglewood - Roanoke</p>
 
             <blockquote>
-              For your convenience, we've blocked off rooms at a discounted rate
+              For your convenience, we&apos;ve blocked off rooms at a discounted rate
               of $119/night.
               <br />
               To access this rate, please book via the link below. If booking
-              over the phone, please mention the "Devine Wedding" room block.
+              over the phone, please mention the &quot;Devine Wedding&quot; room block.
               <br />
             </blockquote>
 
@@ -141,7 +141,14 @@ export function Wedding() {
 
             <blockquote>
               <ul>
-                <li></li>
+                <li>BBQ Pork & Chicken</li>
+                <li>Choose Your Own Sauce</li>
+                <li>Coleslaw</li>
+                <li>Cowboy Beans</li>
+                <li>Mac & Cheese</li>
+                <li>Parmesan Garlic Potatoes</li>
+                <li>Green Beans</li>
+                <li>California Medley</li>
               </ul>
             </blockquote>
 
