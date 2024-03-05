@@ -196,12 +196,12 @@ export function Wedding() {
             }
             role="Bride"
             bio="Stephanie graduates with her Masters in Public Health with a
-              concentration in infectious diseases in May 2024. In the little
-              free time she has, she loves volunteering at the animal shelter,
-              taking walks, and going to trivia."
+              concentration in infectious diseases in May 2024 from Virginia
+              Tech. In the little free time she has, she loves volunteering at
+              the animal shelter, taking walks, and going to trivia."
             image={steph}
-            fact="She loves to donate platelets because it helps people
-              (nobody talks to her for 3 hours)"
+            fact="She loves to donate platelets because it helps people and 
+              nobody talks to her for 3 hours."
           />
           <Partier
             name="Anouk Rudd"
@@ -209,9 +209,8 @@ export function Wedding() {
             bio="Anouk is from Floyd, Virginia. She has a biology degree from
               Longwood University. Her family owns a chocolate shop, Cocoa Mia,
               and made the yummy desserts for the reception. Stephanie and
-              Anouk met in 2018 at Governor’s School in Pulaski, Virginia.
-              Since then, they have been inseparable and always make time to
-              grab a latte and a not-so-quick shopping trip."
+              Anouk met in 2018 at Governor’s School in Pulaski, Virginia, and
+              they have been inseparable since."
             image={anouk}
             fact="Anouk enjoys going on the Virginia Department of Health's
               website to read the health department inspection records for
@@ -225,8 +224,7 @@ export function Wedding() {
               leader in the Army at Fort Carson. She loves spending as much
               time as possible outside and adventuring around the state.
               Stephanie and Kaity met in 2020 in the Virginia Tech Corps of
-              Cadets. While they only lived together for a year, they were in
-              each other’s rooms enough that you would never know."
+              Cadets and lived together their senior year."
             image={kaity}
             fact="Kaity doesn't have a fun fact. :("
           />
