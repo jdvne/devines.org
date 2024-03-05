@@ -312,7 +312,7 @@ export function Wedding() {
             role="Groomsman"
             bio="Noah is the second oldest of the Devine siblings. He is
               currently attending Virginia Commonwealth University and will
-              graduate in May 2024 with a B.S. in Financial Technology with a
+              graduate in May 2024 with a B.S. in Financial Technology and a
               concentration in Actuarial Science. In a unique turn of events,
               Joshua and Noah have had the privilege to live together in
               Richmond."
