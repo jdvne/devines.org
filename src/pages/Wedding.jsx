@@ -200,7 +200,7 @@ export function Wedding() {
               Tech. In the little free time she has, she loves volunteering at
               the animal shelter, taking walks, and going to trivia."
             image={steph}
-            fact="She loves to donate platelets because it helps people and 
+            fact="She loves to donate platelets because it helps people and
               nobody talks to her for 3 hours."
           />
           <Partier
