@@ -327,6 +327,22 @@
     }
   }
 
+  .photos {
+    height: 25vh;
+    mask-image: linear-gradient(to bottom, transparent 5%, rgba(0, 0, 0, 1.0) 20%, rgba(0, 0, 0, 1.0) 80%, transparent 95%);
+  }
+
+  .photos > img {
+    width: 100vw;
+    margin: 5px;
+    object-fit: cover;
+    box-shadow: none;
+  }
+
+  .photos > img:nth-of-type(odd) {
+    display: none;
+  }
+
   .partier {
     flex-direction: column;
     gap: 0;
