@@ -226,7 +226,7 @@ export function Wedding() {
               Stephanie and Kaity met in 2020 in the Virginia Tech Corps of
               Cadets and lived together their senior year."
             image={kaity}
-            fact="Kaity doesn't have a fun fact. :("
+            fact="Kaity's first words were &apos;I want that&apos;."
           />
           <Partier
             name="Julia Moschella"
