@@ -84,7 +84,7 @@ object-assign
               leader in the Army at Fort Carson. She loves spending as much\r
               time as possible outside and adventuring around the state.\r
               Stephanie and Kaity met in 2020 in the Virginia Tech Corps of\r
-              Cadets and lived together their senior year.`,image:f0,fact:"Kaity doesn't have a fun fact. :("}),y.jsx(tt,{name:"Julia Moschella",role:"Bridesmaid",bio:`Julia is from Christiansburg, Virginia, but currently lives in\r
+              Cadets and lived together their senior year.`,image:f0,fact:"Kaity's first words were 'I want that'."}),y.jsx(tt,{name:"Julia Moschella",role:"Bridesmaid",bio:`Julia is from Christiansburg, Virginia, but currently lives in\r
               Charlottesville, Virginia. She is a 2024 graduate with a Master's\r
               in exercise physiology and is planning to start working full time\r
               at a cardiac rehab later this summer. She loves to do just about\r
