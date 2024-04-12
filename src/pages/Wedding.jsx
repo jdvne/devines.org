@@ -52,7 +52,7 @@ export function Wedding() {
           <br />
           Bent Mountain, VA 24059
         </p>
-        <p>Please arrive by 4:00pm to be seated for the ceremony.</p>
+        <p>Please arrive no later than 4:30pm to be seated for the ceremony.</p>
 
         <CollapsibleSection title="Lodging" id="lodging">
           <div className={styles.card}>
