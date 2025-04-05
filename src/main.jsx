@@ -3,7 +3,7 @@ import ReactDOM from 'react-dom/client';
 import { RouterProvider, createBrowserRouter } from 'react-router-dom';
 
 import Home from './pages/Home.jsx';
-import { Wedding, RSVP } from './pages/Wedding.jsx'
+import { Wedding } from './pages/Wedding.jsx'
 
 const router = createBrowserRouter([
   {
@@ -13,10 +13,6 @@ const router = createBrowserRouter([
   {
     path: '/wedding',
     element: <Wedding />
-  },
-  {
-    path: '/rsvp',
-    element: <RSVP />
   }
 ]);
 

@@ -388,41 +388,10 @@ export function Wedding() {
   );
 }
 
-export function RSVP() {
-  return (
-    <main id={styles.main}>
-      <Helmet bodyAttributes={{ class: styles.body }}>
-        <title>A Devine Wedding</title>
-      </Helmet>
-
-      <div className={styles.container}>
-        <h1>Stephanie & Joshua</h1>
-        <WeddingNav />
-
-        <div>
-          <iframe
-            src="https://docs.google.com/forms/d/e/1FAIpQLSfclalK_QuxLKod2JKHc86idcQ7pxF7iLqoVkFOoZIJRuFyfA/viewform?embedded=true"
-            height="1000"
-            frameBorder="0"
-            marginHeight="0"
-            marginWidth="0"
-            className={styles.rsvp}
-          >
-            RSVP Form is Loading…
-          </iframe>
-        </div>
-      </div>
-    </main>
-  );
-}
-
 function WeddingNav() {
   return (
     <nav>
       <ul>
-        <li>
-          <Link to="/rsvp">RSVP</Link>
-        </li>
         <li>
           <Link to="/wedding#lodging">Lodging</Link>
         </li>
