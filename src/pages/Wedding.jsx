@@ -322,7 +322,7 @@ export function Wedding() {
           />
           <Partier name="Lucy" role="Honorable Mention" image={lucy} />
           <Partier
-            name="Gunner"
+            name="Stinker"
             role="Honorable Mention"
             image={gunner}
             right
