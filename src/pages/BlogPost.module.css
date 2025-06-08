@@ -1,0 +1,150 @@
+.body {
+    background: black;
+}
+
+#main {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    min-height: 100vh;
+    background: black;
+    font-family: 'Courier New', Courier, monospace;
+    color: white;
+}
+
+.container {
+    padding: 0 10%;
+}
+
+.title {
+    margin: 2rem 0;
+}
+
+.blog-post {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 2rem 0;
+}
+
+.metadata {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 2rem 0;
+    border-bottom: 1px solid #333;
+    margin-bottom: 2rem;
+}
+
+.metadata h1 {
+    margin: 0;
+    color: white;
+    font-size: 2em;
+}
+
+.date {
+    display: block;
+    color: #6a9955;
+    margin: 0.5rem 0;
+    font-size: 0.9em;
+}
+
+.description {
+    color: #d4d4d4;
+    font-style: italic;
+    margin: 0.5rem 0 0;
+}
+
+.blog-post h1 {
+    margin-bottom: 1rem;
+    color: white;
+}
+
+.blog-post h2 {
+    margin: 2rem 0 1rem;
+    color: #6a9955;
+}
+
+.blog-post p {
+    margin-bottom: 1.5rem;
+    line-height: 1.6;
+    color: white;
+}
+
+.blog-post ul, 
+.blog-post ol {
+    margin: 1rem 0;
+    padding-left: 2rem;
+    color: white;
+}
+
+.blog-post li {
+    margin-bottom: 0.5rem;
+}
+
+.blog-post pre {
+    background: #1e1e1e;
+    padding: 1rem;
+    border-radius: 4px;
+    overflow-x: auto;
+    margin: 1.5rem 0;
+    border: 1px solid #333;
+}
+
+.blog-post code {
+    font-family: 'Courier New', Courier, monospace;
+    font-size: 0.9em;
+    color: #d4d4d4;
+}
+
+.blog-post img {
+    max-width: 100%;
+    height: auto;
+    margin: 1.5rem 0;
+}
+
+.blog-post table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 1.5rem 0;
+    color: white;
+}
+
+.blog-post th {
+    background: #1e1e1e;
+    border: 1px solid #333;
+    padding: 0.75rem;
+    text-align: left;
+    color: #6a9955;
+}
+
+.blog-post td {
+    border: 1px solid #333;
+    padding: 0.75rem;
+}
+
+.blog-post tr:nth-child(even) {
+    background: #1e1e1e;
+}
+
+.blog-post tr:nth-child(odd) {
+    background: #252525;
+}
+
+.blog-post tr:hover {
+    background: #2d2d2d;
+}
+
+.blog-post a {
+    color: #6a9955;
+    text-decoration: none;
+}
+
+.blog-post a:hover {
+    text-decoration: underline;
+}
+
+@media (max-width: 768px) {
+    .container {
+        padding: 0 2.5%;
+    }
+}

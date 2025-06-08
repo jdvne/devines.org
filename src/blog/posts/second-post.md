@@ -12,7 +12,7 @@ This is my second blog post, where I'll explore more markdown features.
 
 Markdown makes it easy to include images:
 
-![Example Image](https://via.placeholder.com/600x400)
+![New York City](../assets/images/nyc.jpg)
 
 ## Lists
 

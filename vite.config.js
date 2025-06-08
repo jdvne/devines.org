@@ -5,5 +5,16 @@ import react from '@vitejs/plugin-react'
 export default defineConfig({
   plugins: [react()],
   base: "/",
-  assetsInclude: ['**/*.md']
+  assetsInclude: ['**/*.md'],
+  define: {
+    global: {},
+    'process.env': {}
+  },
+  optimizeDeps: {
+    esbuildOptions: {
+      define: {
+        global: 'globalThis'
+      }
+    }
+  }
 })

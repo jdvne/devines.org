@@ -1,0 +1,73 @@
+.breadcrumb {
+  color: white;
+  margin: 0;
+  position: relative;
+}
+
+.link {
+  color: white;
+  text-decoration: none;
+  position: relative;
+  display: inline-block;
+
+  &:hover {
+    text-decoration: underline;
+    text-underline-offset: 4px;
+  }
+}
+
+.operator {
+  color: #c586c0;
+  margin: 0 0.1em;
+  user-select: none;
+  display: inline-block;
+  transition: opacity 0.5s ease-in-out;
+}
+
+.keyword {
+  color: #c586c0;
+  opacity: 0;
+  user-select: none;
+  display: inline-block;
+  transition: opacity 0.5s ease-in-out;
+  margin-right: 0.5em;
+}
+
+.tag {
+  color: rgba(255, 255, 255, .55);
+  display: inline-block;
+  text-decoration: inherit;
+  transition: opacity 0.5s ease-in-out;
+}
+
+.method {
+  color: #dcdcaa;
+  user-select: none;
+  display: inline-block;
+  transition: opacity 0.5s ease-in-out;
+}
+
+.parens {
+  color: rgba(255, 255, 255, .55);
+  user-select: none;
+  display: inline-block;
+  transition: opacity 0.5s ease-in-out;
+}
+
+/* Hover states */
+.link:first-of-type:hover {
+  .keyword {
+    opacity: 1;
+  }
+  .tag {
+    opacity: 0;
+  }
+}
+
+.link:first-of-type:hover ~ * {
+  opacity: 0;
+}
+
+.link:last-of-type:hover ~ * {
+  opacity: 0;
+}

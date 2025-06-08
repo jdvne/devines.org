@@ -3,6 +3,9 @@ import { Link } from "react-router-dom";
 
 import styles from './Home.module.css';
 
+// TODO: "accountability" page to track my goals and progress in life
+// TODO: rename "blog" to "thoughts"
+
 export function Home() {
   return (
     <main id={styles.main}>
@@ -26,11 +29,12 @@ export function Home() {
           </a>
         </h1>
         <div>
-          <h2 className={styles.comment}>
-            &#47;* TODO: let the world know what I&apos;m up to 😳 *&#47;
-          </h2>
           <nav className={styles.nav}>
-            <Link to="/blog" className={styles.navLink}>Blog</Link>
+            <Link to="/blog" className={styles.navLink}>
+              <span className={styles.tag}>&lt;</span>
+              thoughts
+              <span className={styles.tag}>/&gt;</span>
+            </Link>
           </nav>
         </div>
       </div>

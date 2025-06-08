@@ -90,18 +90,22 @@
 
 .navLink {
   display: inline-block;
-  color: #6a9955;
+  color: white;
   text-decoration: none;
   font-size: 1.2rem;
-  border: 1px solid #6a9955;
-  padding: 0.5rem 1.5rem;
-  border-radius: 4px;
+  position: relative;
+  padding: 0.2em 0.4em;
+  margin: -0.2em -0.4em;
+  border-radius: 3px;
   transition: all 0.3s ease;
-}
-
-.navLink:hover {
-  color: black;
-  background-color: #6a9955;
+  
+  &:hover {
+    background: rgba(255, 255, 255, 0.1);
+    
+    .tag {
+      opacity: 0;
+    }
+  }
 }
 
 @keyframes blink {
