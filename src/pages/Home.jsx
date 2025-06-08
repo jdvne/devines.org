@@ -4,8 +4,7 @@ import { Link } from "react-router-dom";
 import styles from './Home.module.css';
 
 // TODO: "accountability" page to track my goals and progress in life
-// TODO: rename "blog" to "thoughts"
-// TODO: migrate from "github-pages" to GitHub Actions for deployment
+// TODO: move images to public assets for easier access
 
 export function Home() {
   return (
@@ -31,7 +30,7 @@ export function Home() {
         </h1>
         <div>
           <nav className={styles.nav}>
-            <Link to="/blog" className={styles.navLink}>
+            <Link to="/thoughts" className={styles.navLink}>
               <span className={styles.tag}>&lt;</span>
               thoughts
               <span className={styles.tag}>/&gt;</span>

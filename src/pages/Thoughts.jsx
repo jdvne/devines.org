@@ -1,14 +1,14 @@
 import { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
-import styles from './Blog.module.css';
+import styles from './Thoughts.module.css';
 import { Breadcrumb } from '../components/Breadcrumb';
 
-export function Blog() {
+export function Thoughts() {
     const [posts, setPosts] = useState([]);
 
     useEffect(() => {
         // Get all blog posts
-        const blogModules = import.meta.glob('../blog/posts/*.md');
+        const blogModules = import.meta.glob('../thoughts/posts/*.md');
         
         Promise.all(
             Object.entries(blogModules).map(async ([path, loader]) => {
@@ -47,13 +47,13 @@ export function Blog() {
         <div id={styles.main}>
             <div className={styles.blogContainer}>
                 <Breadcrumb items={[
-                    { path: '/blog', label: 'thoughts' }
+                    { path: '/thoughts', label: 'thoughts' }
                 ]} />
                 <div className={styles.postsList}>
                 {posts.map(post => (
                     <article key={post.slug} className={styles.postSummary}>
                         <h2>
-                            <Link to={`/blog/${post.slug}`}>
+                            <Link to={`/thoughts/${post.slug}`}>
                                 {post.title}
                             </Link>
                         </h2>
@@ -61,7 +61,7 @@ export function Blog() {
                             {new Date(post.date).toLocaleDateString()}
                         </div>
                         <p style={{ color: '#d4d4d4' }}>{post.description}</p>
-                        <Link to={`/blog/${post.slug}`} className={styles.readMore}>
+                        <Link to={`/thoughts/${post.slug}`} className={styles.readMore}>
                             Read more →
                         </Link>
                     </article>
@@ -72,4 +72,4 @@ export function Blog() {
     );
 }
 
-export default Blog;
+export default Thoughts;

@@ -6,13 +6,13 @@ import remarkGfm from 'remark-gfm';
 import rehypeRaw from 'rehype-raw';
 import matter from 'gray-matter';
 import { Buffer } from 'buffer';
-import styles from './BlogPost.module.css';
+import styles from './Thought.module.css';
 import { Breadcrumb } from '../components/Breadcrumb';
 
 // Provide Buffer globally for gray-matter
 window.Buffer = Buffer;
 
-export function BlogPost() {
+export function Thought() {
     const [content, setContent] = useState('');
     const [metadata, setMetadata] = useState(null);
     const { slug } = useParams();
@@ -29,7 +29,7 @@ export function BlogPost() {
     }), []);
 
     useEffect(() => {
-        import(`../blog/posts/${slug}.md`)
+        import(`../thoughts/posts/${slug}.md`)
             .then(res => fetch(res.default))
             .then(response => response.text())
             .then(text => {
@@ -51,13 +51,13 @@ export function BlogPost() {
     return (
         <main id={styles.main}>
             <Helmet bodyAttributes={{ class: styles.body }}>
-                <title>{metadata?.title || 'Blog Post'}</title>
+                <title>{metadata?.title || 'Thought'}</title>
             </Helmet>
             <div className={styles.container}>
                 <div className={styles.title}>
                     <Breadcrumb items={[
-                        { path: '/blog', label: 'thoughts' },
-                        { path: `/blog/${slug}`, label: slug }
+                        { path: '/thoughts', label: 'thoughts' },
+                        { path: `/thoughts/${slug}`, label: slug }
                     ]} />
                 </div>
                 {metadata && (
@@ -89,4 +89,4 @@ export function BlogPost() {
     );
 }
 
-export default BlogPost;
+export default Thought;
