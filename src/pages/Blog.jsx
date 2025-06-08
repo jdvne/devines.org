@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import styles from './Blog.module.css';
+import { Breadcrumb } from '../components/Breadcrumb';
 
 export function Blog() {
     const [posts, setPosts] = useState([]);
@@ -45,7 +46,9 @@ export function Blog() {
     return (
         <div id={styles.main}>
             <div className={styles.blogContainer}>
-                <h1 style={{ color: 'white' }}>Blog Posts</h1>
+                <Breadcrumb items={[
+                    { path: '/blog', label: 'thoughts' }
+                ]} />
                 <div className={styles.postsList}>
                 {posts.map(post => (
                     <article key={post.slug} className={styles.postSummary}>

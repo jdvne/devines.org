@@ -5,6 +5,7 @@ import styles from './Home.module.css';
 
 // TODO: "accountability" page to track my goals and progress in life
 // TODO: rename "blog" to "thoughts"
+// TODO: migrate from "github-pages" to GitHub Actions for deployment
 
 export function Home() {
   return (

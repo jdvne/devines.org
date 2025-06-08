@@ -55,7 +55,10 @@ export function BlogPost() {
             </Helmet>
             <div className={styles.container}>
                 <div className={styles.title}>
-                    <Breadcrumb path={slug} />
+                    <Breadcrumb items={[
+                        { path: '/blog', label: 'thoughts' },
+                        { path: `/blog/${slug}`, label: slug }
+                    ]} />
                 </div>
                 {metadata && (
                     <div className={styles.metadata}>

@@ -16,7 +16,13 @@
 }
 
 .container {
-  padding: 0 10%;
+  padding: 2rem;
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.container h1 {
+  margin: 0 0 2rem;
 }
 
 .name {
@@ -119,7 +125,7 @@
 
 @media (max-width: 768px) {
   .container {
-    padding: 0 2.5%;
+    padding: 2rem;
   }
 
   .operator, .name::after {

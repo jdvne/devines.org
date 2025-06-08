@@ -21,6 +21,12 @@
     padding: 2rem;
 }
 
+@media (max-width: 768px) {
+    .blogContainer {
+        padding: 2rem;
+    }
+}
+
 .postsList {
     display: flex;
     flex-direction: column;
