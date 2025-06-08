@@ -29,7 +29,7 @@ export function Thought() {
     }), []);
 
     useEffect(() => {
-        import(`../thoughts/posts/${slug}.md`)
+        import(`../thoughts/${slug}.md`)
             .then(res => fetch(res.default))
             .then(response => response.text())
             .then(text => {
