@@ -465,5 +465,3 @@ function Vendor({ role, name, url }) {
     </div>
   );
 }
-
-export default Wedding;

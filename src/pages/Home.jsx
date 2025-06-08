@@ -1,8 +1,9 @@
 import { Helmet } from "react-helmet";
+import { Link } from "react-router-dom";
 
 import styles from './Home.module.css';
 
-function Home() {
+export function Home() {
   return (
     <main id={styles.main}>
       <Helmet bodyAttributes={{ class: styles.body }} >
@@ -28,10 +29,11 @@ function Home() {
           <h2 className={styles.comment}>
             &#47;* TODO: let the world know what I&apos;m up to 😳 *&#47;
           </h2>
+          <nav className={styles.nav}>
+            <Link to="/blog" className={styles.navLink}>Blog</Link>
+          </nav>
         </div>
       </div>
     </main>
   );
 }
-
-export default Home;

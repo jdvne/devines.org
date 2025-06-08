@@ -84,6 +84,26 @@
   color: #6a9955;
 }
 
+.nav {
+  margin-top: 2rem;
+}
+
+.navLink {
+  display: inline-block;
+  color: #6a9955;
+  text-decoration: none;
+  font-size: 1.2rem;
+  border: 1px solid #6a9955;
+  padding: 0.5rem 1.5rem;
+  border-radius: 4px;
+  transition: all 0.3s ease;
+}
+
+.navLink:hover {
+  color: black;
+  background-color: #6a9955;
+}
+
 @keyframes blink {
   0%, 100% {
     opacity: 0;
