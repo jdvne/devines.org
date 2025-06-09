@@ -2,6 +2,8 @@ import { useState, useEffect, useMemo } from 'react';
 import { useParams } from 'react-router-dom';
 import { Helmet } from 'react-helmet';
 import Markdown from 'react-markdown';
+import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter';
+import { vscDarkPlus } from 'react-syntax-highlighter/dist/esm/styles/prism';
 import remarkGfm from 'remark-gfm';
 import rehypeRaw from 'rehype-raw';
 import matter from 'gray-matter';
@@ -25,12 +27,28 @@ export function Thought() {
             } catch {
                 return <img src={src} alt={alt} />;
             }
+        },
+        code({ inline, className, children, ...props }) {
+            const match = /language-(\w+)/.exec(className || '');
+            return !inline && match ? (
+                <SyntaxHighlighter
+                    style={vscDarkPlus}
+                    language={match[1]}
+                    PreTag="div"
+                    {...props}
+                >
+                    {String(children).replace(/\n$/, '')}
+                </SyntaxHighlighter>
+            ) : (
+                <code className={className} {...props}>
+                    {children}
+                </code>
+            );
         }
     }), []);
 
     useEffect(() => {
-        import(`../thoughts/${slug}.md`)
-            .then(res => fetch(res.default))
+        fetch(`/src/thoughts/${slug}.md`)
             .then(response => response.text())
             .then(text => {
                 const { data, content } = matter(text);

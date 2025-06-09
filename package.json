@@ -17,6 +17,7 @@
     "react-dom": "^18.2.0",
     "react-markdown": "^10.1.0",
     "react-router-dom": "^6.19.0",
+    "react-syntax-highlighter": "^15.6.1",
     "rehype-raw": "^7.0.0",
     "remark-gfm": "^4.0.1"
   },
@@ -29,6 +30,7 @@
     "eslint-plugin-react-hooks": "^4.6.0",
     "eslint-plugin-react-refresh": "^0.4.4",
     "react-helmet": "^6.1.0",
-    "vite": "^5.0.0"
+    "vite": "^5.0.0",
+    "vite-plugin-markdown": "^2.2.0"
   }
 }
