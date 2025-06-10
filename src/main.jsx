@@ -6,6 +6,7 @@ import { Home } from './pages/Home.jsx';
 import { Wedding } from './pages/Wedding.jsx';
 import { Thoughts } from './pages/Thoughts.jsx';
 import { Thought } from './pages/Thought.jsx';
+import { Accountability } from './pages/Accountability.jsx';
 
 const router = createBrowserRouter([
   {
@@ -23,6 +24,10 @@ const router = createBrowserRouter([
   {
     path: '/thoughts/:slug',
     element: <Thought />
+  },
+  {
+    path: '/accountability',
+    element: <Accountability />
   }
 ]);
 

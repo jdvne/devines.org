@@ -35,6 +35,11 @@ export function Home() {
               thoughts
               <span className={styles.tag}>/&gt;</span>
             </Link>
+            <Link to="/accountability" className={styles.navLink}>
+              <span className={styles.tag}>&lt;</span>
+              accountability
+              <span className={styles.tag}>/&gt;</span>
+            </Link>
           </nav>
         </div>
       </div>

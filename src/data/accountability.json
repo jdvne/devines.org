@@ -1,0 +1,51 @@
+[
+  {
+    "month": "January",
+    "weight": 65,
+    "calories": 2000,
+    "health": 7,
+    "activity": 30
+  },
+  {
+    "month": "February",
+    "weight": 59,
+    "calories": 2200,
+    "health": 8,
+    "activity": 40
+  },
+  {
+    "month": "March",
+    "weight": 80,
+    "calories": 2400,
+    "health": 9,
+    "activity": 50
+  },
+  {
+    "month": "April",
+    "weight": 81,
+    "calories": 2100,
+    "health": 8,
+    "activity": 45
+  },
+  {
+    "month": "May",
+    "weight": 56,
+    "calories": 1900,
+    "health": 7,
+    "activity": 35
+  },
+  {
+    "month": "June",
+    "weight": 55,
+    "calories": 2300,
+    "health": 9,
+    "activity": 55
+  },
+  {
+    "month": "July",
+    "weight": 40,
+    "calories": 2500,
+    "health": 10,
+    "activity": 60
+  }
+]
