@@ -2,6 +2,7 @@
 title: My Second Blog Post
 date: 2025-06-07
 description: Exploring more markdown features
+image: /assets/images/nyc.jpg
 ---
 
 # My Second Blog Post

@@ -70,6 +70,11 @@ export function Thought() {
         <main id={styles.main}>
             <Helmet bodyAttributes={{ class: styles.body }}>
                 <title>{metadata?.title || 'Thought'}</title>
+                <meta property="og:title" content={metadata?.title || 'Thought'} />
+                <meta property="og:description" content={metadata?.description || ''} />
+                <meta property="og:image" content={metadata?.image || "/assets/images/nyc.jpg"} />
+                <meta property="og:type" content="article" />
+                <meta name="twitter:card" content="summary_large_image" />
             </Helmet>
             <div className={styles.container}>
                 <div className={styles.title}>

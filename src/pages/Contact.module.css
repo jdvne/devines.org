@@ -1,0 +1,64 @@
+.thought {
+  padding: 2rem;
+  max-width: 800px;
+  margin: 0 auto;
+  background: black;
+  font-family: 'Courier New', Courier, monospace;
+  color: white;
+}
+
+.thought h1 {
+  font-size: 2em;
+  margin-bottom: 1rem;
+}
+
+.thought label {
+  display: block;
+  margin-bottom: 0.5rem;
+}
+
+.thought input,
+.thought textarea {
+  width: 100%;
+  padding: 0.5rem;
+  margin-bottom: 1rem;
+  background-color: #333;
+  color: white;
+  border: none;
+  border-radius: 3px;
+  font-family: 'Courier New', Courier, monospace;
+}
+
+.thought button {
+  background-color: #c586c0;
+  color: white;
+  border: none;
+  border-radius: 3px;
+  padding: 0.5rem 1rem;
+  font-family: 'Courier New', Courier, monospace;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.thought p {
+  font-size: 1.2em;
+  line-height: 1.5;
+  margin-bottom: 1rem;
+}
+
+.thought a {
+  color: white;
+  text-decoration: none;
+}
+
+.thought a .tag {
+  color: rgba(255, 255, 255, .55);
+}
+
+.thought a .operator {
+  color: #c586c0;
+}
+
+.thought a:hover {
+  text-decoration: underline;
+}

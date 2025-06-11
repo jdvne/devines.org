@@ -2,6 +2,7 @@
 title: Hello World
 date: 2025-06-06
 description: My first blog post
+image: /assets/images/nyc.jpg
 ---
 
 # Hello World!

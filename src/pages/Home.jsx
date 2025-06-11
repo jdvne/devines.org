@@ -6,6 +6,10 @@ import styles from './Home.module.css';
 // TODO: "accountability" page to track my goals and progress in life
 // TODO: move images to public assets for easier access
 
+const lt = '<';
+const gt = '>';
+const space = '\u202F'; // non-breaking space
+
 export function Home() {
   return (
     <main id={styles.main}>
@@ -16,24 +20,29 @@ export function Home() {
         <h1>
           {/* () => <>joshua<dev>ine</>; */}
           <a className={styles.name} href="./">
-            <span className={styles.operator}>()=&gt;&#8201;</span>
-            <span className={styles.tag}>&lt;&gt;</span>
+            <span className={styles.operator}>()={gt}{space}</span>
+            <span className={styles.tag}>{lt}{gt}</span>
             joshua
             <span className={styles.error}>
-              <span className={styles.lt}>&lt;</span>
+              <span className={styles.lt}>{lt}</span>
               de
-              <span className={styles.gt}>&gt;</span>
+              <span className={styles.gt}>{gt}</span>
             </span>
             ine
-            <span className={styles.tag}>&lt;/&gt;;</span>
+            <span className={styles.tag}>{lt}/{gt};</span>
           </a>
         </h1>
         <div>
           <nav className={styles.nav}>
             <Link to="/thoughts" className={styles.navLink}>
-              <span className={styles.tag}>&lt;</span>
+              <span className={styles.tag}>{lt}</span>
               thoughts
-              <span className={styles.tag}>/&gt;</span>
+              <span className={styles.tag}>/{gt}</span>
+            </Link>
+            <Link to="/contact" className={styles.navLink}>
+              <span className={styles.tag}>{lt}</span>
+              contact
+              <span className={styles.tag}>/{gt}</span>
             </Link>
           </nav>
         </div>

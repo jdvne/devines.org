@@ -7,11 +7,16 @@ import { Wedding } from './pages/Wedding.jsx';
 import { Thoughts } from './pages/Thoughts.jsx';
 import { Thought } from './pages/Thought.jsx';
 import { NotFound } from './pages/NotFound.jsx';
+import Contact from './pages/Contact.jsx';
 
 const router = createBrowserRouter([
   {
     path: '/',
     element: <Home />
+  },
+  {
+    path: '/contact',
+    element: <Contact />
   },
   {
     path: '/wedding',
@@ -30,6 +35,7 @@ const router = createBrowserRouter([
     element: <NotFound />
   }
 ]);
+
 
 ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
