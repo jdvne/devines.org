@@ -6,7 +6,7 @@ import { Home } from './pages/Home.jsx';
 import { Wedding } from './pages/Wedding.jsx';
 import { Thoughts } from './pages/Thoughts.jsx';
 import { Thought } from './pages/Thought.jsx';
-import { NotFound } from './pages/NotFound.jsx';
+// import { NotFound } from './pages/NotFound.jsx';
 import Contact from './pages/Contact.jsx';
 
 const router = createBrowserRouter([
@@ -30,10 +30,10 @@ const router = createBrowserRouter([
     path: '/thoughts/:slug',
     element: <Thought />
   },
-  {
-    path: '*',
-    element: <NotFound />
-  }
+  // {
+  //   path: '*',
+  //   element: <NotFound />
+  // }
 ]);
 
 
