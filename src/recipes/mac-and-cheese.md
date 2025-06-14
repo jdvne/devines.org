@@ -1,24 +1,24 @@
 ---
 title: Mac and Cheese
-recipeName: Mac and Cheese
 preparationTime: 30 minutes
 cookTime: 15 minutes
 cookTemperature: 350 degrees
 totalTime: 45 Minutes
+category: Sides
 ---
 
 ## Ingredients
 
-- 1/2 cup flour
-- 1 stick of butter
-- 1/3 gallon of whole milk
-- 1 lb block of Velveeta
-- 2 lbs macaroni noodles
-- 1 lb shredded cheese
-- Paprika
-- Salt
-- Pepper
-- Ancho Chili Powder
+- [ ] 1/2 cup flour
+- [ ] 1 stick of butter
+- [ ] 1/3 gallon of whole milk
+- [ ] 1 lb block of Velveeta
+- [ ] 2 lbs macaroni noodles
+- [ ] 1 lb shredded cheese
+- [ ] Paprika
+- [ ] Salt
+- [ ] Pepper
+- [ ] Ancho Chili Powder
 
 ## Instructions
 

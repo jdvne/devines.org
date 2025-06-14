@@ -8,7 +8,7 @@ import remarkGfm from 'remark-gfm';
 import rehypeRaw from 'rehype-raw';
 import matter from 'gray-matter';
 import { Buffer } from 'buffer';
-import styles from './Recipe.module.css';
+import styles from './Cookbook.module.css';
 
 
 // Provide Buffer globally for gray-matter
@@ -62,7 +62,7 @@ export function Recipe() {
     return (
         <div className={styles.recipePage}>
             <div className={styles.recipeContainer}>
-                <Helmet>
+                <Helmet bodyAttributes={{ class: styles.body }}>
                     <title>{metadata?.title || 'Recipe'}</title>
                     <meta property="og:title" content={metadata?.title || 'Recipe'} />
                     <meta property="og:description" content={metadata?.description || ''} />
