@@ -44,6 +44,11 @@ export function Home() {
               contact
               <span className={styles.tag}>/{gt}</span>
             </Link>
+            <Link to="/cookbook" className={styles.navLink}>
+              <span className={styles.tag}>{lt}</span>
+              cookbook
+              <span className={styles.tag}>/{gt}</span>
+            </Link>
           </nav>
         </div>
       </div>
