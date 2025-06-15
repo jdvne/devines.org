@@ -3,7 +3,7 @@
 }
 
 .coffeeContainer {
-  font-family: "Playfair Display", sans-serif;
+  font-family: "Oleo Script", sans-serif;
   color: var(--rose-ebony);
   background-color: var(--khaki);
   padding: 20px;
@@ -14,7 +14,7 @@
 }
 
 .coffeeTitle {
-  font-family: "Playfair Display", sans-serif;
+  font-family: "Oleo Script", sans-serif;
   font-size: 2.5em;
   margin-bottom: 10px;
   color: var(--umber);
