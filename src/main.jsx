@@ -10,11 +10,16 @@ import { Thought } from './pages/Thought.jsx';
 import Contact from './pages/Contact.jsx';
 import { Recipe } from './pages/Recipe.jsx';
 import { Cookbook } from './pages/Cookbook.jsx';
+import Coffee from './pages/Coffee.jsx';
 
 const router = createBrowserRouter([
   {
     path: '/',
     element: <Home />
+  },
+  {
+    path: '/coffee',
+    element: <Coffee />
   },
   {
     path: '/contact',

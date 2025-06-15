@@ -6,7 +6,12 @@
   --pale-dogwood: #ffddd2ff;
   --atomic-tangerine: #e29578ff;
 
-  /* TODO: more color palettes */
+  /* coffee color palette */
+  --khaki: #c3a995ff;
+  --beaver: #ab947eff;
+  --umber: #6f5e53ff;
+  --beaver-2: #8a7968ff;
+  --rose-ebony: #593d3bff;
 }
 
 /* fix markdown checkboxes */

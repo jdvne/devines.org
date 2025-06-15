@@ -1,0 +1,80 @@
+- name: Joe Medium Roast
+  brand: Trader Joe's
+  roast: Medium
+  grind_notch: 5
+  grams: 18
+  purpose: Espresso
+  size_oz: null
+  thoughts: Basic, good, classic
+
+- name: French Roast
+  brand: Trader Joe's
+  roast: Dark
+  grind_notch: 5
+  grams: 17
+  purpose: Espresso
+  size_oz: null
+  thoughts: Much darker version of 1
+
+- name: Little Green Hive
+  brand: Little Green Hive
+  roast: Medium
+  grind_notch: 5
+  grams: 18
+  purpose: Espresso
+  size_oz: 12
+  thoughts: Very light, very smooth
+
+- name: Organic Bolivian Blend
+  brand: Trader Joe's
+  roast: Medium Dark
+  grind_notch: 18
+  grams: null
+  purpose: Cold Brew
+  size_oz: 12
+  thoughts: Good in ice, smooth
+
+- name: The Dog Sleeps in my Bed
+  brand: Grounds and Hounds
+  roast: Dark
+  grind_notch: 4
+  grams: 17
+  purpose: Espresso
+  size_oz: 12
+  thoughts: Middle of the road, 1.5x caffeine
+
+- name: Organic Five Country Blend
+  brand: Trader Joe's
+  roast: Dark
+  grind_notch: 5
+  grams: 17
+  purpose: Espresso
+  size_oz: 13
+  thoughts: Similar to JMR, 2 is better
+
+- name: Homeward Breakfast Blend
+  brand: Grounds and Hounds
+  roast: Medium
+  grind_notch: 4
+  grams: 18
+  purpose: Espresso
+  size_oz: 12
+  thoughts: Similar to JMR, easy sipping
+
+- name: The Secret Garden
+  brand: Art on the Square
+  roast: Medium
+  grind_notch: 4
+  grams: 18-18.5
+  purpose: Espresso
+  size_oz: In a tin?
+  thoughts: No bite, doesn't speak much
+
+- name: District Cold Brew Blend
+  brand: Zeke's
+  roast: Light
+  grind_notch: null
+  grams: null
+  purpose: Cold Brew
+  size_oz: 16
+  thoughts: Clumps easily, needs to be very coarse

@@ -1,0 +1,103 @@
+.body {
+  background-color: var(--khaki);
+}
+
+.coffeeContainer {
+  font-family: "Playfair Display", sans-serif;
+  color: var(--rose-ebony);
+  background-color: var(--khaki);
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.coffeeTitle {
+  font-family: "Playfair Display", sans-serif;
+  font-size: 2.5em;
+  margin-bottom: 10px;
+  color: var(--umber);
+}
+
+.coffeeHorizontalBar {
+  border-bottom: 1px solid var(--beaver);
+  margin-bottom: 20px;
+}
+
+.coffeeListItem {
+  margin-bottom: 15px;
+  color: var(--rose-ebony);
+  padding-left: 10px;
+}
+
+.coffeePage {
+  background-color: var(--khaki);
+  min-height: 100vh;
+}
+
+table {
+  width: 100%;
+  border-collapse: separate; /* Use 'separate' to apply border-spacing */
+  border-spacing: 0 8px; /* Add spacing between rows */
+  margin-top: 20px;
+}
+
+th,
+td {
+  padding: 8px;
+  text-align: left;
+  border-bottom: none;
+  border-right: 1px solid var(--beaver);
+  box-sizing: border-box;
+  padding-top: 4px; /* Add space above content */
+  padding-bottom: 4px; /* Add space below content */
+  margin-bottom: 8px;
+}
+
+
+/* Remove border from the last column */
+tr > *:last-child {
+  border-right: none;
+}
+
+th {
+  background-color: var(--beaver-2);
+  color: var(--rose-ebony);
+}
+
+.chip {
+  display: inline-block;
+  padding: 4px 8px;
+  border-radius: 12px;
+  font-size: 0.8em;
+}
+
+.roastChip {
+  color: var(--khaki);
+}
+
+.lightRoast {
+  background-color: #C69F75; /* Light brown */
+}
+
+.mediumRoast {
+  background-color: #8B4513; /* Saddle brown */
+}
+
+.darkRoast {
+  background-color: #46240A; /* Dark brown */
+}
+
+.purposeChip {
+  background-color: var(--beaver);
+  color: var(--khaki);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.purposeChip::before {
+  content: attr(data-emoji);
+  margin-right: 5px;
+}
