@@ -39,6 +39,7 @@ export function Cookbook() {
           });
         }
       }
+      recipeData.sort((a, b) => a.title.localeCompare(b.title));
       setRecipes(recipeData);
       setCategories([...categorySet]);
     };
@@ -72,13 +73,13 @@ export function Cookbook() {
           </div>
         </div>
 
-        <ul className={styles.recipeList}>
+        <div className={styles.recipeGrid}>
           {recipes.map((recipe) => (
-            <li key={recipe.name} className={styles.recipeListItem}>
-              <Link to={`/cookbook/${recipe.name}`}>{recipe.title}</Link>
-            </li>
+            <Link key={recipe.name} to={`/cookbook/${recipe.name}`} className={styles.recipeGridItem}>
+              {recipe.title}
+            </Link>
           ))}
-        </ul>
+        </div>
       </div>
     </div>
   );

@@ -8,3 +8,16 @@
 
   /* TODO: more color palettes */
 }
+
+/* fix markdown checkboxes */
+ul.contains-task-list {
+  padding-left: 12px;
+}
+
+li.task-list-item {
+  margin-left: 0;
+}
+
+li.task-list-item::marker {
+  content: "";
+}

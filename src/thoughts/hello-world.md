@@ -72,4 +72,8 @@ With rehype-raw enabled, we can now use raw HTML in our markdown! Here are some 
   </tbody>
 </table>
 
+## Checkbox Examples
+- [ ] Item 1
+- [ ] Item 2
+
 Stay tuned for more posts coming soon!

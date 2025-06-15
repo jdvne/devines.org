@@ -3,7 +3,7 @@
 }
 
 .recipeContainer {
-  font-family: sans-serif;
+  font-family: "Playfair Display", sans-serif;
   color: var(--caribbean-current);
   background-color: var(--alice-blue);
   padding: 20px;
@@ -14,6 +14,7 @@
 }
 
 .recipeTitle {
+  font-family: "Playfair Display", sans-serif;
   font-size: 2.5em;
   margin-bottom: 10px;
   color: var(--atomic-tangerine);
@@ -90,8 +91,55 @@
   font-size: 1em;
 }
 
+.categoryChip:hover {
+  text-decoration: underline;
+}
+
 
 .categoryChip.selected {
   background-color: var(--atomic-tangerine);
   color: var(--caribbean-current);
+}
+
+.recipeGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 20px;
+}
+
+.recipeGridItem {
+  background-color: var(--floral-white);
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  text-align: center;
+  font-size: 1em;
+  text-decoration: none;
+  color: inherit;
+}
+
+.recipeGridItem:hover {
+  background-color: var(--lemon-chiffon);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  transition: all 0.2s ease-in-out;
+}
+
+.clearStorageButton {
+  background: linear-gradient(90deg, var(--tiffany-blue), var(--atomic-tangerine));
+  color: var(--alice-blue);
+  border: none;
+  border-radius: 24px;
+  padding: 10px 24px;
+  font-size: 1em;
+  font-family: inherit;
+  font-weight: bold;
+  cursor: pointer;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+  margin: 16px 0 24px 0;
+  transition: background 0.2s, box-shadow 0.2s;
+}
+
+.clearStorageButton:hover {
+  background: linear-gradient(90deg, var(--atomic-tangerine), var(--tiffany-blue));
+  box-shadow: 0 4px 16px rgba(0,0,0,0.12);
 }

@@ -1,4 +1,4 @@
-import { useState, useEffect, useMemo } from 'react';
+import { useState, useEffect, useMemo, useCallback } from 'react';
 import { useParams } from 'react-router-dom';
 import { Helmet } from 'react-helmet';
 import Markdown from 'react-markdown';
@@ -58,6 +58,49 @@ export function Recipe() {
             })
             .catch(err => console.error('Error fetching post:', err));
     }, [recipeName]);
+
+    const loadChecklistState = useCallback(() => {
+        const savedState = localStorage.getItem(`checklistState_${recipeName}`);
+        if (savedState) {
+            return JSON.parse(savedState);
+        }
+        return {};
+    }, [recipeName]);
+
+    const saveChecklistState = useCallback((checklistState) => {
+        localStorage.setItem(`checklistState_${recipeName}`, JSON.stringify(checklistState));
+    }, [recipeName]);
+
+    useEffect(() => {
+        // Enable checkboxes in markdown lists
+        const checkboxes = document.querySelectorAll('input[type="checkbox"]');
+        const initialState = loadChecklistState();
+
+        checkboxes.forEach((checkbox, index) => {
+            checkbox.disabled = false;
+            checkbox.checked = initialState[index] || false;
+
+            const listItem = checkbox.closest("li.task-list-item");
+            if (checkbox.checked) {
+                listItem.style.textDecoration = "line-through";
+            } else {
+                listItem.style.textDecoration = "none";
+            }
+
+            checkbox.addEventListener("change", function () {
+                const listItem = this.closest("li.task-list-item");
+                if (this.checked) {
+                    listItem.style.textDecoration = "line-through";
+                } else {
+                    listItem.style.textDecoration = "none";
+                }
+
+                // Save the checklist state to local storage
+                const updatedState = { ...loadChecklistState(), [index]: this.checked };
+                saveChecklistState(updatedState);
+            });
+        });
+    }, [content, loadChecklistState, saveChecklistState, recipeName]);
 
     return (
         <div className={styles.recipePage}>
