@@ -73,7 +73,7 @@
 - name: District Cold Brew Blend
   brand: Zeke's
   roast: Light
-  grind_notch: null
+  grind_notch: 18
   grams: null
   purpose: Cold Brew
   size_oz: 16
