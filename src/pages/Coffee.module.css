@@ -74,7 +74,12 @@ th {
 }
 
 .roastChip {
-  color: var(--khaki);
+  color: var(--rose-ebony);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-width: 80px; /* Adjust as needed */
+  display: inline-block;
 }
 
 .lightRoast {
@@ -83,21 +88,23 @@ th {
 
 .mediumRoast {
   background-color: #8B4513; /* Saddle brown */
+  color: var(--khaki);
 }
 
 .darkRoast {
   background-color: #46240A; /* Dark brown */
+  color: var(--khaki);
 }
 
 .purposeChip {
-  background-color: var(--beaver);
+  background-color: var(--umber);
   color: var(--khaki);
   display: flex;
   align-items: center;
-  justify-content: center;
+  white-space: nowrap;
 }
 
 .purposeChip::before {
   content: attr(data-emoji);
-  margin-right: 5px;
+  margin-right: 3px;
 }

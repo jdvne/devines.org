@@ -45,7 +45,7 @@ export function Coffee() {
         } else if (value === 'Cold Brew') {
           emoji = '🧊';
         }
-        return `${styles.purposeChip}` + (emoji ? ` style={{ '--emoji': '"' + emoji + '"' }}` : '');
+        return emoji;
       default:
         return '';
     }
@@ -55,7 +55,7 @@ export function Coffee() {
     <div className={styles.coffeePage}>
       <Helmet bodyAttributes={{ class: styles.body }} />
       <div className={styles.coffeeContainer}>
-        <h1 className={styles.coffeeTitle}>Coffee Preferences</h1>
+        <h1 className={styles.coffeeTitle}>Coffee</h1>
         <div className={styles.coffeeHorizontalBar}></div>
         {coffeeData && coffeeData.length > 0 ? (
           <table>
@@ -79,7 +79,7 @@ export function Coffee() {
                     <span className={`${styles.chip} ${getChipStyle('roast', coffee.roast)}`}>{coffee.roast}</span>
                   </td>
                   <td>
-                    <span className={`${styles.chip} ${getChipStyle('purpose', coffee.purpose)}`}>{coffee.purpose}</span>
+                    <span className={`${styles.chip} ${styles.purposeChip}`} data-emoji={getChipStyle('purpose', coffee.purpose)}>{coffee.purpose}</span>
                   </td>
                   <td>{coffee.grind_notch}</td>
                   <td>{coffee.grams}</td>
