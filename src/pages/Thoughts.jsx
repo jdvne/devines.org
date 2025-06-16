@@ -8,7 +8,7 @@ export function Thoughts() {
 
     useEffect(() => {
         // Get all thoughts markdown files
-        const blogModules = import.meta.glob('../thoughts/*.md');
+        const blogModules = import.meta.glob('../content/thoughts/*.md');
         
         Promise.all(
             Object.entries(blogModules).map(async ([path, loader]) => {

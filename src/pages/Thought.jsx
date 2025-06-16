@@ -48,7 +48,7 @@ export function Thought() {
     }), []);
 
     useEffect(() => {
-        import(`../thoughts/${slug}.md`)
+        import(`../content/thoughts/${slug}.md`)
             .then(res => fetch(res.default))
             .then(response => response.text())
             .then(text => {

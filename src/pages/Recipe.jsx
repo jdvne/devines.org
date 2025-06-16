@@ -48,7 +48,7 @@ export function Recipe() {
     }), []);
 
     useEffect(() => {
-        import(`../recipes/${recipeName}.md`)
+        import(`../content/recipes/${recipeName}.md`)
             .then(res => fetch(res.default))
             .then(response => response.text())
             .then(text => {

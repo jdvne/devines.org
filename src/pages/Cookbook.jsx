@@ -14,7 +14,7 @@ export function Cookbook() {
   useEffect(() => {
     const fetchRecipes = async () => {
       // Dynamically import all .md files from the src/recipes directory
-      const modules = import.meta.glob('../recipes/*.md');
+      const modules = import.meta.glob('../content/recipes/*.md');
       const recipeData = [];
       const categorySet = new Set();
       categorySet.add("All");
