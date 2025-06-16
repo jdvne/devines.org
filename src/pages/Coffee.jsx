@@ -1,54 +1,29 @@
-import { useState, useEffect } from 'react';
 import { Helmet } from "react-helmet";
 import styles from './Coffee.module.css';
-import yaml from 'js-yaml';
+import coffeeData from '../content/coffee.yml';
+
+const ROAST_STYLES = {
+  Light: `${styles.roastChip} ${styles.lightRoast}`,
+  Medium: `${styles.roastChip} ${styles.mediumRoast}`,
+  'Medium Dark': `${styles.roastChip} ${styles.mediumRoast}`,
+  Dark: `${styles.roastChip} ${styles.darkRoast}`,
+};
+
+const PURPOSE_EMOJIS = {
+  Espresso: '☕️',
+  Drip: '💧',
+  FrenchPress: '🇫🇷',
+  'Cold Brew': '🧊',
+};
 
 export function Coffee() {
-  const [coffeeData, setCoffeeData] = useState([]);
-
-  useEffect(() => {
-    const fetchCoffeeData = async () => {
-      try {
-        const response = await fetch('/coffee.yml');
-        const text = await response.text();
-        const data = yaml.load(text);
-        setCoffeeData(data);
-      } catch (e) {
-        console.error(e);
-      }
-    };
-
-    fetchCoffeeData();
-  }, []);
-
   const getChipStyle = (type, value) => {
-    let emoji = '';
-    switch (type) {
-      case 'roast':
-        if (value === 'Light') {
-          return `${styles.roastChip} ${styles.lightRoast}`;
-        } else if (value === 'Medium') {
-          return `${styles.roastChip} ${styles.mediumRoast}`;
-        } else if (value === 'Dark') {
-          return `${styles.roastChip} ${styles.darkRoast}`;
-        } else if (value === 'Medium Dark') {
-          return `${styles.roastChip} ${styles.mediumRoast}`;
-        }
-        return styles.roastChip;
-      case 'purpose':
-        if (value === 'Espresso') {
-          emoji = '☕️';
-        } else if (value === 'Drip') {
-          emoji = '💧';
-        } else if (value === 'FrenchPress') {
-          emoji = '🇫🇷';
-        } else if (value === 'Cold Brew') {
-          emoji = '🧊';
-        }
-        return emoji;
-      default:
-        return '';
+    if (type === 'roast') {
+      return ROAST_STYLES[value] || styles.roastChip;
+    } else if (type === 'purpose') {
+      return PURPOSE_EMOJIS[value] || '';
     }
+    return '';
   };
 
   return (
@@ -57,7 +32,7 @@ export function Coffee() {
       <div className={styles.coffeeContainer}>
         <h1 className={styles.coffeeTitle}>Coffee</h1>
         <div className={styles.coffeeHorizontalBar}></div>
-        {coffeeData && coffeeData.length > 0 ? (
+        {coffeeData.length > 0 ? (
           <table>
             <thead>
               <tr>
