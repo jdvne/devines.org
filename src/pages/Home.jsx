@@ -1,5 +1,6 @@
 import { Helmet } from "react-helmet";
 import { Link } from "react-router-dom";
+import PropTypes from 'prop-types';
 
 import styles from './Home.module.css';
 
@@ -9,6 +10,31 @@ import styles from './Home.module.css';
 const lt = '<';
 const gt = '>';
 const space = '\u202F'; // non-breaking space
+
+const Tag = ({ children, open }) => {
+  return (
+    <span className={styles.tag}>
+      {lt}{children}{open ? "" : "/"}{gt}
+    </span>
+  );
+};
+
+Tag.propTypes = {
+  children: PropTypes.node,
+  open: PropTypes.bool,
+};
+
+const TagLink = ({ children, to }) => {
+  return (
+    <Link to={to} className={styles.tagLink}>
+      <Tag>{children}</Tag>
+    </Link>
+  );
+}
+TagLink.propTypes = {
+  children: PropTypes.node,
+  to: PropTypes.string.isRequired,
+};
 
 export function Home() {
   return (
@@ -21,7 +47,7 @@ export function Home() {
           {/* () => <>joshua<dev>ine</>; */}
           <a className={styles.name} href="./">
             <span className={styles.operator}>()={gt}{space}</span>
-            <span className={styles.tag}>{lt}{gt}</span>
+            <Tag open/>
             joshua
             <span className={styles.error}>
               <span className={styles.lt}>{lt}</span>
@@ -29,31 +55,16 @@ export function Home() {
               <span className={styles.gt}>{gt}</span>
             </span>
             ine
-            <span className={styles.tag}>{lt}/{gt};</span>
+            <Tag />
+            <span className={styles.tag}>;</span>
           </a>
         </h1>
         <div>
           <nav className={styles.nav}>
-            <Link to="/thoughts" className={styles.navLink}>
-              <span className={styles.tag}>{lt}</span>
-              thoughts
-              <span className={styles.tag}>/{gt}</span>
-            </Link>
-            <Link to="/contact" className={styles.navLink}>
-              <span className={styles.tag}>{lt}</span>
-              contact
-              <span className={styles.tag}>/{gt}</span>
-            </Link>
-            <Link to="/cookbook" className={styles.navLink}>
-              <span className={styles.tag}>{lt}</span>
-              cookbook
-              <span className={styles.tag}>/{gt}</span>
-            </Link>
-            <Link to="/coffee" className={styles.navLink}>
-              <span className={styles.tag}>{lt}</span>
-              coffee
-              <span className={styles.tag}>/{gt}</span>
-            </Link>
+            <TagLink to="/thoughts">thoughts</TagLink>
+            <TagLink to="/contact">contact</TagLink>
+            <TagLink to="/cookbook">cookbook</TagLink>
+            <TagLink to="/coffee">coffee</TagLink>
           </nav>
         </div>
       </div>

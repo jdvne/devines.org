@@ -1,78 +1,48 @@
-import { useState, useEffect, useMemo, useCallback } from 'react';
-import { useParams } from 'react-router-dom';
+import { useState, useEffect, useCallback } from 'react';
+import { useParams, Link } from 'react-router-dom';
 import { Helmet } from 'react-helmet';
-import Markdown from 'react-markdown';
-import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter';
-import { vscDarkPlus } from 'react-syntax-highlighter/dist/esm/styles/prism';
-import remarkGfm from 'remark-gfm';
-import rehypeRaw from 'rehype-raw';
 import matter from 'gray-matter';
-import { Buffer } from 'buffer';
 import styles from './Cookbook.module.css';
-
-
-// Provide Buffer globally for gray-matter
-window.Buffer = Buffer;
+import { MarkdownRenderer } from '../components/MarkdownRenderer'; // Import the new component
 
 export function Recipe() {
+    const { recipeName } = useParams();
     const [content, setContent] = useState('');
     const [metadata, setMetadata] = useState(null);
-    const { recipeName } = useParams();
-
-    const components = useMemo(() => ({
-        img: ({ src, alt }) => {
-            try {
-                const imgSrc = new URL(src, import.meta.url).href;
-                return <img src={imgSrc} alt={alt} />;
-            } catch {
-                return <img src={src} alt={alt} />;
-            }
-        },
-        code({ inline, className, children, ...props }) {
-            const match = /language-(\w+)/.exec(className || '');
-            return !inline && match ? (
-                <SyntaxHighlighter
-                    style={vscDarkPlus}
-                    language={match[1]}
-                    PreTag="div"
-                    {...props}
-                >
-                    {String(children).replace(/\n$/, '')}
-                </SyntaxHighlighter>
-            ) : (
-                <code className={className} {...props}>
-                    {children}
-                </code>
-            );
-        }
-    }), []);
-
-    useEffect(() => {
-        import(`../content/recipes/${recipeName}.md`)
-            .then(res => fetch(res.default))
-            .then(response => response.text())
-            .then(text => {
-                const { data, content } = matter(text);
-                setMetadata(data);
-                setContent(content);
-            })
-            .catch(err => console.error('Error fetching post:', err));
-    }, [recipeName]);
 
     const loadChecklistState = useCallback(() => {
         const savedState = localStorage.getItem(`checklistState_${recipeName}`);
-        if (savedState) {
-            return JSON.parse(savedState);
-        }
-        return {};
+        return savedState ? JSON.parse(savedState) : {};
     }, [recipeName]);
 
     const saveChecklistState = useCallback((checklistState) => {
         localStorage.setItem(`checklistState_${recipeName}`, JSON.stringify(checklistState));
     }, [recipeName]);
 
+    const handleCheckboxChange = useCallback((index, checked) => {
+        const updatedState = { ...loadChecklistState(), [index]: checked };
+        saveChecklistState(updatedState);
+    }, [loadChecklistState, saveChecklistState]);
+
     useEffect(() => {
-        // Enable checkboxes in markdown lists
+        const fetchRecipe = async () => {
+            try {
+                const res = await import(`../content/recipes/${recipeName}.md`);
+                const response = await fetch(res.default);
+                const text = await response.text();
+                const { data, content } = matter(text);
+
+                setMetadata(data);
+                setContent(content);
+            } catch (err) {
+                console.error('Error fetching recipe:', err);
+            }
+        };
+
+        fetchRecipe();
+    }, [recipeName]);
+
+    useEffect(() => {
         const checkboxes = document.querySelectorAll('input[type="checkbox"]');
         const initialState = loadChecklistState();
 
@@ -81,26 +51,27 @@ export function Recipe() {
             checkbox.checked = initialState[index] || false;
 
             const listItem = checkbox.closest("li.task-list-item");
-            if (checkbox.checked) {
-                listItem.style.textDecoration = "line-through";
-            } else {
-                listItem.style.textDecoration = "none";
+            if (listItem) {
+                listItem.style.textDecoration = checkbox.checked ? "line-through" : "none";
             }
 
             checkbox.addEventListener("change", function () {
+                const isChecked = this.checked;
                 const listItem = this.closest("li.task-list-item");
-                if (this.checked) {
-                    listItem.style.textDecoration = "line-through";
-                } else {
-                    listItem.style.textDecoration = "none";
+                if (listItem) {
+                    listItem.style.textDecoration = isChecked ? "line-through" : "none";
                 }
-
-                // Save the checklist state to local storage
-                const updatedState = { ...loadChecklistState(), [index]: this.checked };
-                saveChecklistState(updatedState);
+                handleCheckboxChange(index, isChecked);
             });
         });
-    }, [content, loadChecklistState, saveChecklistState, recipeName]);
+
+        // Cleanup function to remove event listeners
+        return () => {
+            checkboxes.forEach(checkbox => {
+                checkbox.removeEventListener("change", () => { });
+            });
+        };
+    }, [content, loadChecklistState, handleCheckboxChange]);
 
     return (
         <div className={styles.recipePage}>
@@ -113,10 +84,12 @@ export function Recipe() {
                     <meta property="og:type" content="article" />
                     <meta name="twitter:card" content="summary_large_image" />
                 </Helmet>
-                <a href="/cookbook" className={styles.recipeBackLink}>Back to Cookbook</a>
-                <h1 className={styles.recipeTitle}>
-                    {metadata?.title || 'Recipe'}
-                </h1>
+                <div className={styles.recipeTitleContainer}>
+                    <h1 className={styles.recipeTitle}>
+                        {metadata?.title || 'Recipe'}
+                    </h1>
+                    <Link to="/cookbook" className={styles.recipeBackLink}>Back to Cookbook</Link>
+                </div>
                 <div className={styles.recipeHorizontalBar}></div>
                 {metadata && (
                     <div className={styles.recipeContent}>
@@ -145,13 +118,7 @@ export function Recipe() {
                 )}
                 <ul className={styles.recipeList}>
                     <li key={recipeName} className={styles.recipeListItem}>
-                        <Markdown 
-                            remarkPlugins={[remarkGfm]}
-                            rehypePlugins={[rehypeRaw]}
-                            components={components}
-                        >
-                            {content}
-                        </Markdown>
+                        <MarkdownRenderer content={content} /> {/* Use the new component */}
                     </li>
                 </ul>
             </div>
