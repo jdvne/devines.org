@@ -5,13 +5,8 @@ import styles from './Breadcrumb.module.css';
 export function Breadcrumb({ items }) {
   return (
     <h1 className={styles.breadcrumb}>
-      <span className={styles.returnWrapper}>
-        <span className={styles.keyword}>return </span>
-        <span className={styles.tag}>&lt;</span>
-      </span>
       <span className={styles.homeWrapper}>
-        <Link to="/" className={styles.link}>home</Link>
-        <span className={styles.tag}>/&gt;</span>
+        <Link to="/" className={styles.link}>devines<span className={styles.operator}>.</span>org</Link>
       </span>
       {items?.map((item, index) => (
         <span key={item.path}>
