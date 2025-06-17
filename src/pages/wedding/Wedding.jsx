@@ -3,28 +3,28 @@ import { useState } from "react";
 import { Link } from "react-router-dom";
 import { Helmet } from "react-helmet";
 
-import ScrollToAnchor from "../components/ScrollToAnchor";
+import { ScrollToAnchor } from "../../components/ScrollToAnchor";
 
 import styles from "./Wedding.module.css";
 
-import expand_more from "../assets/icons/expand_more.svg";
+import expand_more from "../../assets/icons/expand_more.svg";
 
-import nyc from "../assets/images/nyc.jpg";
-import proposal from "../assets/images/proposal.jpg";
-import savannah from "../assets/images/savannah.jpg";
+import nyc from "../../assets/images/nyc.jpg";
+import proposal from "../../assets/images/proposal.jpg";
+import savannah from "../../assets/images/savannah.jpg";
 
-import steph from "../assets/images/steph.jpg";
-import josh from "../assets/images/josh.jpg";
-import anouk from "../assets/images/anouk.jpg";
-import gunner from "../assets/images/gunner.jpg";
-import ian from "../assets/images/ian.jpg";
-import jared from "../assets/images/jared.jpg";
-import joseph from "../assets/images/joseph.jpg";
-import julia from "../assets/images/julia.jpg";
-import kaity from "../assets/images/kaity.jpg";
-import lindsey from "../assets/images/lindsey.jpg";
-import lucy from "../assets/images/lucy.jpg";
-import noah from "../assets/images/noah.jpg";
+import steph from "../../assets/images/steph.jpg";
+import josh from "../../assets/images/josh.jpg";
+import anouk from "../../assets/images/anouk.jpg";
+import gunner from "../../assets/images/gunner.jpg";
+import ian from "../../assets/images/ian.jpg";
+import jared from "../../assets/images/jared.jpg";
+import joseph from "../../assets/images/joseph.jpg";
+import julia from "../../assets/images/julia.jpg";
+import kaity from "../../assets/images/kaity.jpg";
+import lindsey from "../../assets/images/lindsey.jpg";
+import lucy from "../../assets/images/lucy.jpg";
+import noah from "../../assets/images/noah.jpg";
 
 export function Wedding() {
   return (

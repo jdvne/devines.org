@@ -3,7 +3,7 @@ import { useParams, Link } from 'react-router-dom';
 import { Helmet } from 'react-helmet';
 import matter from 'gray-matter';
 import styles from './Cookbook.module.css';
-import { MarkdownRenderer } from '../components/MarkdownRenderer'; // Import the new component
+import { MarkdownRenderer } from '../../components/MarkdownRenderer'; // Import the new component
 
 export function Recipe() {
     const { recipeName } = useParams();
@@ -27,7 +27,7 @@ export function Recipe() {
     useEffect(() => {
         const fetchRecipe = async () => {
             try {
-                const res = await import(`../content/recipes/${recipeName}.md`);
+                const res = await import(`./posts/recipes/${recipeName}.md`);
                 const response = await fetch(res.default);
                 const text = await response.text();
                 const { data, content } = matter(text);
@@ -125,5 +125,3 @@ export function Recipe() {
         </div>
     );
 }
-
-export default Recipe;

@@ -1,14 +1,14 @@
 import { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import styles from './Thoughts.module.css';
-import { Breadcrumb } from '../components/Breadcrumb';
+import { Breadcrumb } from '../../components/Breadcrumb';
 
 export function Thoughts() {
     const [posts, setPosts] = useState([]);
 
     useEffect(() => {
         // Get all thoughts markdown files
-        const blogModules = import.meta.glob('../content/thoughts/*.md');
+        const blogModules = import.meta.glob('./posts/*.md');
         
         Promise.all(
             Object.entries(blogModules).map(async ([path, loader]) => {
@@ -71,5 +71,3 @@ export function Thoughts() {
         </div>
     );
 }
-
-export default Thoughts;

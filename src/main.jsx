@@ -4,13 +4,13 @@ import ReactDOM from 'react-dom/client';
 import { RouterProvider, createBrowserRouter } from 'react-router-dom';
 
 import { Home } from './pages/Home.jsx';
-import { Wedding } from './pages/Wedding.jsx';
-import { Thoughts } from './pages/Thoughts.jsx';
-import { Thought } from './pages/Thought.jsx';
-import Contact from './pages/Contact.jsx';
-import { Recipe } from './pages/Recipe.jsx';
-import { Cookbook } from './pages/Cookbook.jsx';
-import Coffee from './pages/Coffee.jsx';
+import { Wedding } from './pages/wedding/Wedding.jsx';
+import { Thoughts } from './pages/thoughts/Thoughts.jsx';
+import { Thought } from './pages/thoughts/Thought.jsx';
+import { Contact } from './pages/contact/Contact.jsx';
+import { Recipe } from './pages/cookbook/Recipe.jsx';
+import { Cookbook } from './pages/cookbook/Cookbook.jsx';
+import { Coffee } from './pages/coffee/Coffee.jsx';
 
 const router = createBrowserRouter([
   {

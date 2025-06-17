@@ -1,6 +1,6 @@
 import { Helmet } from "react-helmet";
 import styles from './Coffee.module.css';
-import coffeeData from '../content/coffee.yml';
+import coffeeData from './coffee.yml';
 
 const ROAST_STYLES = {
   Light: `${styles.roastChip} ${styles.lightRoast}`,
@@ -70,5 +70,3 @@ export function Coffee() {
     </div>
   );
 }
-
-export default Coffee;

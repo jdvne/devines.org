@@ -3,8 +3,8 @@ import { useParams } from 'react-router-dom';
 import { Helmet } from 'react-helmet';
 import matter from 'gray-matter';
 import styles from './Thought.module.css';
-import { Breadcrumb } from '../components/Breadcrumb';
-import { MarkdownRenderer } from '../components/MarkdownRenderer'; // Import the new component
+import { Breadcrumb } from '../../components/Breadcrumb';
+import { MarkdownRenderer } from '../../components/MarkdownRenderer';
 
 export function Thought() {
     const { slug } = useParams();
@@ -14,7 +14,7 @@ export function Thought() {
     useEffect(() => {
         const fetchThought = async () => {
             try {
-                const res = await import(`../content/thoughts/${slug}.md`);
+                const res = await import(`./posts/${slug}.md`);
                 const response = await fetch(res.default);
                 const text = await response.text();
                 const { data, content } = matter(text);
@@ -85,5 +85,3 @@ export function Thought() {
         </main>
     );
 }
-
-export default Thought;
