@@ -1,4 +1,5 @@
 import { Helmet } from "react-helmet";
+
 import styles from './Coffee.module.css';
 import coffeeData from './coffee.yml';
 
