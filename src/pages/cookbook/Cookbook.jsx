@@ -13,7 +13,7 @@ export function Cookbook() {
 
   useEffect(() => {
     const fetchRecipes = async () => {
-      const modules = import.meta.glob('./posts/recipes/*.md');
+      const modules = import.meta.glob('./posts/*.md');
       const recipeData = [];
       const categorySet = new Set(["All"]);
 

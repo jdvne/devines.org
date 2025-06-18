@@ -28,7 +28,7 @@ export function Recipe() {
   useEffect(() => {
     const fetchRecipe = async () => {
       try {
-        const res = await import(`./posts/recipes/${recipeName}.md`);
+        const res = await import(`./posts/${recipeName}.md`);
         const response = await fetch(res.default);
         const text = await response.text();
         const { data, content } = matter(text);
