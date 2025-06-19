@@ -1,5 +1,5 @@
 import matter from 'gray-matter';
-import { useCallback, useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 import { Helmet } from 'react-helmet';
 import { Link, useParams } from 'react-router-dom';
 
@@ -10,20 +10,6 @@ export function Recipe() {
   const { recipeName } = useParams();
   const [content, setContent] = useState('');
   const [metadata, setMetadata] = useState(null);
-
-  const loadChecklistState = useCallback(() => {
-    const savedState = localStorage.getItem(`checklistState_${recipeName}`);
-    return savedState ? JSON.parse(savedState) : {};
-  }, [recipeName]);
-
-  const saveChecklistState = useCallback((checklistState) => {
-    localStorage.setItem(`checklistState_${recipeName}`, JSON.stringify(checklistState));
-  }, [recipeName]);
-
-  const handleCheckboxChange = useCallback((index, checked) => {
-    const updatedState = { ...loadChecklistState(), [index]: checked };
-    saveChecklistState(updatedState);
-  }, [loadChecklistState, saveChecklistState]);
 
   useEffect(() => {
     const fetchRecipe = async () => {
@@ -42,37 +28,6 @@ export function Recipe() {
 
     fetchRecipe();
   }, [recipeName]);
-
-  useEffect(() => {
-    const checkboxes = document.querySelectorAll('input[type="checkbox"]');
-    const initialState = loadChecklistState();
-
-    checkboxes.forEach((checkbox, index) => {
-      checkbox.disabled = false;
-      checkbox.checked = initialState[index] || false;
-
-      const listItem = checkbox.closest("li.task-list-item");
-      if (listItem) {
-        listItem.style.textDecoration = checkbox.checked ? "line-through" : "none";
-      }
-
-      checkbox.addEventListener("change", function () {
-        const isChecked = this.checked;
-        const listItem = this.closest("li.task-list-item");
-        if (listItem) {
-          listItem.style.textDecoration = isChecked ? "line-through" : "none";
-        }
-        handleCheckboxChange(index, isChecked);
-      });
-    });
-
-    // Cleanup function to remove event listeners
-    return () => {
-      checkboxes.forEach(checkbox => {
-        checkbox.removeEventListener("change", () => { });
-      });
-    };
-  }, [content, loadChecklistState, handleCheckboxChange]);
 
   return (
     <div className={styles.recipePage}>
@@ -119,7 +74,11 @@ export function Recipe() {
         )}
         <ul className={styles.recipeList}>
           <li key={recipeName} className={styles.recipeListItem}>
-            <MarkdownRenderer content={content} /> {/* Use the new component */}
+            <MarkdownRenderer
+              content={content}
+              recipeName={recipeName}
+              useLocalStorage={true}
+            />
           </li>
         </ul>
       </div>
