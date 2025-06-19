@@ -51,7 +51,7 @@ export function Cookbook() {
     <div className={styles.recipePage}>
       <Helmet bodyAttributes={{ class: styles.body }} />
       <div className={styles.recipeContainer}>
-        <h1 className={styles.recipeTitle}>Table of Contents</h1>
+        <h1 className={styles.recipeTitle}>The Devine Cookbook</h1>
         <div className={styles.recipeHorizontalBar}></div>
 
         <div className={styles.recipeContent}>
