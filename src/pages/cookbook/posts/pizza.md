@@ -9,11 +9,11 @@ category: Main Course
 
 ## Ingredients
 
-- [ ] 2 cups flour
+- [ ] 1 1/2 cups flour
 - [ ] 1 TBSP olive oil
 - [ ] 1 TBSP yeast
 - [ ] 1 TBSP sugar
-- [ ] 1 cup warm water
+- [ ] 3/4 cup warm water
 - [ ] Desired toppings
 
 ## Instructions
