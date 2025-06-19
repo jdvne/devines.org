@@ -4,7 +4,6 @@ import ReactDOM from 'react-dom/client';
 import { createBrowserRouter, RouterProvider } from 'react-router-dom';
 
 import { Coffee } from './pages/coffee/Coffee.jsx';
-import { Contact } from './pages/contact/Contact.jsx';
 import { Cookbook } from './pages/cookbook/Cookbook.jsx';
 import { Recipe } from './pages/cookbook/Recipe.jsx';
 import { Home } from './pages/Home.jsx';
@@ -20,10 +19,6 @@ const router = createBrowserRouter([
   {
     path: '/coffee',
     element: <Coffee />
-  },
-  {
-    path: '/contact',
-    element: <Contact />
   },
   {
     path: '/wedding',

@@ -51,12 +51,14 @@ export function Cookbook() {
     <div className={styles.recipePage}>
       <Helmet bodyAttributes={{ class: styles.body }} />
       <div className={styles.recipeContainer}>
-        <h1 className={styles.recipeTitle}>The Devine Cookbook</h1>
+        <div className={styles.recipeTitleContainer}>
+          <h1 className={styles.recipeTitle}>The Devine Table</h1>
+          <Link to="/" className={styles.recipeBackLink}>Back to Home</Link>
+        </div>
         <div className={styles.recipeHorizontalBar}></div>
 
         <div className={styles.recipeContent}>
           <div className={styles.recipeCategories}>
-            <h2 className={styles.recipeCategoriesTitle}>Categories:</h2>
             <div className={styles.categoryChips}>
               {categories.map((category) => (
                 <Link

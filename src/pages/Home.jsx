@@ -62,7 +62,6 @@ export function Home() {
         <div>
           <nav className={styles.nav}>
             <TagLink to="/thoughts">thoughts</TagLink>
-            <TagLink to="/contact">contact</TagLink>
             <TagLink to="/cookbook">cookbook</TagLink>
             <TagLink to="/coffee">coffee</TagLink>
           </nav>
