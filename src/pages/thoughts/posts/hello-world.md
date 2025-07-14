@@ -1,79 +1,23 @@
 ---
 title: Hello World
-date: 2025-06-06
-description: My first blog post
-image: /assets/images/nyc.jpg
+date: 2025-06-25
+description: And so it begins...
 ---
 
-# Hello World!
+## _Who knew vibe coding wasn't just a meme?_
 
-Welcome to my blog! This is my first post, and I'm excited to share my thoughts with you.
+In what I can only describe as techno-sorcery, my first experiment in agentic AI has culminated in the completion of some deeply satisfying personal programming. I now have a nook of my website to share my thoughts--_and get this_--it's rendered from the ever-portable plaintext format, markdown!
 
-## What to expect
+## _How did I do it?_
 
-In this blog, I'll be sharing:
+Today's free, infinite agentic AI combo move: VSCode + [Cline](https://cline.bot/) on [Google Gemini](https://ai.google.dev/gemini-api/docs/api-key)'s `gemini-2.5-pro` model (thanks in part to [u/marcosvrs' comment on Reddit](https://www.reddit.com/r/CLine/comments/1jx7wgq/comment/mmp0gud/?utm_source=share&utm_medium=web3x&utm_name=web3xcss&utm_term=1&utm_content=share_button)).
 
-- My thoughts on technology
-- Personal projects I'm working on
-- Interesting things I've learned
+Instead of paying for Cursor, I was able to kick back and let Claude + Gemini churn away and perform 80% as well. This was a marked improvement above GitHub Copilot, which I rely upon for my day job.
 
-## Code Example
+## So here we are!
 
-Here's a simple React component:
+Good morning, starshine. The Earth says, "Hello!"
 
-```jsx
-function HelloWorld() {
-  return (
-    <div>
-      <h1>Hello, World!</h1>
-      <p>Welcome to my blog!</p>
-    </div>
-  );
-}
-```
+Special thanks to the contributors of [react-markdown](https://github.com/remarkjs/react-markdown) for doing the heavy lifting of rendering my markdown notes into stylish HTML.
 
-## HTML Examples
-
-With rehype-raw enabled, we can now use raw HTML in our markdown! Here are some examples:
-
-<div style="background-color: #1e1e1e; padding: 20px; border-radius: 4px; border: 1px solid #333; color: white;">
-  This is a styled div with custom CSS! It demonstrates how we can use raw HTML and inline styles.
-  <span style="color: #6a9955; display: block; margin-top: 10px;">← Notice the matching theme colors</span>
-</div>
-
-<details style="margin: 20px 0; border: 1px solid #333; border-radius: 4px; background: #1e1e1e; padding: 10px;">
-  <summary style="color: #6a9955; cursor: pointer; user-select: none;">Click to expand!</summary>
-  <div style="padding: 15px 0 0; color: white;">
-    <p>This is a native HTML details/summary component that provides an expandable section.</p>
-    <ul>
-      <li>It's great for FAQs</li>
-      <li>Or for hiding lengthy content</li>
-      <li>And it's all done with pure HTML!</li>
-    </ul>
-  </div>
-</details>
-
-<table style="width: 100%; border-collapse: collapse; margin: 20px 0; color: white;">
-  <thead>
-    <tr style="background-color: #1e1e1e;">
-      <th style="padding: 12px; text-align: left; border: 1px solid #333; color: #6a9955;">Feature</th>
-      <th style="padding: 12px; text-align: left; border: 1px solid #333; color: #6a9955;">Description</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr style="background: #252525;">
-      <td style="padding: 12px; border: 1px solid #333;">Styled Tables</td>
-      <td style="padding: 12px; border: 1px solid #333;">Create beautiful tables with custom styling</td>
-    </tr>
-    <tr style="background: #1e1e1e;">
-      <td style="padding: 12px; border: 1px solid #333;">Custom Components</td>
-      <td style="padding: 12px; border: 1px solid #333;">Use any HTML elements you want</td>
-    </tr>
-  </tbody>
-</table>
-
-## Checkbox Examples
-- [ ] Item 1
-- [ ] Item 2
-
-Stay tuned for more posts coming soon!
+❦
