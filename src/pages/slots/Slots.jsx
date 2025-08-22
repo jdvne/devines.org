@@ -52,16 +52,18 @@ export function Slots() {
   };
 
   const shareResult = () => {
-    const shareText = `🎰 I hit the jackpot in ${pulls} pulls!\n ${slots.map(slot => slot.emoji).join(' ')}\n\nHit the slots at devines.org/slots`;
+    const shareTitle = `🎰 I hit the jackpot in ${pulls} pulls!`;
+    const shareTextResults = `${slots.map(slot => slot.emoji).join(' ')}`
+    const shareTextAction = `hit the slots at devines.org/slots`
     
     if (navigator.share) {
       navigator.share({
-        title: 'Slots Game Result',
-        text: shareText,
+        title: shareTitle,
+        text: shareTextResults,
         url: 'https://devines.org/slots'
       });
     } else {
-      navigator.clipboard.writeText(shareText);
+      navigator.clipboard.writeText(`${shareTitle}\n${shareTextResults}\n\n${shareTextAction}`);
       alert('Result copied to clipboard!');
     }
   };
@@ -69,7 +71,7 @@ export function Slots() {
   return (
     <div className={styles.slotsPage}>
       <Helmet bodyAttributes={{ class: styles.body }}>
-        <title>hit the slots - Joshua Devine</title>
+        <title>hit the slots - devines.org</title>
       </Helmet>
       
       <div className={styles.slotsContainer}>
@@ -77,8 +79,8 @@ export function Slots() {
         <div className={styles.slotsHorizontalBar}></div>
         
         <div className={styles.gameInfo}>
-          <p>Pull the lever until you get 5 matching emojis in a row!</p>
-          <p>Click on a slot to lock it in place {pulls === 0 && "(after first pull)"}.</p>
+          <p>pull the lever until you hit it big.</p>
+          <p>click on a slot to lock it in place.</p>
         </div>
 
         <div className={styles.pullsCounter}>{pulls}</div>
@@ -102,19 +104,10 @@ export function Slots() {
               className={`${styles.lever} ${isSpinning ? styles.spinning : ''}`}
               onClick={spinSlots}
               disabled={isSpinning || gameWon}
-              title="Pull Lever"
-              aria-label="Pull lever to spin slots"
+              title="pull the lever..."
+              aria-label="pull lever to spin slots"
             />
           </div>
-        </div>
-
-        <div className={styles.controls}>
-          
-          {gameWon && (
-            <button className={styles.resetButton} onClick={resetGame}>
-              🎉 Play Again 🎉
-            </button>
-          )}
         </div>
 
         {gameWon && (
@@ -129,13 +122,19 @@ export function Slots() {
           </div>
         )}
 
-        {showShare && (
-          <div className={styles.shareSection}>
+        <div className={styles.controls}>
+          {gameWon && (
+            <button className={styles.resetButton} onClick={resetGame}>
+              🎉 Play Again 🎉
+            </button>
+          )}
+          {showShare && (
             <button className={styles.shareButton} onClick={shareResult}>
               📤 Share Result
             </button>
-          </div>
-        )}
+          )}
+        </div>
+
       </div>
     </div>
   );
