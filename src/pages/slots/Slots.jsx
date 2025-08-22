@@ -6,7 +6,7 @@ import styles from './Slots.module.css';
 const EMOJIS = ['🍎', '🍊', '🍋', '🍇', '🍓', '🍑', '🍒', '🥭', '🍍', '🥥', '🥝', '🍉', '🍈', '🍌', '🍐', '🍏'];
 
 export function Slots() {
-  const [slots, setSlots] = useState(Array(5).fill(null).map(() => ({ emoji: EMOJIS[0], locked: false })));
+  const [slots, setSlots] = useState(Array(5).fill(null).map(() => ({ emoji: '❓', locked: false })));
   const [isSpinning, setIsSpinning] = useState(false);
   const [gameWon, setGameWon] = useState(false);
   const [pulls, setPulls] = useState(0);
@@ -36,7 +36,7 @@ export function Slots() {
   };
 
   const toggleLock = (index) => {
-    if (isSpinning || gameWon) return;
+    if (isSpinning || gameWon || pulls === 0) return;
     
     setSlots(prev => prev.map((slot, i) => 
       i === index ? { ...slot, locked: !slot.locked } : slot
@@ -44,7 +44,7 @@ export function Slots() {
   };
 
   const resetGame = () => {
-    setSlots(Array(5).fill(null).map(() => ({ emoji: EMOJIS[0], locked: false })));
+    setSlots(Array(5).fill(null).map(() => ({ emoji: '❓', locked: false })));
     setIsSpinning(false);
     setGameWon(false);
     setPulls(0);
@@ -78,31 +78,37 @@ export function Slots() {
         
         <div className={styles.gameInfo}>
           <p>Pull the lever until you get 5 matching emojis in a row!</p>
-          <p>Click on a slot to lock it in place.</p>
-          <p className={styles.pulls}>Pulls: {pulls}</p>
+          <p>Click on a slot to lock it in place {pulls === 0 && "(after first pull)"}.</p>
         </div>
 
-        <div className={styles.slotsDisplay}>
-          {slots.map((slot, index) => (
-            <div 
-              key={index} 
-              className={`${styles.slot} ${slot.locked ? styles.locked : ''} ${isSpinning && !slot.locked ? styles.spinning : ''}`}
-              onClick={() => toggleLock(index)}
-            >
-              <div className={styles.emoji}>{slot.emoji}</div>
-              {slot.locked && <div className={styles.lockIcon}>🔒</div>}
-            </div>
-          ))}
+        <div className={styles.pullsCounter}>{pulls}</div>
+        
+        <div className={styles.slotMachine}>
+          <div className={styles.slotsDisplay}>
+            {slots.map((slot, index) => (
+              <div 
+                key={index} 
+                className={`${styles.slot} ${slot.locked ? styles.locked : ''} ${isSpinning && !slot.locked ? styles.spinning : ''} ${pulls === 0 ? styles.disabled : ''}`}
+                onClick={() => toggleLock(index)}
+              >
+                <div className={styles.emoji}>{slot.emoji}</div>
+                {slot.locked && <div className={styles.lockIcon}>🔒</div>}
+              </div>
+            ))}
+          </div>
+          
+          <div className={styles.leverContainer}>
+            <button 
+              className={`${styles.lever} ${isSpinning ? styles.spinning : ''}`}
+              onClick={spinSlots}
+              disabled={isSpinning || gameWon}
+              title="Pull Lever"
+              aria-label="Pull lever to spin slots"
+            />
+          </div>
         </div>
 
         <div className={styles.controls}>
-          <button 
-            className={`${styles.lever} ${isSpinning ? styles.spinning : ''}`}
-            onClick={spinSlots}
-            disabled={isSpinning || gameWon}
-          >
-            🎰 PULL LEVER 🎰
-          </button>
           
           {gameWon && (
             <button className={styles.resetButton} onClick={resetGame}>

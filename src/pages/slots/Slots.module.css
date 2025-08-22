@@ -1,5 +1,5 @@
 .body {
-  background: linear-gradient(135deg, #1a1a2e 0%, #16213e 50%, #0f3460 100%);
+  background: linear-gradient(135deg, #0f0f23 0%, #1a1a2e 25%, #16213e 50%, #0f3460 75%, #1a1a2e 100%);
 }
 
 .slotsPage {
@@ -8,7 +8,10 @@
   left: 0;
   width: 100vw;
   height: 100vh;
-  background: linear-gradient(135deg, #1a1a2e 0%, #16213e 50%, #0f3460 100%);
+  background: 
+    radial-gradient(circle at 20% 80%, rgba(255, 215, 0, 0.1) 0%, transparent 50%),
+    radial-gradient(circle at 80% 20%, rgba(255, 107, 107, 0.1) 0%, transparent 50%),
+    linear-gradient(135deg, #0f0f23 0%, #1a1a2e 25%, #16213e 50%, #0f3460 75%, #1a1a2e 100%);
   font-family: 'Courier New', Courier, monospace;
   color: white;
   overflow-y: auto;
@@ -24,8 +27,14 @@
 .slotsTitle {
   font-size: 2.5rem;
   margin: 0 0 1rem;
-  text-shadow: 0 0 20px rgba(255, 215, 0, 0.5);
+  text-shadow: 
+    0 0 20px rgba(255, 215, 0, 0.5),
+    0 0 40px rgba(255, 215, 0, 0.3);
   animation: glow 2s ease-in-out infinite alternate;
+  background: linear-gradient(45deg, #ffd700, #ffed4e, #ffd700);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
 }
 
 .slotsHorizontalBar {
@@ -38,10 +47,14 @@
 
 .gameInfo {
   margin-bottom: 2rem;
-  background: rgba(255, 255, 255, 0.1);
-  padding: 1rem;
-  border-radius: 10px;
-  border: 1px solid rgba(255, 215, 0, 0.3);
+  background: linear-gradient(145deg, rgba(255, 255, 255, 0.1), rgba(255, 255, 255, 0.05));
+  padding: 1.5rem;
+  border-radius: 15px;
+  border: 2px solid rgba(255, 215, 0, 0.4);
+  box-shadow: 
+    0 4px 15px rgba(0, 0, 0, 0.3),
+    inset 0 1px 2px rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(10px);
 }
 
 .gameInfo p {
@@ -49,72 +62,220 @@
   font-size: 1rem;
 }
 
-.pulls {
-  font-size: 1.2rem !important;
+.pullsCounter {
+  font-size: 1.2rem;
   font-weight: bold;
   color: #ffd700;
   text-shadow: 0 0 10px rgba(255, 215, 0, 0.5);
+  background: linear-gradient(145deg, #2a2a2a, #1a1a1a);
+  padding: 0.8rem 1.5rem;
+  border-radius: 15px;
+  border: 2px solid #ffd700;
+  box-shadow: 
+    0 4px 15px rgba(255, 215, 0, 0.3),
+    inset 0 2px 4px rgba(255, 255, 255, 0.1);
+  display: inline-block;
+  position: relative;
+  min-width: 120px;
+  margin: 0 auto 1rem;
+  text-align: center;
+}
+
+.pullsCounter::before {
+  content: 'PULLS';
+  position: absolute;
+  top: -8px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: #ffd700;
+  color: #1a1a1a;
+  font-size: 0.7rem;
+  font-weight: bold;
+  padding: 2px 8px;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+}
+
+.slotMachine {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 2rem;
+  margin: 2rem 0;
+  position: relative;
 }
 
 .slotsDisplay {
   display: flex;
   justify-content: center;
-  gap: 1rem;
-  margin: 2rem 0;
-  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.5rem;
+  background: linear-gradient(145deg, #2a2a2a, #1a1a1a);
+  padding: 2rem;
+  border-radius: 20px;
+  border: 4px solid #8b4513;
+  box-shadow: 
+    inset 0 0 20px rgba(0, 0, 0, 0.5),
+    0 10px 30px rgba(0, 0, 0, 0.5);
+  position: relative;
+}
+
+.slotsDisplay::before {
+  content: '';
+  position: absolute;
+  top: -15px;
+  left: -15px;
+  right: -15px;
+  bottom: -15px;
+  background: linear-gradient(145deg, #8b4513, #a0522d, #8b4513);
+  border-radius: 30px;
+  z-index: -1;
+  box-shadow: 
+    0 20px 50px rgba(0, 0, 0, 0.7),
+    inset 0 2px 4px rgba(255, 255, 255, 0.1),
+    0 0 30px rgba(255, 215, 0, 0.2);
+}
+
+.slotsDisplay::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(
+    45deg,
+    transparent 0%,
+    rgba(255, 255, 255, 0.05) 25%,
+    transparent 50%,
+    rgba(255, 255, 255, 0.05) 75%,
+    transparent 100%
+  );
+  border-radius: 20px;
+  pointer-events: none;
 }
 
 .slot {
-  width: 80px;
-  height: 80px;
-  border: 3px solid #ffd700;
-  border-radius: 10px;
+  width: 70px;
+  height: 70px;
+  border: 3px solid #8b4513;
+  border-radius: 8px;
   display: flex;
   align-items: center;
   justify-content: center;
-  background: rgba(0, 0, 0, 0.5);
+  background: linear-gradient(145deg, #1a1a1a, #2a2a2a);
   cursor: pointer;
   position: relative;
   transition: all 0.3s ease;
-  box-shadow: 0 0 20px rgba(255, 215, 0, 0.3);
+  box-shadow: 
+    inset 0 0 10px rgba(0, 0, 0, 0.8),
+    0 2px 8px rgba(0, 0, 0, 0.5);
+  overflow: hidden;
 }
 
 .slot:hover {
-  transform: scale(1.05);
-  box-shadow: 0 0 30px rgba(255, 215, 0, 0.6);
+  transform: scale(1.02);
+  box-shadow: 
+    inset 0 0 10px rgba(0, 0, 0, 0.8),
+    0 4px 12px rgba(0, 0, 0, 0.7);
+}
+
+.slot.disabled {
+  cursor: not-allowed;
+  opacity: 0.7;
+}
+
+.slot.disabled:hover {
+  transform: none;
+  box-shadow: 
+    inset 0 0 10px rgba(0, 0, 0, 0.8),
+    0 2px 8px rgba(0, 0, 0, 0.5);
 }
 
 .slot.locked {
   border-color: #ff6b6b;
-  box-shadow: 0 0 20px rgba(255, 107, 107, 0.5);
-  background: rgba(255, 107, 107, 0.1);
+  box-shadow: 
+    inset 0 0 10px rgba(255, 107, 107, 0.3),
+    0 2px 8px rgba(255, 107, 107, 0.5),
+    0 0 20px rgba(255, 107, 107, 0.4);
+  background: linear-gradient(145deg, rgba(255, 107, 107, 0.2), rgba(255, 107, 107, 0.1));
+  position: relative;
 }
 
 .slot.locked:hover {
-  box-shadow: 0 0 30px rgba(255, 107, 107, 0.7);
+  box-shadow: 
+    inset 0 0 10px rgba(255, 107, 107, 0.4),
+    0 4px 12px rgba(255, 107, 107, 0.6),
+    0 0 30px rgba(255, 107, 107, 0.6);
+}
+
+.slot.locked::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(45deg, transparent 30%, rgba(255, 107, 107, 0.1) 50%, transparent 70%);
+  border-radius: 8px;
+  animation: lockShine 2s ease-in-out infinite;
 }
 
 .emoji {
-  font-size: 2rem;
+  font-size: 1.8rem;
   transition: all 0.3s ease;
+  position: relative;
+  z-index: 2;
 }
 
 .slot.spinning .emoji {
-  animation: spin 0.5s linear infinite;
+  animation: slotSpin 0.3s linear infinite;
+}
+
+.slot.spinning::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(
+    to bottom,
+    transparent 0%,
+    rgba(255, 255, 255, 0.1) 20%,
+    rgba(255, 255, 255, 0.2) 50%,
+    rgba(255, 255, 255, 0.1) 80%,
+    transparent 100%
+  );
+  animation: slotShine 0.3s linear infinite;
+  z-index: 1;
 }
 
 .lockIcon {
   position: absolute;
-  top: -5px;
-  right: -5px;
-  font-size: 0.8rem;
-  background: rgba(0, 0, 0, 0.8);
+  top: -8px;
+  right: -8px;
+  font-size: 1rem;
+  background: linear-gradient(145deg, #ff6b6b, #ff5252);
+  border: 2px solid #fff;
   border-radius: 50%;
-  width: 20px;
-  height: 20px;
+  width: 25px;
+  height: 25px;
   display: flex;
   align-items: center;
   justify-content: center;
+  box-shadow: 
+    0 2px 8px rgba(0, 0, 0, 0.5),
+    0 0 10px rgba(255, 107, 107, 0.6);
+  animation: lockPulse 1.5s ease-in-out infinite;
+  z-index: 10;
+}
+
+.leverContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  position: relative;
 }
 
 .controls {
@@ -123,25 +284,91 @@
   flex-direction: column;
   align-items: center;
   gap: 1rem;
+  position: relative;
 }
 
 .lever {
-  background: linear-gradient(45deg, #ffd700, #ffed4e);
-  border: none;
-  padding: 1rem 2rem;
-  font-size: 1.2rem;
-  font-weight: bold;
-  color: #1a1a2e;
+  position: relative;
+  width: 20px;
+  height: 140px;
+  background: linear-gradient(90deg, #a0a0a0, #e0e0e0, #f0f0f0, #e0e0e0, #a0a0a0);
+  border: 2px solid #808080;
   border-radius: 10px;
-  cursor: pointer;
+  cursor: grab;
   transition: all 0.3s ease;
-  box-shadow: 0 4px 15px rgba(255, 215, 0, 0.4);
+  box-shadow: 
+    0 6px 20px rgba(0, 0, 0, 0.6),
+    inset 0 2px 6px rgba(255, 255, 255, 0.4),
+    inset 0 -2px 6px rgba(0, 0, 0, 0.3),
+    0 0 20px rgba(255, 215, 0, 0.2);
   font-family: 'Courier New', Courier, monospace;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  transform-style: preserve-3d;
+  perspective: 1000px;
 }
 
+.lever:active {
+  cursor: grabbing;
+}
+
+
+
+.lever::before {
+  content: '';
+  position: absolute;
+  top: -15px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 28px;
+  height: 28px;
+  background: radial-gradient(circle at 30% 30%, #ff6666, #ff0000, #cc0000);
+  border-radius: 50%;
+  border: 3px solid #8b0000;
+  box-shadow: 
+    0 4px 12px rgba(0, 0, 0, 0.6),
+    inset 3px 3px 6px rgba(255, 255, 255, 0.4),
+    inset -3px -3px 6px rgba(0, 0, 0, 0.4),
+    0 0 15px rgba(255, 0, 0, 0.4);
+  animation: ballGlow 2s ease-in-out infinite alternate;
+}
+
+.lever::after {
+  content: '';
+  position: absolute;
+  bottom: -5px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 30px;
+  height: 10px;
+  background: linear-gradient(90deg, #808080, #a0a0a0, #808080);
+  border-radius: 5px;
+  box-shadow: 
+    0 2px 4px rgba(0, 0, 0, 0.5),
+    inset 0 1px 2px rgba(255, 255, 255, 0.2);
+  border: 1px solid #606060;
+}
+
+
+
 .lever:hover:not(:disabled) {
-  transform: translateY(-2px);
-  box-shadow: 0 6px 20px rgba(255, 215, 0, 0.6);
+  transform: translateY(-3px) scale(1.08) translateZ(15px);
+  box-shadow: 
+    0 8px 25px rgba(0, 0, 0, 0.7),
+    inset 0 2px 4px rgba(255, 255, 255, 0.2),
+    0 0 30px rgba(255, 215, 0, 0.4);
+  animation: leverPulse 1.5s ease-in-out infinite;
+}
+
+.lever:hover:not(:disabled)::before {
+  transform: translateX(-50%) translateY(-3px) scale(1.15);
+  box-shadow: 
+    0 6px 15px rgba(0, 0, 0, 0.7),
+    inset 3px 3px 6px rgba(255, 255, 255, 0.5),
+    inset -3px -3px 6px rgba(0, 0, 0, 0.5),
+    0 0 25px rgba(255, 0, 0, 0.6);
 }
 
 .lever:disabled {
@@ -154,6 +381,27 @@
   animation: leverPull 1s ease-in-out;
 }
 
+.lever.spinning::before {
+  animation: leverBallPull 1s ease-in-out;
+}
+
+.lever:active:not(:disabled) {
+  transform: translateY(20px) translateZ(-40px) rotateX(30deg);
+  box-shadow: 
+    0 1px 4px rgba(0, 0, 0, 0.9),
+    inset 0 6px 12px rgba(0, 0, 0, 0.4),
+    0 0 20px rgba(255, 0, 0, 0.3);
+}
+
+.lever:active:not(:disabled)::before {
+  transform: translateX(-50%) translateY(8px) scale(0.9);
+  box-shadow: 
+    0 1px 4px rgba(0, 0, 0, 0.8),
+    inset 1px 1px 2px rgba(255, 255, 255, 0.1),
+    inset -1px -1px 2px rgba(0, 0, 0, 0.6),
+    0 0 15px rgba(255, 0, 0, 0.2);
+}
+
 .resetButton {
   background: linear-gradient(45deg, #4CAF50, #45a049);
   border: none;
@@ -161,11 +409,14 @@
   font-size: 1.2rem;
   font-weight: bold;
   color: white;
-  border-radius: 10px;
+  border-radius: 15px;
   cursor: pointer;
   transition: all 0.3s ease;
-  box-shadow: 0 4px 15px rgba(76, 175, 80, 0.4);
+  box-shadow: 
+    0 4px 15px rgba(76, 175, 80, 0.4),
+    inset 0 1px 2px rgba(255, 255, 255, 0.2);
   font-family: 'Courier New', Courier, monospace;
+  border: 2px solid rgba(255, 255, 255, 0.1);
 }
 
 .resetButton:hover {
@@ -176,10 +427,14 @@
 .winMessage {
   margin: 2rem 0;
   padding: 2rem;
-  background: linear-gradient(135deg, rgba(255, 215, 0, 0.2), rgba(255, 215, 0, 0.1));
-  border-radius: 15px;
-  border: 2px solid #ffd700;
+  background: linear-gradient(135deg, rgba(255, 215, 0, 0.3), rgba(255, 215, 0, 0.1));
+  border-radius: 20px;
+  border: 3px solid #ffd700;
   animation: winPulse 2s ease-in-out infinite;
+  box-shadow: 
+    0 10px 30px rgba(255, 215, 0, 0.3),
+    inset 0 2px 4px rgba(255, 255, 255, 0.2);
+  backdrop-filter: blur(10px);
 }
 
 .winMessage h2 {
@@ -217,11 +472,14 @@
   font-size: 1.2rem;
   font-weight: bold;
   color: white;
-  border-radius: 10px;
+  border-radius: 15px;
   cursor: pointer;
   transition: all 0.3s ease;
-  box-shadow: 0 4px 15px rgba(33, 150, 243, 0.4);
+  box-shadow: 
+    0 4px 15px rgba(33, 150, 243, 0.4),
+    inset 0 1px 2px rgba(255, 255, 255, 0.2);
   font-family: 'Courier New', Courier, monospace;
+  border: 2px solid rgba(255, 255, 255, 0.1);
 }
 
 .shareButton:hover {
@@ -238,15 +496,50 @@
   }
 }
 
-@keyframes spin {
-  0% { transform: rotateY(0deg); }
-  100% { transform: rotateY(360deg); }
+@keyframes slotSpin {
+  0% { transform: translateY(-100%) rotateX(0deg); }
+  100% { transform: translateY(100%) rotateX(360deg); }
+}
+
+@keyframes slotShine {
+  0% { transform: translateY(-100%); }
+  100% { transform: translateY(100%); }
 }
 
 @keyframes leverPull {
-  0% { transform: translateY(0); }
-  50% { transform: translateY(-10px); }
-  100% { transform: translateY(0); }
+  0% { 
+    transform: translateY(0) translateZ(0) rotateX(0deg); 
+  }
+  25% { 
+    transform: translateY(20px) translateZ(-30px) rotateX(-20deg); 
+  }
+  50% { 
+    transform: translateY(35px) translateZ(-50px) rotateX(-35deg); 
+  }
+  75% { 
+    transform: translateY(20px) translateZ(-30px) rotateX(-20deg); 
+  }
+  100% { 
+    transform: translateY(0) translateZ(0) rotateX(0deg); 
+  }
+}
+
+@keyframes leverBallPull {
+  0% { 
+    transform: translateX(-50%) translateY(0) scale(1); 
+  }
+  25% { 
+    transform: translateX(-50%) translateY(8px) scale(0.95); 
+  }
+  50% { 
+    transform: translateX(-50%) translateY(12px) scale(0.9); 
+  }
+  75% { 
+    transform: translateX(-50%) translateY(8px) scale(0.95); 
+  }
+  100% { 
+    transform: translateX(-50%) translateY(0) scale(1); 
+  }
 }
 
 @keyframes winPulse {
@@ -270,34 +563,290 @@
   }
 }
 
+@keyframes lockPulse {
+  0%, 100% {
+    transform: scale(1);
+    box-shadow: 
+      0 2px 8px rgba(0, 0, 0, 0.5),
+      0 0 10px rgba(255, 107, 107, 0.6);
+  }
+  50% {
+    transform: scale(1.1);
+    box-shadow: 
+      0 4px 12px rgba(0, 0, 0, 0.6),
+      0 0 20px rgba(255, 107, 107, 0.8);
+  }
+}
+
+@keyframes lockShine {
+  0%, 100% {
+    opacity: 0;
+  }
+  50% {
+    opacity: 1;
+  }
+}
+
+@keyframes ballGlow {
+  0% {
+    box-shadow: 
+      0 4px 12px rgba(0, 0, 0, 0.6),
+      inset 3px 3px 6px rgba(255, 255, 255, 0.4),
+      inset -3px -3px 6px rgba(0, 0, 0, 0.4),
+      0 0 15px rgba(255, 0, 0, 0.4);
+  }
+  100% {
+    box-shadow: 
+      0 4px 12px rgba(0, 0, 0, 0.6),
+      inset 3px 3px 6px rgba(255, 255, 255, 0.4),
+      inset -3px -3px 6px rgba(0, 0, 0, 0.4),
+      0 0 25px rgba(255, 0, 0, 0.7);
+  }
+}
+
+@keyframes leverPulse {
+  0%, 100% {
+    box-shadow: 
+      0 8px 25px rgba(0, 0, 0, 0.7),
+      inset 0 2px 4px rgba(255, 255, 255, 0.2),
+      0 0 30px rgba(255, 215, 0, 0.4);
+  }
+  50% {
+    box-shadow: 
+      0 8px 25px rgba(0, 0, 0, 0.7),
+      inset 0 2px 4px rgba(255, 255, 255, 0.2),
+      0 0 40px rgba(255, 215, 0, 0.6);
+  }
+}
+
 @media (max-width: 768px) {
   .slotsContainer {
-    padding: 1rem;
+    padding: 0.5rem;
+    max-width: 100vw;
+    overflow-x: hidden;
   }
   
   .slotsTitle {
-    font-size: 2rem;
+    font-size: 1.6rem;
+    margin: 0 0 0.8rem;
+    word-wrap: break-word;
+    hyphens: auto;
+    line-height: 1.2;
+  }
+  
+  .slotsHorizontalBar {
+    margin: 0 auto 1rem;
+    width: 100px;
+  }
+  
+  .gameInfo {
+    margin-bottom: 0.3rem;
+    padding: 0.8rem;
+  }
+  
+  .gameInfo p {
+    margin: 0.4rem 0;
+    font-size: 0.9rem;
+    word-wrap: break-word;
+  }
+  
+  .slotMachine {
+    flex-direction: row;
+    gap: 0.8rem;
+    align-items: center;
+    margin: 0.3rem 0 1rem;
+    max-width: 100%;
   }
   
   .slotsDisplay {
-    gap: 0.5rem;
+    gap: 0;
+    padding: 0.4rem;
+    flex: 1;
+    min-width: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
   }
   
   .slot {
-    width: 60px;
-    height: 60px;
+    width: 50px;
+    height: 50px;
+    flex-shrink: 0;
+    margin: 0;
   }
   
   .emoji {
-    font-size: 1.5rem;
+    font-size: 1.3rem;
   }
   
   .winEmoji {
-    font-size: 2rem;
+    font-size: 1.8rem;
   }
   
-  .lever, .resetButton, .shareButton {
-    padding: 0.8rem 1.5rem;
+  .lever {
+    width: 16px;
+    height: 120px;
+    flex-shrink: 0;
+    margin: 0 0.5rem;
+  }
+  
+  .lever::before {
+    width: 22px;
+    height: 22px;
+    top: -11px;
+  }
+  
+
+  
+  .lockIcon {
+    width: 20px;
+    height: 20px;
+    font-size: 0.8rem;
+    top: -6px;
+    right: -6px;
+  }
+  
+  .pullsCounter {
     font-size: 1rem;
+    padding: 0.6rem 1rem;
+    min-width: 85px;
+    margin-bottom: 0.2rem;
+  }
+  
+  .pullsCounter::before {
+    font-size: 0.5rem;
+    padding: 1px 4px;
+  }
+  
+  .winMessage {
+    margin: 1rem 0;
+    padding: 1rem;
+  }
+  
+  .winMessage h2 {
+    font-size: 1.4rem;
+    margin: 0 0 0.3rem;
+  }
+  
+  .winMessage p {
+    font-size: 0.9rem;
+    margin: 0.2rem 0;
+  }
+  
+  .resetButton, .shareButton {
+    padding: 0.6rem 1rem;
+    font-size: 0.9rem;
+  }
+  
+  .controls {
+    margin: 1rem 0;
+    gap: 0.8rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .slotsContainer {
+    padding: 0.3rem;
+  }
+  
+  .slotsTitle {
+    font-size: 1.4rem;
+    margin: 0 0 0.5rem;
+  }
+  
+  .slotsHorizontalBar {
+    width: 80px;
+    margin: 0 auto 0.8rem;
+  }
+  
+  .gameInfo {
+    padding: 0.6rem;
+    margin-bottom: 0.2rem;
+  }
+  
+  .gameInfo p {
+    font-size: 0.8rem;
+    margin: 0.3rem 0;
+  }
+  
+  .slotMachine {
+    gap: 0.6rem;
+    margin: 0.2rem 0 0.8rem;
+  }
+  
+  .slotsDisplay {
+    gap: 0;
+    padding: 0.3rem;
+  }
+  
+  .slot {
+    width: 45px;
+    height: 45px;
+    margin: 0;
+  }
+  
+  .emoji {
+    font-size: 1.1rem;
+  }
+  
+  .winEmoji {
+    font-size: 1.6rem;
+  }
+  
+  .lever {
+    width: 14px;
+    height: 100px;
+    margin: 0 0.4rem;
+  }
+  
+  .lever::before {
+    width: 20px;
+    height: 20px;
+    top: -10px;
+  }
+  
+
+  
+  .lockIcon {
+    width: 18px;
+    height: 18px;
+    font-size: 0.7rem;
+    top: -5px;
+    right: -5px;
+  }
+  
+  .pullsCounter {
+    font-size: 0.9rem;
+    padding: 0.5rem 0.8rem;
+    min-width: 75px;
+    margin-bottom: 0.15rem;
+  }
+  
+  .pullsCounter::before {
+    font-size: 0.4rem;
+    padding: 1px 3px;
+  }
+  
+  .winMessage {
+    margin: 0.8rem 0;
+    padding: 0.8rem;
+  }
+  
+  .winMessage h2 {
+    font-size: 1.2rem;
+  }
+  
+  .winMessage p {
+    font-size: 0.8rem;
+  }
+  
+  .resetButton, .shareButton {
+    padding: 0.5rem 0.8rem;
+    font-size: 0.8rem;
+  }
+  
+  .controls {
+    margin: 0.4rem 0;
+    gap: 0.4rem;
   }
 }
