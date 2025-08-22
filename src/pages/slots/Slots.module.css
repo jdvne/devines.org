@@ -817,14 +817,14 @@
   }
   
   .pullsCounter {
-    font-size: 0.9rem;
+    font-size: 1.2rem;
     padding: 0.5rem 0.8rem;
     min-width: 75px;
     margin-bottom: 0.15rem;
   }
   
   .pullsCounter::before {
-    font-size: 0.4rem;
+    font-size: 0.7rem;
     padding: 1px 3px;
   }
   
