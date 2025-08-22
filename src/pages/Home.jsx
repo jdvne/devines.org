@@ -64,6 +64,7 @@ export function Home() {
             <TagLink to="/thoughts">thoughts</TagLink>
             <TagLink to="/cookbook">cookbook</TagLink>
             <TagLink to="/coffee">coffee</TagLink>
+            <TagLink to="/slots">slots</TagLink>
           </nav>
         </div>
       </div>

@@ -7,6 +7,7 @@ import { Coffee } from './pages/coffee/Coffee.jsx';
 import { Cookbook } from './pages/cookbook/Cookbook.jsx';
 import { Recipe } from './pages/cookbook/Recipe.jsx';
 import { Home } from './pages/Home.jsx';
+import { Slots } from './pages/slots/Slots.jsx';
 import { Thought } from './pages/thoughts/Thought.jsx';
 import { Thoughts } from './pages/thoughts/Thoughts.jsx';
 import { Wedding } from './pages/wedding/Wedding.jsx';
@@ -19,6 +20,10 @@ const router = createBrowserRouter([
   {
     path: '/coffee',
     element: <Coffee />
+  },
+  {
+    path: '/slots',
+    element: <Slots />
   },
   {
     path: '/wedding',
