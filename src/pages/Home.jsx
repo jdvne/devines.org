@@ -3,6 +3,7 @@ import { Helmet } from "react-helmet";
 import { Link } from "react-router-dom";
 
 import styles from './Home.module.css';
+import AnimatedAscii from '../components/AnimatedAscii.jsx';
 
 // TODO: "accountability" page to track my goals and progress in life
 // TODO: move images to public assets for easier access
@@ -18,7 +19,6 @@ const Tag = ({ children, open }) => {
     </span>
   );
 };
-
 Tag.propTypes = {
   children: PropTypes.node,
   open: PropTypes.bool,
@@ -67,6 +67,9 @@ export function Home() {
             <TagLink to="/slots">slots</TagLink>
           </nav>
         </div>
+
+        {/* Animated ASCII video (folder name should match the asciify output) */}
+        <AnimatedAscii videoName="the_great_wave" loopReverse/>
       </div>
     </main>
   );

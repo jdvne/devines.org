@@ -22,3 +22,6 @@ dist-ssr
 *.njsproj
 *.sln
 *.sw?
+
+# Video Frames
+public/assets/videos/the_great_wave/frames_png

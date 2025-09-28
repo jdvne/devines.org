@@ -10,9 +10,11 @@
     "build": "vite build",
     "lint": "eslint . --ext js,jsx --report-unused-disable-directives --max-warnings 0",
     "lint:fix": "eslint . --ext js,jsx --fix",
-    "preview": "vite preview"
+    "preview": "vite preview",
+    "asciify:video:wave": "node scripts/asciify-video.cjs src/assets/videos/the_great_wave.mp4"
   },
   "dependencies": {
+    "ansi_up": "^6.0.6",
     "buffer": "^6.0.3",
     "gray-matter": "^4.0.3",
     "react": "^18.2.0",
@@ -28,6 +30,7 @@
     "@types/react": "^18.2.37",
     "@types/react-dom": "^18.2.15",
     "@vitejs/plugin-react": "^4.2.0",
+    "asciify-image": "^0.1.10",
     "eslint": "^8.57.1",
     "eslint-plugin-import": "^2.31.0",
     "eslint-plugin-react": "^7.37.5",
