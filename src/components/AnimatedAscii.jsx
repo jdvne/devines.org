@@ -97,8 +97,9 @@ export default function AnimatedAscii({ videoName, loopReverse = false, opacity 
       const boxH = rect.height || el.scrollHeight || 1;
       const vw = window.innerWidth || 1;
       const vh = window.innerHeight || 1;
-      // COVER behavior: scale so ascii fills viewport (don't shrink if already larger)
-      const next = Math.max(1, vw / boxW, vh / boxH);
+      // CONTAIN behavior: scale so ascii fits inside viewport (don't upscale beyond 1)
+      // This prevents the ascii from being massively zoomed in on small screens.
+      const next = Math.min(1, vw / boxW, vh / boxH);
       setScale(prev => (Math.abs(prev - next) < 1e-6 ? prev : next));
     });
   }, [frameHtml]);
