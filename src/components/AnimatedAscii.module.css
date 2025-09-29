@@ -15,6 +15,9 @@
 
   /* optional: allow a slight blur behind ascii (set via --ascii-blur if you want) */
   backdrop-filter: blur(var(--ascii-blur, 0px));
+  
+  /* Ensure proper scaling on mobile devices */
+  -webkit-overflow-scrolling: touch;
 }
 
 .pre {
@@ -29,4 +32,27 @@
   transform-origin: center center;
   pointer-events: none;
   user-select: none;
+  
+  /* Ensure smooth scaling and prevent layout shifts */
+  will-change: transform;
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
+  
+  /* Prevent text selection and improve performance */
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+}
+
+.fadeIn {
+  animation: fadeIn 0.5s ease-in-out;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
 }
