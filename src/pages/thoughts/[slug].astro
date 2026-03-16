@@ -1,0 +1,130 @@
+---
+import { getCollection } from 'astro:content';
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import Breadcrumb from '../../components/Breadcrumb.astro';
+
+export async function getStaticPaths() {
+  const posts = await getCollection('thoughts');
+  return posts.map(post => ({
+    params: { slug: post.slug },
+    props: { post },
+  }));
+}
+
+const { post } = Astro.props;
+const { Content } = await post.render();
+
+const title = post.data.title || post.slug;
+const description = post.data.description || '';
+const image = post.data.image || '/images/nyc.jpg';
+
+const formatDate = (date?: Date) => {
+  if (!date) return '';
+  return date.toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' });
+};
+---
+
+<BaseLayout title={title} description={description} image={image} bodyClass="thought-body">
+  <main id="thought-main">
+    <div class="container">
+      <div class="title">
+        <Breadcrumb items={[
+          { path: '/thoughts', label: 'thoughts' },
+          { path: `/thoughts/${post.slug}`, label: post.slug }
+        ]} />
+      </div>
+      <div class="metadata">
+        <h1>{title}</h1>
+        {post.data.date && (
+          <time class="date">{formatDate(post.data.date)}</time>
+        )}
+        {description && (
+          <p class="description">{description}</p>
+        )}
+      </div>
+      <div class="blog-post">
+        <Content />
+      </div>
+    </div>
+  </main>
+</BaseLayout>
+
+<style>
+:global(.thought-body) {
+  background: #7A251E;
+  margin: 0;
+  padding: 0;
+}
+
+#thought-main {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  min-height: 100vh;
+  background: #7A251E;
+  font-family: 'Courier New', Courier, monospace;
+  color: #D7C9A7;
+}
+
+/* breadcrumb overrides */
+#thought-main :global(.breadcrumb) { color: #D7C9A7; }
+#thought-main :global(.link) { color: #D7C9A7; }
+#thought-main :global(.operator) { color: #DFBD22; }
+#thought-main :global(.method) { color: #D7C9A7; }
+#thought-main :global(.parens) { color: rgba(215, 201, 167, 0.45); }
+
+.container {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 2rem;
+}
+
+.metadata {
+  padding: 2rem 0;
+  border-bottom: 1px solid #3D1916;
+  margin-bottom: 2rem;
+}
+
+.metadata h1 {
+  margin: 0;
+  color: #D7C9A7;
+  font-size: 2em;
+}
+
+.date {
+  display: block;
+  color: rgba(215, 201, 167, 0.55);
+  margin: 0.5rem 0;
+  font-size: 0.85em;
+}
+
+.description {
+  color: rgba(215, 201, 167, 0.75);
+  font-style: italic;
+  margin: 0.5rem 0 0;
+}
+
+.blog-post {
+  padding: 2rem 0;
+}
+
+.blog-post :global(h1) { margin-bottom: 1rem; color: #D7C9A7; }
+.blog-post :global(h2) { margin: 2rem 0 1rem; color: #DFBD22; }
+.blog-post :global(h3) { margin: 1.5rem 0 0.75rem; color: #D7C9A7; }
+.blog-post :global(p) { margin-bottom: 1.5rem; line-height: 1.7; color: #D7C9A7; }
+.blog-post :global(ul),
+.blog-post :global(ol) { margin: 1rem 0; padding-left: 2rem; color: #D7C9A7; }
+.blog-post :global(li) { margin-bottom: 0.5rem; line-height: 1.6; }
+.blog-post :global(pre) { background: #5C1A14; padding: 1rem; border-radius: 4px; overflow-x: auto; margin: 1.5rem 0; border: 1px solid #3D1916; }
+.blog-post :global(code) { font-family: 'Courier New', Courier, monospace; font-size: 0.9em; color: rgba(215, 201, 167, 0.85); }
+.blog-post :global(img) { max-width: 100%; height: auto; margin: 1.5rem 0; }
+.blog-post :global(a) { color: #DFBD22; text-decoration: none; }
+.blog-post :global(a:hover) { text-decoration: underline; }
+.blog-post :global(em) { color: rgba(215, 201, 167, 0.85); }
+.blog-post :global(strong) { color: #DFBD22; }
+
+@media (max-width: 768px) {
+  .container { padding: 1.5rem; }
+}
+</style>

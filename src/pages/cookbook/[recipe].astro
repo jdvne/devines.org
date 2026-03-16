@@ -1,0 +1,165 @@
+---
+import { getCollection } from 'astro:content';
+import BaseLayout from '../../layouts/BaseLayout.astro';
+
+export async function getStaticPaths() {
+  const recipes = await getCollection('cookbook');
+  return recipes.map(recipe => ({
+    params: { recipe: recipe.slug },
+    props: { recipe },
+  }));
+}
+
+const { recipe } = Astro.props;
+const { Content } = await recipe.render();
+const meta = recipe.data;
+const title = meta.title || recipe.slug;
+---
+
+<BaseLayout title={`${title} - devines.org`} bodyClass="cookbook-body">
+  <div class="recipePage">
+    <div class="recipeContainer">
+      <div class="recipeTitleContainer">
+        <h1 class="recipeTitle">{title}</h1>
+        <a href="/cookbook" class="recipeBackLink">Back to Cookbook</a>
+      </div>
+      <div class="recipeHorizontalBar"></div>
+
+      {(meta.preparationTime || meta.cookTime || meta.cookTemperature || meta.totalTime) && (
+        <div class="recipeContent">
+          <h2 class="recipeMetadataTitle">Recipe Details</h2>
+          {meta.preparationTime && <p><span class="recipeMetadataLabel">Preparation Time:</span> {meta.preparationTime}</p>}
+          {meta.cookTime && <p><span class="recipeMetadataLabel">Cook Time:</span> {meta.cookTime}</p>}
+          {meta.cookTemperature && <p><span class="recipeMetadataLabel">Cook Temperature:</span> {meta.cookTemperature}</p>}
+          {meta.totalTime && <p><span class="recipeMetadataLabel">Total Time:</span> {meta.totalTime}</p>}
+        </div>
+      )}
+
+      <div class="blog-post" id="recipe-content">
+        <Content />
+      </div>
+    </div>
+  </div>
+</BaseLayout>
+
+<script>
+  const STORAGE_KEY = `recipe-checks-${window.location.pathname}`;
+
+  function saveChecks() {
+    const checks: Record<string, boolean> = {};
+    document.querySelectorAll<HTMLInputElement>('input[type="checkbox"]').forEach((cb, i) => {
+      checks[i] = cb.checked;
+    });
+    localStorage.setItem(STORAGE_KEY, JSON.stringify(checks));
+  }
+
+  function loadChecks() {
+    const saved = localStorage.getItem(STORAGE_KEY);
+    if (!saved) return;
+    try {
+      const checks: Record<string, boolean> = JSON.parse(saved);
+      document.querySelectorAll<HTMLInputElement>('input[type="checkbox"]').forEach((cb, i) => {
+        cb.checked = checks[i] ?? false;
+      });
+    } catch {}
+  }
+
+  document.addEventListener('DOMContentLoaded', () => {
+    loadChecks();
+    document.querySelectorAll('input[type="checkbox"]').forEach(cb => {
+      cb.addEventListener('change', saveChecks);
+    });
+  });
+</script>
+
+<style>
+:global(.cookbook-body) {
+  background-color: var(--alice-blue);
+  margin: 0;
+  padding: 0;
+}
+
+.recipePage {
+  background-color: var(--alice-blue);
+  min-height: 100vh;
+}
+
+.recipeContainer {
+  font-family: "Playfair Display", sans-serif;
+  color: var(--caribbean-current);
+  background-color: var(--alice-blue);
+  padding: 20px;
+  border-radius: 8px;
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.recipeTitleContainer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 10px;
+}
+
+.recipeTitle {
+  font-family: "Playfair Display", sans-serif;
+  font-size: 2.5em;
+  color: var(--atomic-tangerine);
+  margin: 0;
+}
+
+.recipeHorizontalBar {
+  border-bottom: 1px solid var(--tiffany-blue);
+  margin-bottom: 20px;
+}
+
+.recipeContent {
+  margin-bottom: 20px;
+}
+
+.recipeMetadataTitle {
+  font-size: 1.5em;
+  color: var(--caribbean-current);
+  margin-bottom: 10px;
+}
+
+.recipeMetadataLabel {
+  font-weight: bold;
+  color: var(--tiffany-blue);
+}
+
+.recipeBackLink {
+  color: var(--tiffany-blue);
+  text-decoration: none;
+  font-weight: bold;
+}
+
+.recipeBackLink:hover {
+  text-decoration: underline;
+}
+
+.blog-post {
+  font-family: "Playfair Display", sans-serif;
+  color: var(--caribbean-current);
+}
+
+.blog-post :global(h2) {
+  color: var(--caribbean-current);
+  margin: 1.5rem 0 0.5rem;
+}
+
+.blog-post :global(ul),
+.blog-post :global(ol) {
+  padding-left: 1.5rem;
+}
+
+.blog-post :global(li) {
+  margin-bottom: 0.5rem;
+  line-height: 1.6;
+}
+
+.blog-post :global(input[type="checkbox"]) {
+  margin-right: 0.5rem;
+  cursor: pointer;
+}
+</style>

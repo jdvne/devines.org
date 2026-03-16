@@ -1,0 +1,60 @@
+{
+  "$ref": "#/definitions/cookbook",
+  "definitions": {
+    "cookbook": {
+      "type": "object",
+      "properties": {
+        "title": {
+          "type": "string"
+        },
+        "category": {
+          "type": "string"
+        },
+        "preparationTime": {
+          "type": "string"
+        },
+        "cookTime": {
+          "type": "string"
+        },
+        "cookTemperature": {
+          "type": [
+            "string",
+            "number"
+          ]
+        },
+        "totalTime": {
+          "type": "string"
+        },
+        "dairyFree": {
+          "type": "boolean"
+        },
+        "glutenFree": {
+          "type": "boolean"
+        },
+        "soyFree": {
+          "type": "boolean"
+        },
+        "refinedSugarFree": {
+          "type": "boolean"
+        },
+        "vegetarian": {
+          "type": "boolean"
+        },
+        "vegan": {
+          "type": "boolean"
+        },
+        "lowCarb": {
+          "type": "boolean"
+        },
+        "highFat": {
+          "type": "boolean"
+        },
+        "$schema": {
+          "type": "string"
+        }
+      },
+      "additionalProperties": false
+    }
+  },
+  "$schema": "http://json-schema.org/draft-07/schema#"
+}

@@ -1,0 +1,165 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import coffeeData from '../data/coffee.yml';
+
+const ROAST_CLASSES: Record<string, string> = {
+  Light: 'lightRoast',
+  Medium: 'mediumRoast',
+  'Medium Dark': 'mediumRoast',
+  Dark: 'darkRoast',
+};
+
+const PURPOSE_EMOJIS: Record<string, string> = {
+  Espresso: '☕️',
+  Drip: '💧',
+  FrenchPress: '🇫🇷',
+  'Cold Brew': '🧊',
+};
+---
+
+<BaseLayout title="Coffee - devines.org" bodyClass="coffee-body">
+  <div class="coffeePage">
+    <div class="coffeeContainer">
+      <h1 class="coffeeTitle">Coffee</h1>
+      <div class="coffeeHorizontalBar"></div>
+      {coffeeData.length > 0 ? (
+        <table>
+          <thead>
+            <tr>
+              <th>Name</th>
+              <th>Brand</th>
+              <th>Roast</th>
+              <th>Purpose</th>
+              <th>Grind Notch</th>
+              <th>Grams</th>
+              <th>Thoughts</th>
+            </tr>
+          </thead>
+          <tbody>
+            {coffeeData.map((coffee: any) => (
+              <tr>
+                <td>{coffee.name}</td>
+                <td>{coffee.brand}</td>
+                <td>
+                  <span class={`chip roastChip ${ROAST_CLASSES[coffee.roast] || ''}`}>{coffee.roast}</span>
+                </td>
+                <td>
+                  <span class="chip purposeChip" data-emoji={PURPOSE_EMOJIS[coffee.purpose] || ''}>{coffee.purpose}</span>
+                </td>
+                <td>{coffee.grind_notch}</td>
+                <td>{coffee.grams}</td>
+                <td>{coffee.thoughts}</td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      ) : (
+        <p>No coffee data found.</p>
+      )}
+    </div>
+  </div>
+</BaseLayout>
+
+<style>
+:global(.coffee-body) {
+  background-color: var(--khaki);
+  margin: 0;
+  padding: 0;
+}
+
+.coffeePage {
+  background-color: var(--khaki);
+  min-height: 100vh;
+}
+
+.coffeeContainer {
+  font-family: "Oleo Script", sans-serif;
+  color: var(--rose-ebony);
+  background-color: var(--khaki);
+  padding: 20px;
+  border-radius: 8px;
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.coffeeTitle {
+  font-family: "Oleo Script", sans-serif;
+  font-size: 2.5em;
+  margin-bottom: 10px;
+  color: var(--umber);
+}
+
+.coffeeHorizontalBar {
+  border-bottom: 1px solid var(--beaver);
+  margin-bottom: 20px;
+}
+
+table {
+  width: 100%;
+  border-collapse: separate;
+  border-spacing: 0 8px;
+  margin-top: 20px;
+}
+
+th, td {
+  padding: 8px;
+  text-align: left;
+  border-bottom: none;
+  border-right: 1px solid var(--beaver);
+  box-sizing: border-box;
+  padding-top: 4px;
+  padding-bottom: 4px;
+}
+
+tr > *:last-child {
+  border-right: none;
+}
+
+th {
+  background-color: var(--beaver-2);
+  color: var(--rose-ebony);
+}
+
+.chip {
+  display: inline-block;
+  padding: 4px 8px;
+  border-radius: 12px;
+  font-size: 0.8em;
+}
+
+.roastChip {
+  color: var(--rose-ebony);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-width: 80px;
+  display: inline-block;
+}
+
+.lightRoast {
+  background-color: #C69F75;
+}
+
+.mediumRoast {
+  background-color: #8B4513;
+  color: var(--khaki);
+}
+
+.darkRoast {
+  background-color: #46240A;
+  color: var(--khaki);
+}
+
+.purposeChip {
+  background-color: var(--umber);
+  color: var(--khaki);
+  display: inline-flex;
+  align-items: center;
+  white-space: nowrap;
+}
+
+.purposeChip::before {
+  content: attr(data-emoji);
+  margin-right: 3px;
+}
+</style>

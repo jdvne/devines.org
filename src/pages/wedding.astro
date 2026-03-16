@@ -1,0 +1,685 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+---
+
+<BaseLayout title="A Devine Wedding" bodyClass="wedding-body">
+  <main id="wedding-main">
+    <div class="container">
+      <h1>Stephanie &amp; Joshua</h1>
+
+      <nav>
+        <ul>
+          <li><a href="#lodging">Lodging</a></li>
+          <li><a href="#faq">FAQ</a></li>
+          <li><a href="#party">Bridal Party</a></li>
+          <li><a href="https://www.theknot.com/stephanievalencicandjoshuadevine/registry">Registry</a></li>
+          <li><a href="#vendors">Vendors</a></li>
+        </ul>
+      </nav>
+
+      <div class="photos">
+        <img src="/images/nyc.jpg" alt="Stephanie &amp; Joshua in NYC" />
+        <img src="/images/proposal.jpg" alt="Stephanie &amp; Joshua's Proposal" />
+        <img src="/images/savannah.jpg" alt="Stephanie &amp; Joshua in Savannah" />
+      </div>
+
+      <h2>June 1st, 2024 - <span class="no_wrap">Silver Hearth Lodge</span></h2>
+      <p>
+        10231 Sugar Camp Creek Rd<br />
+        Bent Mountain, VA 24059
+      </p>
+      <p>Please arrive no later than 4:30pm to be seated for the ceremony.</p>
+
+      <hr />
+      <details open id="lodging">
+        <summary><h3><span class="collapse_icon">▼</span>Lodging</h3></summary>
+        <div class="card">
+          <p>Holiday Inn Tanglewood - Roanoke</p>
+          <blockquote>
+            For your convenience, we've blocked off rooms at a discounted rate of $119/night.<br />
+            To access this rate, please book via the link below. If booking over the phone, please mention the "Devine Wedding" room block.<br />
+          </blockquote>
+          <a class="booking_link" href="https://www.holidayinn.com/redirect?path=rates&brandCode=HI&localeCode=en&regionCode=1&hotelCode=roatw&checkInDate=31&checkInMonthYear=042024&checkOutDate=02&checkOutMonthYear=052024&_PMID=99801505&GPC=JDW&cn=no&viewfullsite=true">
+            Devine Wedding Booking Link
+          </a>
+          <p class="address">
+            4468 Starkey Rd<br />
+            Roanoke, VA 24018<br />
+            540-774-4400
+          </p>
+          <iframe
+            class="map"
+            src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d101705.32380296497!2d-80.1228544!3d37.1933083!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x884d0cc7c6853bbd%3A0x4680b214c4bd2895!2sHoliday%20Inn%20Roanoke-Tanglewood-Rt%20419%26I581%2C%20an%20IHG%20Hotel!5e0!3m2!1sen!2sus!4v1709496102991!5m2!1sen!2sus"
+            width="100%"
+            allowfullscreen=""
+            loading="lazy"
+            referrerpolicy="no-referrer-when-downgrade"
+          ></iframe>
+        </div>
+      </details>
+
+      <hr />
+      <details open id="faq">
+        <summary><h3><span class="collapse_icon">▼</span>FAQ</h3></summary>
+        <h4>What should I wear?</h4>
+        <div class="card">
+          <p>&gt; Cocktail Attire</p>
+          <blockquote>
+            A small step above semi-formal, cocktail attire is a balance between elegant and comfortable.
+            Instead of a floor-length dress, women may opt for a tea-length, knee-length, or midi look.
+            Men should wear a suit and tie. Please be advised, the wedding colors are dark and sage green.
+          </blockquote>
+        </div>
+
+        <h4>Where do I go/park?</h4>
+        <div class="card">
+          <p>&gt; Follow the signs</p>
+          <blockquote>
+            The venue is located in the mountains, so there is a bit of a drive to get there.
+            We will have signs posted along the way to help guide you.
+            There is a parking lot at the venue, so you won't have to worry about parking.
+          </blockquote>
+          <iframe
+            class="map"
+            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d5328.388867918014!2d-80.09943762283783!3d37.16114844726785!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x884d758af048ac67%3A0x4709c36b55e56fbd!2sSilver%20Hearth%20Lodge!5e1!3m2!1sen!2sus!4v1705777048739!5m2!1sen!2sus"
+            width="100%"
+            allowfullscreen=""
+            loading="lazy"
+            referrerpolicy="no-referrer-when-downgrade"
+          ></iframe>
+        </div>
+
+        <h4>Who can I bring?</h4>
+        <div class="card">
+          <p>&gt; Only those written on your invite</p>
+          <blockquote>To maximize the presence of our loved ones, we kindly ask that only those listed on the invitation attend.</blockquote>
+          <p>&gt; No children</p>
+          <blockquote>Due to limitations set by the venue, we are unable to accommodate children at our wedding. Please enjoy an adults-only ceremony and reception.</blockquote>
+          <p>&gt; No pets</p>
+          <blockquote>Although we love all of our furry friends, animals are not allowed at the venue.</blockquote>
+        </div>
+
+        <h4>What food options will there be?</h4>
+        <div class="card">
+          <p>&gt; BBQ, buffet style!</p>
+          <blockquote>
+            <ul>
+              <li>BBQ Pork &amp; Chicken</li>
+              <li>Choose Your Own Sauce</li>
+              <li>Coleslaw</li>
+              <li>Cowboy Beans</li>
+              <li>Mac &amp; Cheese</li>
+              <li>Parmesan Garlic Potatoes</li>
+              <li>Green Beans</li>
+              <li>California Medley</li>
+            </ul>
+          </blockquote>
+          <p>Please let us know when you RSVP if you have any strict dietary restrictions the caterer should be made aware of. We're happy to accommodate!</p>
+        </div>
+
+        <h4>What are the plans for bad weather?</h4>
+        <div class="card">
+          <p>&gt; The venue has an indoor option</p>
+          <blockquote>We will be able to have the ceremony and reception there regardless of the weather.</blockquote>
+        </div>
+      </details>
+
+      <hr />
+      <details open id="party">
+        <summary><h3><span class="collapse_icon">▼</span>Meet the Bridal Party</h3></summary>
+
+        <div class="partier">
+          <div class="profile">
+            <img src="/images/steph.jpg" alt="Stephanie Valencic Devine" />
+            <h4>Stephanie Valencic<span class="pencil">‸Devine</span></h4>
+            <h5>Bride</h5>
+          </div>
+          <div class="bio">
+            <p>Stephanie graduates with her Masters in Public Health with a concentration in infectious diseases in May 2024 from Virginia Tech. In the little free time she has, she loves volunteering at the animal shelter, taking walks, and going to trivia.</p>
+            <blockquote>She loves to donate platelets because it helps people and nobody talks to her for 3 hours.</blockquote>
+          </div>
+        </div>
+
+        <div class="partier">
+          <div class="profile">
+            <img src="/images/anouk.jpg" alt="Anouk Rudd" />
+            <h4>Anouk Rudd</h4>
+            <h5>Maid of Honor</h5>
+          </div>
+          <div class="bio">
+            <p>Anouk is from Floyd, Virginia. She has a biology degree from Longwood University. Her family owns a chocolate shop, Cocoa Mia, and made the yummy desserts for the reception. Stephanie and Anouk met in 2018 at Governor's School in Pulaski, Virginia, and they have been inseparable since.</p>
+            <blockquote>Anouk enjoys going on the Virginia Department of Health's website to read the health department inspection records for restaurants across the state and judging them.</blockquote>
+          </div>
+        </div>
+
+        <div class="partier">
+          <div class="profile">
+            <img src="/images/kaity.jpg" alt="Kaity McCullough" />
+            <h4>Kaity McCullough</h4>
+            <h5>Bridesmaid</h5>
+          </div>
+          <div class="bio">
+            <p>Kaity is from Powhatan, Virginia, but recently moved to Colorado Springs, Colorado. She is currently acting as a platoon leader in the Army at Fort Carson. She loves spending as much time as possible outside and adventuring around the state. Stephanie and Kaity met in 2020 in the Virginia Tech Corps of Cadets and lived together their senior year.</p>
+            <blockquote>Kaity's first words were 'I want that'.</blockquote>
+          </div>
+        </div>
+
+        <div class="partier">
+          <div class="profile">
+            <img src="/images/julia.jpg" alt="Julia Moschella" />
+            <h4>Julia Moschella</h4>
+            <h5>Bridesmaid</h5>
+          </div>
+          <div class="bio">
+            <p>Julia is from Christiansburg, Virginia, but currently lives in Charlottesville, Virginia. She is a 2024 graduate with a Master's in exercise physiology and is planning to start working full time at a cardiac rehab later this summer. She loves to do just about anything outdoors, exploring new places, and hanging out with friends. Stephanie and Julia met in middle school through band, soccer, basketball, and probably anything else.</p>
+            <blockquote>In middle school, Julia's nickname was Pancakes because she was a 'short stack'.</blockquote>
+          </div>
+        </div>
+
+        <div class="partier">
+          <div class="profile">
+            <img src="/images/lindsey.jpg" alt="Lindsey Devine" />
+            <h4>Lindsey Devine</h4>
+            <h5>Bridesmaid</h5>
+          </div>
+          <div class="bio">
+            <p>Lindsey is from Morganton, North Carolina. She is the second youngest of the Devine siblings and the only girl. She graduates from Patton High School in June 2024 and will be attending college in the fall.</p>
+            <blockquote>Lindsey is left-handed and enjoys Frank Ocean.</blockquote>
+          </div>
+        </div>
+
+        <div class="partier partier_right">
+          <div class="profile">
+            <img src="/images/josh.jpg" alt="Joshua Devine" />
+            <h4>Joshua Devine</h4>
+            <h5>Groom</h5>
+          </div>
+          <div class="bio">
+            <p>Joshua graduated with his B.S. in Computer Science from the University of Virginia in May 2022. Since then, he has been a Software Engineer at Capital One. In his free time, you'll probably find him on a hiking trail or a disc golf course somewhere.</p>
+            <blockquote>Joshua would happily pick up any frog he comes across.</blockquote>
+          </div>
+        </div>
+
+        <div class="partier partier_right">
+          <div class="profile">
+            <img src="/images/ian.jpg" alt="Ian Switzer" />
+            <h4>Ian Switzer</h4>
+            <h5>Best Man</h5>
+          </div>
+          <div class="bio">
+            <p>Ian is from Richmond, Virginia, but currently lives in Raleigh, North Carolina with his wife Hannah. Ian graduated from the University of Virginia with a B.S. in Computer Science in 2023; he is now a Software Engineer at EngageSmart. Since moving into his new home, he has been 3D printing anything and everything. Joshua and Ian met at UVA through the 'CS Pilot Program' which definitely wasn't about planes.</p>
+            <blockquote>Ian has been skydiving both indoors and outdoors.</blockquote>
+          </div>
+        </div>
+
+        <div class="partier partier_right">
+          <div class="profile">
+            <img src="/images/jared.jpg" alt="Jared Arnold" />
+            <h4>Jared Arnold</h4>
+            <h5>Groomsman</h5>
+          </div>
+          <div class="bio">
+            <p>Jarold is from Wytheville, Virginia, but now resides in Williamsburg, Virginia. Jared also graduated from the University of Virginia with a B.S. in Computer Science in 2023. He is now an App Engineer at Index AR Solutions. Jared is an explorer at heart--he's roadtripped across the US and recently ventured across Iceland in a van. Joshua and Jared have known eachother for too long. They met in kindergarten, grew up together in Wytheville, and were college roommates at UVA.</p>
+            <blockquote>Jared saved Joshua's life once.</blockquote>
+          </div>
+        </div>
+
+        <div class="partier partier_right">
+          <div class="profile">
+            <img src="/images/joseph.jpg" alt="Joseph Banks" />
+            <h4>Joseph Banks</h4>
+            <h5>Groomsman</h5>
+          </div>
+          <div class="bio">
+            <p>Joseph, big surprise, also graduated from the University of Virginia with a B.S. in Computer Science in 2022. He is now a Software Engineer at DataDog, working from the New York Times Building in NYC. Joshua and Joseph may be thousands of miles apart, but the moment they reconvene, they begin scheming like they always do. Just ask Ian.</p>
+            <blockquote>Joseph was born in a log cabin in the middle of Vermont during a snowstorm.</blockquote>
+          </div>
+        </div>
+
+        <div class="partier partier_right">
+          <div class="profile">
+            <img src="/images/noah.jpg" alt="Noah Devine" />
+            <h4>Noah Devine</h4>
+            <h5>Groomsman</h5>
+          </div>
+          <div class="bio">
+            <p>Noah is the second oldest of the Devine siblings. He is currently attending Virginia Commonwealth University and will graduate in May 2024 with a B.S. in Financial Technology and a concentration in Actuarial Science. In a unique turn of events, Joshua and Noah have had the privilege to live together in Richmond.</p>
+            <blockquote>Noah is an amateur filmmaker.</blockquote>
+          </div>
+        </div>
+
+        <div class="partier">
+          <div class="profile">
+            <img src="/images/lucy.jpg" alt="Lucy" />
+            <h4>Lucy</h4>
+            <h5>Honorable Mention</h5>
+          </div>
+          <div class="bio"></div>
+        </div>
+
+        <div class="partier partier_right">
+          <div class="profile">
+            <img src="/images/gunner.jpg" alt="Gunner" />
+            <h4>Gunner</h4>
+            <h5>Honorable Mention</h5>
+          </div>
+          <div class="bio"></div>
+        </div>
+      </details>
+
+      <hr />
+      <details open id="vendors">
+        <summary><h3><span class="collapse_icon">▼</span>Vendor Information</h3></summary>
+        <div class="card">
+          <div class="vendor">
+            <h4 class="left">Band</h4>
+            <div class="dotted_line"></div>
+            <a href="https://midnightblue.band/">Midnight Blue</a>
+          </div>
+          <div class="vendor">
+            <h4 class="left">Photographer</h4>
+            <div class="dotted_line"></div>
+            <a href="https://rebeccalynnphotog.mypixieset.com/">Rebecca Lynn Photography</a>
+          </div>
+          <div class="vendor">
+            <h4 class="left">Catering</h4>
+            <div class="dotted_line"></div>
+            <span>Christian Catering</span>
+          </div>
+          <div class="vendor">
+            <h4 class="left">Dessert</h4>
+            <div class="dotted_line"></div>
+            <a href="https://www.cocoamiachocolates.com/">Cocoa Mia</a>
+          </div>
+          <div class="vendor">
+            <h4 class="left">Coordinator</h4>
+            <div class="dotted_line"></div>
+            <a href="https://marriedbymerriman.wixsite.com/mysite">Married by Merriman</a>
+          </div>
+          <div class="vendor">
+            <h4 class="left">Officiant</h4>
+            <div class="dotted_line"></div>
+            <a href="https://www.blacksburgchristian.org/">Gary McCoy, <span class="church">Blacksburg Christian Church</span></a>
+          </div>
+          <div class="vendor">
+            <h4 class="left">Venue</h4>
+            <div class="dotted_line"></div>
+            <a href="https://www.silverhearthlodge.com/">Silver Hearth Lodge</a>
+          </div>
+          <div class="vendor">
+            <h4 class="left">Hotel</h4>
+            <div class="dotted_line"></div>
+            <a href="https://www.holidayinn.com/redirect?path=rates&brandCode=HI&localeCode=en&regionCode=1&hotelCode=roatw&checkInDate=31&checkInMonthYear=042024&checkOutDate=02&checkOutMonthYear=052024&_PMID=99801505&GPC=JDW&cn=no&viewfullsite=true">Holiday Inn Tanglewood</a>
+          </div>
+        </div>
+      </details>
+    </div>
+  </main>
+</BaseLayout>
+
+<style>
+@import url("https://fonts.googleapis.com/css2?family=Shadows+Into+Light+Two&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Indie+Flower&display=swap");
+
+@font-face {
+  font-family: "TheChairman";
+  src: url(/fonts/TheChairman.otf);
+  font-weight: normal;
+  font-style: normal;
+}
+
+:global(.wedding-body) {
+  background: #9aab89;
+}
+
+#wedding-main {
+  background-image: url("/images/leaves-top-right.webp");
+  background-size: 100% auto;
+  background-repeat: no-repeat;
+  background-position: top right;
+  color: #fffbf2;
+  font-size: 200%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  text-shadow: 2px 2px 4px #3f5a36;
+}
+
+#wedding-main h1 {
+  font-family: "TheChairman";
+  font-size: 300%;
+}
+
+#wedding-main h2 {
+  font-family: "TheChairman";
+  font-size: 150%;
+}
+
+#wedding-main h3 {
+  font-family: "TheChairman";
+  font-size: 100%;
+  margin: 0;
+  display: inline;
+}
+
+#wedding-main h4,
+#wedding-main h5 {
+  font-family: "Shadows Into Light Two";
+  text-align: left;
+}
+
+#wedding-main .partier_right h4,
+#wedding-main .partier_right h5 {
+  text-align: right;
+}
+
+#wedding-main p,
+#wedding-main blockquote,
+#wedding-main a {
+  font-family: "Shadows Into Light Two", cursive;
+}
+
+#wedding-main a {
+  font-family: "Shadows Into Light Two", cursive;
+  text-decoration: inherit;
+  color: inherit;
+}
+
+#wedding-main a:hover {
+  text-decoration: underline;
+}
+
+#wedding-main blockquote {
+  font-size: 80%;
+  border-left: 2px dashed #3f5a36;
+  margin-left: 0;
+  padding-left: 1em;
+}
+
+#wedding-main a {
+  display: inline;
+}
+
+#wedding-main nav {
+  font-family: "Shadows Into Light Two", cursive;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  align-items: center;
+  width: 100%;
+  border-top: 2px dashed #3f5a36;
+  border-bottom: 2px dashed #3f5a36;
+}
+
+#wedding-main nav ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: row;
+  justify-content: space-around;
+  align-items: center;
+  width: 100%;
+}
+
+#wedding-main nav ul li {
+  display: inline-block;
+  padding: 0 0.3em;
+  white-space: nowrap;
+}
+
+#wedding-main hr {
+  border: none;
+  margin: 2em 0;
+  border-top: 2px dashed #3f5a36;
+  background-color: transparent;
+}
+
+details > summary {
+  cursor: pointer;
+  list-style: none;
+  display: flex;
+  align-items: center;
+  gap: 0.5em;
+}
+
+details > summary::-webkit-details-marker {
+  display: none;
+}
+
+details > summary .collapse_icon {
+  display: inline-block;
+  transition: transform 0.2s ease;
+  font-style: normal;
+  font-family: sans-serif;
+}
+
+details:not([open]) > summary .collapse_icon {
+  transform: rotate(-90deg);
+}
+
+.container {
+  padding: 0 20% 10% 20%;
+  min-width: 60%;
+  background-image: url("/images/leaves-bottom-left.webp");
+  background-size: 100% auto;
+  background-repeat: no-repeat;
+  background-position: bottom left;
+}
+
+.card {
+  background: #9aab89;
+  border-radius: 1em;
+  box-shadow: 0 0.25em 0.5em rgba(0, 0, 0, 0.25);
+  padding: 1em;
+  text-align: left;
+}
+
+.no_wrap {
+  white-space: nowrap;
+}
+
+.booking_link {
+  text-decoration: underline !important;
+}
+
+.address {
+  text-align: center;
+}
+
+.partier {
+  display: flex;
+  gap: 1em;
+  padding: 1em 0;
+}
+
+.bio {
+  text-align: left;
+  font-size: 75%;
+}
+
+.partier > .profile {
+  flex: 1;
+  text-align: left;
+}
+
+.partier.partier_right {
+  flex-direction: row-reverse;
+}
+
+.partier.partier_right .profile > h4,
+.partier.partier_right .profile > h5 {
+  text-align: right;
+}
+
+.profile > img {
+  border-radius: 5px;
+  width: 100%;
+  height: auto;
+  object-fit: contain;
+  box-shadow: 0 0.25em 0.5em rgba(0, 0, 0, 0.25);
+}
+
+.profile > h4,
+.profile > h5 {
+  margin: 0.5em 0;
+}
+
+.partier > .bio {
+  flex: 2;
+  text-align: left;
+}
+
+.pencil {
+  font-family: "Indie Flower", cursive;
+  color: #cad1be;
+}
+
+.map {
+  border: 0;
+  border-radius: 5px;
+  height: 33vh;
+}
+
+.vendor {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+}
+
+.left {
+  text-align: left;
+}
+
+.vendor > .dotted_line {
+  flex: 1;
+  text-align: center;
+  border-bottom: 4px dotted white;
+}
+
+.church {
+  font-size: 70%;
+  white-space: nowrap;
+}
+
+.photos {
+  height: 30vw;
+  max-width: 100%;
+  margin: 1em 0;
+  display: flex;
+  justify-content: center;
+}
+
+.photos > img {
+  max-width: 100%;
+  max-height: 100%;
+  object-fit: cover;
+  box-shadow: 0 0.25em 0.5em rgba(0, 0, 0, 0.25);
+  margin: 10px;
+}
+
+@media (max-width: 1000px) {
+  .container {
+    padding: 0 10% 10% 10%;
+  }
+  .vendor > h4 {
+    margin: 1em 0;
+  }
+}
+
+@media (max-width: 750px) {
+  .vendor {
+    flex-direction: column;
+    gap: 0;
+    margin-bottom: 0.75em;
+    align-items: start;
+  }
+  .vendor > .dotted_line {
+    display: none;
+  }
+  .vendor > h4 {
+    margin: 0.5em 0;
+  }
+  .vendor > a {
+    font-size: 90%;
+  }
+}
+
+@media (max-width: 550px) {
+  .container {
+    padding: 0 5% 10% 5%;
+  }
+  #wedding-main nav ul li {
+    display: inline-block;
+    padding: 10px;
+    white-space: nowrap;
+  }
+  #wedding-main hr {
+    margin: 1em 0;
+  }
+  .card blockquote {
+    font-size: 70%;
+    margin-right: 0;
+  }
+  .card p {
+    font-size: 80%;
+    margin: 0.5em 0;
+  }
+  .photos {
+    height: 25vh;
+    mask-image: linear-gradient(to bottom, transparent 5%, rgba(0, 0, 0, 1.0) 20%, rgba(0, 0, 0, 1.0) 80%, transparent 95%);
+  }
+  .photos > img {
+    width: 100vw;
+    margin: 5px;
+    object-fit: cover;
+    box-shadow: none;
+  }
+  .photos > img:nth-of-type(odd) {
+    display: none;
+  }
+  .partier {
+    flex-direction: column;
+    gap: 0;
+  }
+  .partier.partier_right {
+    flex-direction: column;
+  }
+  .partier.partier_right img {
+    float: right;
+    margin-left: 10px;
+    margin-right: 0;
+  }
+  .profile > img {
+    float: left;
+    margin-right: 10px;
+    width: 50%;
+  }
+}
+
+@media (max-width: 450px) {
+  #wedding-main h1 {
+    font-size: 200%;
+  }
+  #wedding-main h2 {
+    font-size: 100%;
+  }
+  #wedding-main h3 {
+    font-size: 80%;
+    margin: 1em 0;
+  }
+  #wedding-main h4 {
+    font-size: 75%;
+    margin: 1em 0;
+  }
+  #wedding-main p {
+    font-size: 80%;
+  }
+  .vendor > a {
+    font-size: 70%;
+  }
+}
+</style>

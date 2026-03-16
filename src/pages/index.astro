@@ -1,0 +1,79 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+---
+
+<BaseLayout title="Joshua Devine" bodyClass="home-body">
+  <main id="home-main">
+    <div class="container">
+      <h1>
+        <a class="name" href="./">Joshua <span class="dev">Dev</span>ine</a>
+      </h1>
+      <nav class="nav">
+        <a href="/thoughts" class="navLink">thoughts</a>
+        <a href="/cookbook" class="navLink">cookbook</a>
+        <a href="/coffee" class="navLink">coffee</a>
+        <a href="/slots" class="navLink">slots</a>
+        <a href="/wedding" class="navLink">wedding</a>
+      </nav>
+    </div>
+  </main>
+</BaseLayout>
+
+<style>
+:global(.home-body) {
+  background: #7A251E;
+  margin: 0;
+  padding: 0;
+}
+
+#home-main {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: #7A251E;
+  font-family: 'Courier New', Courier, monospace;
+  color: #D7C9A7;
+}
+
+.container {
+  padding: 2rem;
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.container h1 {
+  margin: 0 0 2rem;
+}
+
+.name {
+  text-decoration: none;
+  color: #D7C9A7;
+  font-size: clamp(1.5rem, 5vw, 2.5rem);
+}
+
+.dev {
+  color: #DFBD22;
+  text-decoration: underline wavy #DFBD22 1px;
+  text-underline-offset: 3px;
+}
+
+.nav {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1.5rem;
+  margin-top: 0.5rem;
+}
+
+.navLink {
+  color: rgba(215, 201, 167, 0.45);
+  text-decoration: none;
+  font-size: 0.9rem;
+  transition: color 0.2s;
+}
+
+.navLink:hover {
+  color: #D7C9A7;
+}
+</style>
