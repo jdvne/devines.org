@@ -103,7 +103,7 @@ const title = meta.title || recipe.slug;
 
 .recipeTitle {
   font-family: "Playfair Display", sans-serif;
-  font-size: 2.5em;
+  font-size: clamp(1.4rem, 6vw, 2.5em);
   color: var(--atomic-tangerine);
   margin: 0;
 }
@@ -161,5 +161,16 @@ const title = meta.title || recipe.slug;
 .blog-post :global(input[type="checkbox"]) {
   margin-right: 0.5rem;
   cursor: pointer;
+}
+
+@media (max-width: 768px) {
+  .recipeContainer {
+    padding: 12px;
+  }
+  .recipeTitleContainer {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.5rem;
+  }
 }
 </style>

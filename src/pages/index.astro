@@ -8,14 +8,34 @@ import BaseLayout from '../layouts/BaseLayout.astro';
       <h1>
         <a class="name" href="./">joshua <span class="dev">dev</span>ine</a>
       </h1>
+      <div class="resume">
+        <div class="resume-section">
+          <span class="resume-label">now</span>
+          <ul>
+            <li>sr. swe @ capital one</li>
+            <li>aws certified solutions architect</li>
+          </ul>
+        </div>
+        <div class="resume-section">
+          <span class="resume-label">then</span>
+          <ul>
+            <li>founder @ devine studios</li>
+            <li>comp sci @ uva</li>
+          </ul>
+        </div>
+      </div>
       <nav class="nav">
-        <a href="/thoughts" class="navLink">thoughts</a>
-        <a href="/cookbook" class="navLink">cookbook</a>
-        <a href="/coffee" class="navLink">coffee</a>
-        <a href="/slots" class="navLink">slots</a>
-        <a href="/wedding" class="navLink">wedding</a>
+        <a href="/thoughts" class="navLink">thoughts</a><span class="navSep">/</span>
+        <a href="/cookbook" class="navLink">cookbook</a><span class="navSep">/</span>
+        <a href="/coffee" class="navLink">coffee</a><span class="navSep">/</span>
+        <a href="/slots" class="navLink">slots</a><span class="navSep">/</span>
+        <a href="/wedding" class="navLink">wedding</a><span class="navSep">/</span>
         <a href="/travel" class="navLink">travel</a>
       </nav>
+      <div class="social">
+        <a href="https://github.com/jdvne" class="socialLink" target="_blank" rel="noopener">github</a><span class="navSep">/</span>
+        <a href="https://www.linkedin.com/in/jdvne/" class="socialLink" target="_blank" rel="noopener">linkedin</a>
+      </div>
     </div>
   </main>
 </BaseLayout>
@@ -31,11 +51,12 @@ import BaseLayout from '../layouts/BaseLayout.astro';
   position: absolute;
   top: 0;
   left: 0;
-  width: 100vw;
-  height: 100vh;
+  width: 100%;
+  min-height: 100vh;
   background: #7A251E;
   font-family: 'Courier New', Courier, monospace;
   color: #D7C9A7;
+  overflow-x: hidden;
 }
 
 .container {
@@ -58,23 +79,102 @@ import BaseLayout from '../layouts/BaseLayout.astro';
   color: #DFBD22;
   text-decoration: underline wavy #DFBD22 1px;
   text-underline-offset: 3px;
+  position: relative;
+  cursor: pointer;
+}
+
+.dev::after {
+  content: '^ i write code';
+  position: absolute;
+  left: 0.3rem;
+  top: 100%;
+  font-size: 0.75rem;
+  font-style: normal;
+  color: #DFBD22;
+  white-space: nowrap;
+  opacity: 0;
+  transition: opacity 0.2s;
+  pointer-events: none;
+  max-width: calc(100vw - 3rem);
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.dev:hover::after {
+  opacity: 1;
 }
 
 .nav {
   display: flex;
   flex-wrap: wrap;
-  gap: 1.5rem;
-  margin-top: 0.5rem;
+  align-items: center;
+  gap: 0.5rem;
+  margin-top: 2.5rem;
 }
 
 .navLink {
-  color: rgba(215, 201, 167, 0.45);
+  color: rgba(215, 201, 167, 0.3);
   text-decoration: none;
-  font-size: 0.9rem;
+  font-size: 0.8rem;
   transition: color 0.2s;
 }
 
 .navLink:hover {
-  color: #D7C9A7;
+  color: rgba(215, 201, 167, 0.7);
+}
+
+.navSep {
+  color: rgba(215, 201, 167, 0.15);
+  font-size: 0.8rem;
+  user-select: none;
+}
+
+.social {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin-top: 0.6rem;
+}
+
+.socialLink {
+  color: rgba(215, 201, 167, 0.2);
+  text-decoration: none;
+  font-size: 0.75rem;
+  transition: color 0.2s;
+}
+
+.socialLink:hover {
+  color: rgba(215, 201, 167, 0.6);
+}
+
+.resume {
+  margin-top: 1.5rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  font-size: 0.85rem;
+}
+
+.resume-section {
+  display: flex;
+  gap: 1rem;
+  align-items: flex-start;
+}
+
+.resume-label {
+  color: #DFBD22;
+  min-width: 3.5rem;
+  flex-shrink: 0;
+}
+
+.resume ul {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  color: rgba(215, 201, 167, 0.65);
+}
+
+.resume li::before {
+  content: '— ';
 }
 </style>

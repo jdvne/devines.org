@@ -8,6 +8,11 @@
 # date:    optional date of first hike
 # caption: optional comment
 
+- file: "afternoon-hike-at-humpback-rocks-and-dobie-mountain.geojson"
+  name: "Humpback Rocks & Dobie Mountain"
+  type: parks
+  date: "December 9, 2023"
+
 - file: "afternoon-hike-at-riprap-trail.geojson"
   name: "Riprap Trail"
   type: parks

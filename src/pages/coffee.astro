@@ -23,6 +23,7 @@ const PURPOSE_EMOJIS: Record<string, string> = {
       <h1 class="coffeeTitle">Coffee</h1>
       <div class="coffeeHorizontalBar"></div>
       {coffeeData.length > 0 ? (
+        <div class="tableWrapper">
         <table>
           <thead>
             <tr>
@@ -53,6 +54,7 @@ const PURPOSE_EMOJIS: Record<string, string> = {
             ))}
           </tbody>
         </table>
+        </div>
       ) : (
         <p>No coffee data found.</p>
       )}
@@ -92,6 +94,17 @@ const PURPOSE_EMOJIS: Record<string, string> = {
 .coffeeHorizontalBar {
   border-bottom: 1px solid var(--beaver);
   margin-bottom: 20px;
+}
+
+.tableWrapper {
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+}
+
+@media (max-width: 600px) {
+  .coffeeTitle {
+    font-size: clamp(1.5rem, 7vw, 2.5em);
+  }
 }
 
 table {

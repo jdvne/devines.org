@@ -49,11 +49,12 @@ const posts = allPosts
   position: absolute;
   top: 0;
   left: 0;
-  width: 100vw;
+  width: 100%;
   min-height: 100vh;
   background: #7A251E;
   font-family: 'Courier New', Courier, monospace;
   color: #D7C9A7;
+  overflow-x: hidden;
 }
 
 
@@ -88,7 +89,7 @@ const posts = allPosts
 
 .postSummary h2 {
   margin: 0 0 0.5rem;
-  font-size: 1.1rem;
+  font-size: clamp(1rem, 3.5vw, 1.25rem);
 }
 
 .postSummary h2 a {
