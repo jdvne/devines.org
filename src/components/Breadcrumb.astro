@@ -1,0 +1,59 @@
+---
+interface BreadcrumbItem {
+  path: string;
+  label: string;
+}
+
+interface Props {
+  items: BreadcrumbItem[];
+}
+
+const { items } = Astro.props;
+---
+
+<nav class="breadcrumb">
+  <a href="/" class="crumb">devines.org</a>
+  {items?.map((item, index) => (
+    <>
+      <span class="sep">/</span>
+      {index === items.length - 1 ? (
+        <span class="crumb current">{item.label}</span>
+      ) : (
+        <a href={item.path} class="crumb">{item.label}</a>
+      )}
+    </>
+  ))}
+</nav>
+
+<style>
+.breadcrumb {
+  display: flex;
+  align-items: center;
+  gap: 0.5em;
+  font-family: 'Courier New', Courier, monospace;
+  font-size: 0.85rem;
+  margin: 0 0 2rem;
+  color: inherit;
+}
+
+.crumb,
+.crumb:visited,
+.crumb:link {
+  color: inherit;
+  text-decoration: none;
+  opacity: 0.5;
+}
+
+a.crumb:hover {
+  opacity: 1;
+}
+
+.crumb.current {
+  opacity: 1;
+}
+
+.sep {
+  opacity: 0.25;
+  user-select: none;
+}
+</style>

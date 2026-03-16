@@ -1,0 +1,181 @@
+---
+import { getCollection } from 'astro:content';
+import BaseLayout from '../../layouts/BaseLayout.astro';
+
+const allRecipes = await getCollection('cookbook');
+const recipes = allRecipes
+  .filter(r => r.data.title)
+  .sort((a, b) => (a.data.title || '').localeCompare(b.data.title || ''));
+
+const categorySet = new Set(['All']);
+recipes.forEach(r => { if (r.data.category) categorySet.add(r.data.category); });
+const categories = [...categorySet];
+---
+
+<BaseLayout title="The Devine Table - devines.org" bodyClass="cookbook-body">
+  <div class="recipePage">
+    <div class="recipeContainer">
+      <div class="recipeTitleContainer">
+        <h1 class="recipeTitle">The Devine Table</h1>
+        <a href="/" class="recipeBackLink">Back to Home</a>
+      </div>
+      <div class="recipeHorizontalBar"></div>
+
+      <div class="recipeContent">
+        <div class="categoryChips">
+          {categories.map(category => (
+            <button
+              class="categoryChip"
+              data-category={category}
+            >
+              {category}
+            </button>
+          ))}
+        </div>
+      </div>
+
+      <div class="recipeGrid" id="recipe-grid">
+        {recipes.map(recipe => (
+          <a
+            href={`/cookbook/${recipe.slug}`}
+            class="recipeGridItem"
+            data-category={recipe.data.category || 'Uncategorized'}
+          >
+            {recipe.data.title}
+          </a>
+        ))}
+      </div>
+    </div>
+  </div>
+</BaseLayout>
+
+<script>
+  const chips = document.querySelectorAll<HTMLButtonElement>('.categoryChip');
+  const items = document.querySelectorAll<HTMLElement>('.recipeGridItem');
+
+  let selected = 'All';
+
+  function updateFilter() {
+    chips.forEach(chip => {
+      chip.classList.toggle('selected', chip.dataset.category === selected);
+    });
+    items.forEach(item => {
+      const show = selected === 'All' || item.dataset.category === selected;
+      item.hidden = !show;
+    });
+  }
+
+  chips.forEach(chip => {
+    chip.addEventListener('click', () => {
+      selected = chip.dataset.category || 'All';
+      updateFilter();
+    });
+  });
+
+  updateFilter();
+</script>
+
+<style>
+:global(.cookbook-body) {
+  background-color: var(--alice-blue);
+  margin: 0;
+  padding: 0;
+}
+
+.recipePage {
+  background-color: var(--alice-blue);
+  min-height: 100vh;
+}
+
+.recipeContainer {
+  font-family: "Playfair Display", sans-serif;
+  color: var(--caribbean-current);
+  background-color: var(--alice-blue);
+  padding: 20px;
+  border-radius: 8px;
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.recipeTitleContainer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 10px;
+}
+
+.recipeTitle {
+  font-family: "Playfair Display", sans-serif;
+  font-size: 2.5em;
+  color: var(--atomic-tangerine);
+  margin: 0;
+}
+
+.recipeHorizontalBar {
+  border-bottom: 1px solid var(--tiffany-blue);
+  margin-bottom: 20px;
+}
+
+.recipeContent {
+  margin-bottom: 20px;
+}
+
+.recipeBackLink {
+  color: var(--tiffany-blue);
+  text-decoration: none;
+  font-weight: bold;
+}
+
+.recipeBackLink:hover {
+  text-decoration: underline;
+}
+
+.categoryChips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-bottom: 16px;
+}
+
+.categoryChip {
+  background-color: var(--tiffany-blue);
+  color: var(--alice-blue);
+  border: none;
+  padding: 8px 16px;
+  border-radius: 16px;
+  cursor: pointer;
+  font-size: 1em;
+  font-family: inherit;
+}
+
+.categoryChip:hover {
+  text-decoration: underline;
+}
+
+.categoryChip.selected {
+  background-color: var(--atomic-tangerine);
+  color: var(--caribbean-current);
+}
+
+.recipeGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 20px;
+}
+
+.recipeGridItem {
+  background-color: var(--alice-blue);
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  text-align: center;
+  font-size: 1em;
+  text-decoration: none;
+  color: inherit;
+  transition: background-color 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+}
+
+.recipeGridItem:hover {
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+</style>

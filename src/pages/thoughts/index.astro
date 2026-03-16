@@ -1,0 +1,109 @@
+---
+import { getCollection } from 'astro:content';
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import Breadcrumb from '../../components/Breadcrumb.astro';
+
+const allPosts = await getCollection('thoughts');
+const posts = allPosts
+  .filter(p => p.data.title)
+  .sort((a, b) => {
+    const dateA = a.data.date ? new Date(a.data.date).getTime() : 0;
+    const dateB = b.data.date ? new Date(b.data.date).getTime() : 0;
+    return dateB - dateA;
+  });
+---
+
+<BaseLayout title="thoughts - devines.org" bodyClass="thoughts-body">
+  <div id="thoughts-main">
+    <div class="blogContainer">
+      <Breadcrumb items={[{ path: '/thoughts', label: 'thoughts' }]} />
+      <div class="postsList">
+        {posts.map(post => (
+          <article class="postSummary">
+            {post.data.date && (
+              <div class="postMeta">
+                {new Date(post.data.date).toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' })}
+              </div>
+            )}
+            <h2>
+              <a href={`/thoughts/${post.slug}`}>{post.data.title}</a>
+            </h2>
+            {post.data.description && (
+              <p class="postDesc">{post.data.description}</p>
+            )}
+          </article>
+        ))}
+      </div>
+    </div>
+  </div>
+</BaseLayout>
+
+<style>
+:global(.thoughts-body) {
+  background: #7A251E;
+  margin: 0;
+  padding: 0;
+}
+
+#thoughts-main {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  min-height: 100vh;
+  background: #7A251E;
+  font-family: 'Courier New', Courier, monospace;
+  color: #D7C9A7;
+}
+
+
+.blogContainer {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 2rem;
+}
+
+.postsList {
+  display: flex;
+  flex-direction: column;
+  gap: 2.5rem;
+  margin-top: 2.5rem;
+}
+
+.postSummary {
+  border-left: 2px solid #3D1916;
+  padding-left: 1rem;
+  transition: border-color 0.2s;
+}
+
+.postSummary:hover {
+  border-color: #DFBD22;
+}
+
+.postMeta {
+  color: rgba(215, 201, 167, 0.5);
+  font-size: 0.8rem;
+  margin-bottom: 0.35rem;
+}
+
+.postSummary h2 {
+  margin: 0 0 0.5rem;
+  font-size: 1.1rem;
+}
+
+.postSummary h2 a {
+  color: #D7C9A7;
+  text-decoration: none;
+}
+
+.postSummary h2 a:hover {
+  color: #DFBD22;
+}
+
+.postDesc {
+  color: rgba(215, 201, 167, 0.65);
+  font-size: 0.9rem;
+  margin: 0;
+  line-height: 1.5;
+}
+</style>

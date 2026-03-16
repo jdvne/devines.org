@@ -1,0 +1,26 @@
+# Trails
+# Each entry references a .geojson file in src/data/trails/.
+# Run `npm run convert-trails` to generate .geojson files from .gpx files dropped in the repo root.
+#
+# file:    filename inside src/data/trails/ (required)
+# name:    label shown when clicking the trail (required)
+# type:    pin color category — same options as locations (default: visited/gold)
+# date:    optional date of first hike
+# caption: optional comment
+
+- file: "afternoon-hike-at-riprap-trail.geojson"
+  name: "Riprap Trail"
+  type: parks
+  date: "March 10, 2024"
+
+- file: "afternoon-hike-at-sligo-creek-trail.geojson"
+  name: "Sligo Creek Trail"
+  type: parks
+  date: "May 18, 2025"
+  caption: "long hike with Steph"
+
+- file: "afternoon-hike-at-rock-creek-to-washington-monument.geojson"
+  name: "Rock Creek to Washington Monument"
+  type: parks
+  date: "September 2, 2024"
+  caption: "walked with Steph from home"

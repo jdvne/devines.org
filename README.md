@@ -1,32 +1,136 @@
 # devines.org
 
-## for adding new recipes
-1. Navigate the project files to [src/pages/cookbook/posts](https://github.com/jdvne/devines.org/tree/main/src/pages/cookbook/posts).
-2. Use any existing recipe as a reference.a
-3. Click `Add file` > `Create new file`
-4. Name the file as you would the recipe, but in all lowercase and dash-separated (`-`), with the Markdown (`.md`) filetype ending. Ex:
-```
-pepita-crusted-salmon.md
-```
-5. Type some basic frontmatter (title and details) for the recipe. Ex:
-```md
+Personal site built with [Astro](https://astro.build). Deploys automatically to GitHub Pages on every push to `main`.
+
 ---
-title: Apple Pie
-category: Dessert
+
+## Adding a Recipe
+
+1. Go to [`src/content/cookbook/`](https://github.com/jdvne/devines.org/tree/main/src/content/cookbook) on GitHub.
+
+2. Click **Add file** → **Create new file**.
+
+3. Name the file after the recipe in all lowercase with dashes and a `.md` extension:
+   ```
+   pepita-crusted-salmon.md
+   ```
+
+4. At the top of the file, add the recipe details between the `---` lines. Only `title` and `category` are required — the rest are optional:
+   ```
+   ---
+   title: Apple Pie
+   category: Dessert
+   preparationTime: 1 hour
+   cookTime: 1 hour
+   cookTemperature: 400 F
+   totalTime: 2 hours
+   ---
+   ```
+
+   Available categories: `Entree`, `Dessert`, `Side`, `Snack`, `Breakfast`, `Drink`
+
+5. Below the `---`, write the recipe using this format:
+   ```
+   ## Ingredients
+
+   - [ ] 2 cups flour
+   - [ ] 1 tsp salt
+   - [ ] ...
+
+   ## Instructions
+
+   1. Preheat oven to 350 F.
+   2. Mix the dry ingredients together.
+   3. ...
+   ```
+
+   The `- [ ]` checkboxes are optional but nice — they become interactive checkboxes on the site that remember your progress.
+
+6. Click **Commit changes** and the recipe will be live on the site within a few minutes.
+
 ---
+
+## Adding a Thought
+
+1. Go to [`src/content/thoughts/`](https://github.com/jdvne/devines.org/tree/main/src/content/thoughts) on GitHub.
+
+2. Click **Add file** → **Create new file**.
+
+3. Name the file after the post in all lowercase with dashes and a `.md` extension:
+   ```
+   my-first-post.md
+   ```
+   This becomes the URL: `devines.org/thoughts/my-first-post`
+
+4. At the top of the file, add the post details between the `---` lines:
+   ```
+   ---
+   title: My First Post
+   date: 2026-03-15
+   description: A short sentence summarizing what this is about.
+   ---
+   ```
+
+5. Below the `---`, write the post in plain text using Markdown:
+   ```
+   Some opening thoughts here.
+
+   ## A Section Heading
+
+   More content here. You can use **bold**, _italic_, or write
+   code like `this`.
+
+   ## Another Section
+
+   - bullet points work too
+   - and so do numbered lists
+   ```
+
+6. Click **Commit changes** and the post will appear on the site within a few minutes.
+
+---
+
+## Adding a Trail to the Travel Map
+
+Trails are plotted as dashed lines on the travel map. The workflow uses GPX files exported from AllTrails.
+
+### Step 1 — Export from AllTrails
+
+On AllTrails, open the trail you recorded and tap **Export** → **GPX**.
+
+### Step 2 — Convert to GeoJSON
+
+Drop the `.gpx` file into the **root of the repo**, then run:
+
+```bash
+npm run convert-trails
 ```
-6. Type the rest of the recipe generally using this general template.
-```md
-## Ingredients
 
-- [ ] 7 large Granny Smith Apples
-- [ ] ...
+This generates a `.geojson` file in `src/data/trails/` and prints the filename. The original `.gpx` file is gitignored and will not be committed.
 
-## Instructions
+### Step 3 — Add metadata in `trails.yml`
 
-1. Prepare 1 pie crust as directed, set aside.
-2. ...
+Open `src/data/trails.yml` and add an entry:
+
+```yaml
+- file: "your-trail-name.geojson"   # filename printed by the convert script
+  name: "Your Trail Name"           # shown when clicking the trail
+  type: parks                       # pin color (visited/lived/want/family/work/parks)
+  date: "March 10, 2024"            # optional
+  caption: "great views"            # optional
 ```
-Feel free to insert comments, asides, or whatever you wish.
 
-7. Click `Commit` > `Commit changes`, and see your new recipe live on the site in a few minutes!
+### Step 4 — Commit
+
+Commit the `.geojson` file and the updated `trails.yml`. The trail will appear on the map at `devines.org/travel`.
+
+---
+
+## Running Locally
+
+```bash
+npm install
+npm run dev      # http://localhost:4321
+npm run build    # build for production
+npm run preview  # preview the production build
+```
