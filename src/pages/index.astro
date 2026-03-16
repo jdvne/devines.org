@@ -13,6 +13,7 @@ import BaseLayout from '../layouts/BaseLayout.astro';
           <span class="resume-label">now</span>
           <ul>
             <li>sr. swe @ capital one</li>
+            <li>aws certified solutions architect</li>
           </ul>
         </div>
         <div class="resume-section">
@@ -31,6 +32,10 @@ import BaseLayout from '../layouts/BaseLayout.astro';
         <a href="/wedding" class="navLink">wedding</a><span class="navSep">/</span>
         <a href="/travel" class="navLink">travel</a>
       </nav>
+      <div class="social">
+        <a href="https://github.com/jdvne" class="socialLink" target="_blank" rel="noopener">github</a><span class="navSep">/</span>
+        <a href="https://www.linkedin.com/in/jdvne/" class="socialLink" target="_blank" rel="noopener">linkedin</a>
+      </div>
     </div>
   </main>
 </BaseLayout>
@@ -118,6 +123,24 @@ import BaseLayout from '../layouts/BaseLayout.astro';
   color: rgba(215, 201, 167, 0.15);
   font-size: 0.8rem;
   user-select: none;
+}
+
+.social {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin-top: 0.6rem;
+}
+
+.socialLink {
+  color: rgba(215, 201, 167, 0.2);
+  text-decoration: none;
+  font-size: 0.75rem;
+  transition: color 0.2s;
+}
+
+.socialLink:hover {
+  color: rgba(215, 201, 167, 0.6);
 }
 
 .resume {
