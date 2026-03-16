@@ -25,3 +25,6 @@ dist-ssr
 
 # Video Frames
 public/assets/videos/the_great_wave/frames_png
+
+# GPX source files — convert to GeoJSON with: npm run convert-trails
+*.gpx

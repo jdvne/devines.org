@@ -6,7 +6,19 @@ export default defineConfig({
   site: 'https://devines.org',
   output: 'static',
   integrations: [mdx()],
-  vite: { plugins: [yaml()] },
+  vite: {
+    plugins: [
+      yaml(),
+      {
+        name: 'geojson',
+        transform(code, id) {
+          if (id.endsWith('.geojson')) {
+            return { code: `export default ${code}` };
+          }
+        },
+      },
+    ],
+  },
   markdown: {
     shikiConfig: { theme: 'github-dark' },
   },

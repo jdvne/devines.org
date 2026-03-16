@@ -1,0 +1,536 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import travelData from '../data/travel.yml';
+import trailsMeta from '../data/trails.yml';
+
+const locations = travelData;
+
+const geojsonFiles = import.meta.glob('../data/trails/*.geojson', { eager: true });
+
+const trails = (trailsMeta ?? []).map((meta) => {
+  const key     = `../data/trails/${meta.file}`;
+  const geojson = (geojsonFiles[key] as any)?.default ?? geojsonFiles[key];
+  return geojson ? { ...meta, geojson } : null;
+}).filter(Boolean);
+---
+
+<BaseLayout title="travel - devines.org" bodyClass="travel-body">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/maplibre-gl@4/dist/maplibre-gl.min.css" />
+
+  <div id="travel-main">
+    <div id="map"></div>
+
+    <nav class="overlay-nav">
+      <a href="/">devines.org</a>
+      <span class="sep">/</span>
+      <span>travel</span>
+    </nav>
+
+    <div id="info-panel" class="info-panel hidden">
+      <button id="info-close" aria-label="close">✕</button>
+      <div id="info-name" class="info-name"></div>
+      <div id="info-date" class="info-date"></div>
+      <div id="info-caption" class="info-caption"></div>
+    </div>
+
+    <div id="legend" class="legend hidden"></div>
+  </div>
+</BaseLayout>
+
+<script is:inline define:vars={{ locations, trails }}>
+  const PIN_COLORS = {
+    visited: '#DFBD22',
+    lived:   '#C44B3A',
+    want:    '#5B8FA8',
+    family:  '#7A9B5A',
+    work:    '#9B7AC4',
+    parks:   '#4A7C3F',
+  };
+
+  function pinColor(type) {
+    return PIN_COLORS[type] || PIN_COLORS.visited;
+  }
+
+  function trailLegendSvg(color) {
+    return '<svg viewBox="0 0 24 8" xmlns="http://www.w3.org/2000/svg" width="24" height="8">'
+      + '<line x1="1" y1="4" x2="23" y2="4" stroke="' + color + '" stroke-width="2.5" stroke-dasharray="0 4" stroke-linecap="round"/>'
+      + '</svg>';
+  }
+
+  function pinLegendSvg(color) {
+    return '<svg viewBox="0 0 14 22" xmlns="http://www.w3.org/2000/svg" width="14" height="22">'
+      + '<circle cx="7" cy="7" r="6" fill="' + color + '" stroke="#7A251E" stroke-width="1.2"/>'
+      + '<circle cx="7" cy="7" r="2.5" fill="#7A251E" opacity="0.35"/>'
+      + '<line x1="7" y1="13" x2="7" y2="21" stroke="' + color + '" stroke-width="1.5" stroke-linecap="round"/>'
+      + '</svg>';
+  }
+
+  function pinSvg(color) {
+    return '<svg viewBox="0 0 18 30" xmlns="http://www.w3.org/2000/svg" width="18" height="30">'
+      + '<circle cx="9" cy="9" r="8" fill="' + color + '" stroke="#7A251E" stroke-width="1.5"/>'
+      + '<circle cx="9" cy="9" r="3" fill="#7A251E" opacity="0.35"/>'
+      + '<line x1="9" y1="17" x2="9" y2="29" stroke="' + color + '" stroke-width="2" stroke-linecap="round"/>'
+      + '</svg>';
+  }
+
+  const RED_SANDS = {
+    version: 8,
+    sources: {
+      openmaptiles: {
+        type: 'vector',
+        url: 'https://tiles.openfreemap.org/planet',
+      },
+      dem: {
+        type: 'raster-dem',
+        tiles: ['https://s3.amazonaws.com/elevation-tiles-prod/terrarium/{z}/{x}/{y}.png'],
+        tileSize: 256,
+        encoding: 'terrarium',
+        maxzoom: 15,
+      },
+    },
+    layers: [
+      {
+        id: 'background',
+        type: 'background',
+        paint: { 'background-color': '#C8B898' },
+      },
+      {
+        id: 'hillshade',
+        type: 'hillshade',
+        source: 'dem',
+        paint: {
+          'hillshade-illumination-direction': 335,
+          'hillshade-exaggeration': 0.4,
+          'hillshade-shadow-color': '#5A2A10',
+          'hillshade-highlight-color': '#D8C8A8',
+          'hillshade-accent-color': '#8B5A28',
+        },
+      },
+      {
+        id: 'water',
+        type: 'fill',
+        source: 'openmaptiles',
+        'source-layer': 'water',
+        paint: { 'fill-color': '#7A251E' },
+      },
+      {
+        id: 'waterway',
+        type: 'line',
+        source: 'openmaptiles',
+        'source-layer': 'waterway',
+        minzoom: 6,
+        paint: { 'line-color': '#7A251E', 'line-width': 1 },
+      },
+      {
+        id: 'boundary-country',
+        type: 'line',
+        source: 'openmaptiles',
+        'source-layer': 'boundary',
+        filter: ['all', ['==', 'admin_level', 2], ['!=', 'maritime', 1]],
+        paint: {
+          'line-color': '#6B4020',
+          'line-width': ['interpolate', ['linear'], ['zoom'], 0, 1, 4, 2, 8, 3.5],
+        },
+      },
+      {
+        id: 'boundary-state',
+        type: 'line',
+        source: 'openmaptiles',
+        'source-layer': 'boundary',
+        filter: ['all', ['==', 'admin_level', 4], ['!=', 'maritime', 1]],
+        minzoom: 4,
+        paint: {
+          'line-color': '#7A5028',
+          'line-width': 1,
+          'line-dasharray': [4, 3],
+        },
+      },
+      {
+        id: 'road-highway',
+        type: 'line',
+        source: 'openmaptiles',
+        'source-layer': 'transportation',
+        minzoom: 5,
+        filter: ['==', 'class', 'motorway'],
+        paint: {
+          'line-color': '#B8A878',
+          'line-opacity': 0.5,
+          'line-width': ['interpolate', ['linear'], ['zoom'], 5, 0.5, 10, 2],
+        },
+      },
+      {
+        id: 'road-major',
+        type: 'line',
+        source: 'openmaptiles',
+        'source-layer': 'transportation',
+        minzoom: 7,
+        filter: ['in', 'class', 'primary', 'secondary'],
+        paint: {
+          'line-color': '#B0A070',
+          'line-opacity': 0.4,
+          'line-width': ['interpolate', ['linear'], ['zoom'], 7, 0.5, 10, 1.5],
+        },
+      },
+      {
+        id: 'road-minor',
+        type: 'line',
+        source: 'openmaptiles',
+        'source-layer': 'transportation',
+        minzoom: 9,
+        filter: ['in', 'class', 'minor', 'tertiary'],
+        paint: { 'line-color': '#A89860', 'line-opacity': 0.3, 'line-width': 0.5 },
+      },
+    ],
+  };
+
+  function initMap() {
+    const map = new maplibregl.Map({
+      container: 'map',
+      style: RED_SANDS,
+      center: [-90, 37],
+      zoom: 3.5,
+      attributionControl: false,
+    });
+
+    map.addControl(
+      new maplibregl.NavigationControl({ showCompass: false }),
+      'bottom-right'
+    );
+
+    map.addControl(
+      new maplibregl.AttributionControl({ compact: true }),
+      'bottom-left'
+    );
+
+    if (trails.length > 0) {
+      map.on('load', function () {
+        map.addSource('trails', {
+          type: 'geojson',
+          data: {
+            type: 'FeatureCollection',
+            features: trails.map(function (t) {
+              var color = t.color || pinColor(t.type);
+              // GeoJSON from AllTrails is a FeatureCollection — extract the first feature's geometry
+              var geometry = t.geojson.features ? t.geojson.features[0].geometry : t.geojson.geometry;
+              return {
+                type: 'Feature',
+                properties: {
+                  name:    t.name,
+                  color:   color,
+                  date:    t.date    || '',
+                  caption: t.caption || '',
+                },
+                geometry: geometry,
+              };
+            }),
+          },
+        });
+
+        map.addLayer({
+          id: 'trails-underline',
+          type: 'line',
+          source: 'trails',
+          layout: { 'line-cap': 'butt' },
+          paint: {
+            'line-color': '#C8B898',
+            'line-width': 8,
+          },
+        });
+
+        map.addLayer({
+          id: 'trails-line',
+          type: 'line',
+          source: 'trails',
+          layout: { 'line-cap': 'round' },
+          paint: {
+            'line-color': ['get', 'color'],
+            'line-width': 4,
+            'line-dasharray': [0, 1.4],
+          },
+        });
+
+        map.on('click', 'trails-line', function (e) {
+          const props = e.features[0].properties;
+          nameEl.textContent    = props.name;
+          dateEl.textContent    = props.date ? 'first visited ' + props.date : '';
+          dateEl.style.display  = props.date ? 'block' : 'none';
+          captionEl.textContent = props.caption;
+          captionEl.style.display = props.caption ? 'block' : 'none';
+          panel.style.borderLeftColor = props.color;
+          panel.classList.remove('hidden');
+          e.originalEvent.stopPropagation();
+        });
+
+        ['trails-line', 'trails-underline'].forEach(function (id) {
+          map.on('mouseenter', id, function () {
+            map.getCanvas().style.cursor = 'pointer';
+          });
+          map.on('mouseleave', id, function () {
+            map.getCanvas().style.cursor = '';
+          });
+        });
+      });
+    }
+
+    const panel    = document.getElementById('info-panel');
+    const nameEl   = document.getElementById('info-name');
+    const dateEl   = document.getElementById('info-date');
+    const captionEl = document.getElementById('info-caption');
+    const closeBtn = document.getElementById('info-close');
+
+    locations.forEach(function (loc) {
+      const color = pinColor(loc.type);
+      const el = document.createElement('div');
+      el.className = 'travel-marker';
+      el.innerHTML = pinSvg(color);
+
+      const marker = new maplibregl.Marker({ element: el, anchor: 'bottom' })
+        .setLngLat([loc.lng, loc.lat])
+        .addTo(map);
+
+      el.addEventListener('click', function (e) {
+        e.stopPropagation();
+        nameEl.textContent = loc.name;
+        dateEl.textContent = loc.date ? 'first visited ' + loc.date : '';
+        dateEl.style.display = loc.date ? 'block' : 'none';
+        captionEl.textContent = loc.caption || '';
+        captionEl.style.display = loc.caption ? 'block' : 'none';
+        panel.style.borderLeftColor = color;
+        panel.classList.remove('hidden');
+      });
+    });
+
+    map.on('click', function () {
+      panel.classList.add('hidden');
+    });
+
+    closeBtn.addEventListener('click', function () {
+      panel.classList.add('hidden');
+    });
+
+    // Build legend from types present in data
+    var usedPinTypes   = [...new Set(locations.map(function (l) { return l.type || 'visited'; }))];
+    var usedTrailTypes = [...new Set(trails.map(function (t) { return t.type || 'visited'; }))];
+    var order = Object.keys(PIN_COLORS);
+
+    if (usedPinTypes.length > 1 || usedTrailTypes.length > 0) {
+      var legend = document.getElementById('legend');
+      var tbody = document.createElement('tbody');
+
+      if (usedPinTypes.length > 1) {
+        usedPinTypes.sort(function (a, b) { return order.indexOf(a) - order.indexOf(b); });
+        usedPinTypes.forEach(function (type) {
+          var color = pinColor(type);
+          var tr = document.createElement('tr');
+          var label = type === 'visited' ? 'visits' : type;
+          tr.innerHTML = '<td>' + pinLegendSvg(color) + '</td><td>' + label + '</td>';
+          tbody.appendChild(tr);
+        });
+      }
+
+      usedTrailTypes.sort(function (a, b) { return order.indexOf(a) - order.indexOf(b); });
+      usedTrailTypes.forEach(function (type) {
+        var color = pinColor(type);
+        var tr = document.createElement('tr');
+        tr.innerHTML = '<td>' + trailLegendSvg(color) + '</td><td>hikes</td>';
+        tbody.appendChild(tr);
+      });
+
+      var table = document.createElement('table');
+      table.appendChild(tbody);
+      legend.appendChild(table);
+      legend.classList.remove('hidden');
+    }
+  }
+
+  const script = document.createElement('script');
+  script.src = 'https://cdn.jsdelivr.net/npm/maplibre-gl@4/dist/maplibre-gl.min.js';
+  script.onload = initMap;
+  document.head.appendChild(script);
+</script>
+
+<style>
+:global(.travel-body) {
+  background: #7A251E;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+}
+
+#travel-main {
+  position: fixed;
+  inset: 0;
+}
+
+#map {
+  width: 100%;
+  height: 100%;
+}
+
+/* MapLibre controls */
+:global(.maplibregl-ctrl-zoom-in),
+:global(.maplibregl-ctrl-zoom-out) {
+  background-color: rgba(26, 8, 0, 0.85) !important;
+  border-color: #3D1916 !important;
+}
+
+:global(.maplibregl-ctrl-zoom-in span),
+:global(.maplibregl-ctrl-zoom-out span) {
+  filter: invert(0.85) sepia(0.3);
+}
+
+:global(.maplibregl-ctrl-group) {
+  background: transparent !important;
+  border: 1px solid #3D1916 !important;
+  box-shadow: none !important;
+}
+
+:global(.maplibregl-ctrl-attrib) {
+  background: rgba(26, 8, 0, 0.6) !important;
+  color: rgba(215, 201, 167, 0.5) !important;
+  font-size: 0.65rem !important;
+}
+
+:global(.maplibregl-ctrl-attrib a) {
+  color: rgba(215, 201, 167, 0.5) !important;
+}
+
+.overlay-nav {
+  position: absolute;
+  top: 1rem;
+  left: 1rem;
+  display: flex;
+  align-items: center;
+  gap: 0.5em;
+  font-family: 'Courier New', Courier, monospace;
+  font-size: 0.85rem;
+  color: #D7C9A7;
+  background: rgba(26, 8, 0, 0.75);
+  padding: 0.4em 0.75em;
+  border-radius: 4px;
+  backdrop-filter: blur(4px);
+  z-index: 10;
+}
+
+.overlay-nav a,
+.overlay-nav a:visited,
+.overlay-nav a:link {
+  color: #D7C9A7;
+  text-decoration: none;
+  opacity: 0.6;
+  transition: opacity 0.2s;
+}
+
+.overlay-nav a:hover {
+  opacity: 1;
+}
+
+.overlay-nav .sep {
+  opacity: 0.3;
+}
+
+:global(.travel-marker) {
+  cursor: pointer;
+  filter: drop-shadow(0 2px 3px rgba(0, 0, 0, 0.35));
+  transition: transform 0.15s, filter 0.15s;
+}
+
+:global(.travel-marker:hover) {
+  transform: scale(1.25) translateY(-2px);
+  filter: drop-shadow(0 4px 6px rgba(223, 189, 34, 0.5));
+}
+
+.info-panel {
+  position: absolute;
+  bottom: 2rem;
+  left: 1rem;
+  background: rgba(26, 8, 0, 0.85);
+  border: 1px solid #3D1916;
+  border-left: 2px solid #DFBD22;
+  color: #D7C9A7;
+  font-family: 'Courier New', Courier, monospace;
+  padding: 0.75rem 2.5rem 0.75rem 1rem;
+  border-radius: 4px;
+  backdrop-filter: blur(4px);
+  min-width: 200px;
+  max-width: 280px;
+  z-index: 10;
+  transition: opacity 0.15s;
+}
+
+.info-panel.hidden {
+  opacity: 0;
+  pointer-events: none;
+}
+
+.info-name {
+  font-size: 0.9rem;
+  color: #D7C9A7;
+}
+
+.info-date {
+  font-size: 0.72rem;
+  color: rgba(215, 201, 167, 0.5);
+  margin-top: 0.2rem;
+}
+
+.info-caption {
+  font-size: 0.78rem;
+  color: rgba(215, 201, 167, 0.6);
+  margin-top: 0.25rem;
+}
+
+#info-close {
+  position: absolute;
+  top: 0.5rem;
+  right: 0.5rem;
+  background: none;
+  border: none;
+  color: rgba(215, 201, 167, 0.4);
+  cursor: pointer;
+  font-size: 0.75rem;
+  padding: 0;
+  line-height: 1;
+  transition: color 0.2s;
+}
+
+#info-close:hover {
+  color: #D7C9A7;
+}
+
+.legend {
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  background: rgba(26, 8, 0, 0.75);
+  border: 1px solid #3D1916;
+  color: #D7C9A7;
+  font-family: 'Courier New', Courier, monospace;
+  font-size: 0.78rem;
+  padding: 0.5rem 0.75rem;
+  border-radius: 4px;
+  backdrop-filter: blur(4px);
+  z-index: 10;
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+}
+
+.legend.hidden {
+  display: none;
+}
+
+.legend table {
+  border-collapse: collapse;
+}
+
+.legend td {
+  padding: 0.2rem 0;
+  vertical-align: middle;
+}
+
+.legend td:first-child {
+  padding-right: 0.65rem;
+  text-align: center;
+}
+</style>

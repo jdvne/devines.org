@@ -67,12 +67,6 @@ const formatDate = (date?: Date) => {
   color: #D7C9A7;
 }
 
-/* breadcrumb overrides */
-#thought-main :global(.breadcrumb) { color: #D7C9A7; }
-#thought-main :global(.link) { color: #D7C9A7; }
-#thought-main :global(.operator) { color: #DFBD22; }
-#thought-main :global(.method) { color: #D7C9A7; }
-#thought-main :global(.parens) { color: rgba(215, 201, 167, 0.45); }
 
 .container {
   max-width: 800px;
@@ -81,28 +75,29 @@ const formatDate = (date?: Date) => {
 }
 
 .metadata {
-  padding: 2rem 0;
+  padding: 1.5rem 0 1.5rem;
   border-bottom: 1px solid #3D1916;
   margin-bottom: 2rem;
 }
 
 .metadata h1 {
-  margin: 0;
+  margin: 0 0 0.4rem;
   color: #D7C9A7;
-  font-size: 2em;
+  font-size: 1.6em;
 }
 
 .date {
   display: block;
-  color: rgba(215, 201, 167, 0.55);
-  margin: 0.5rem 0;
-  font-size: 0.85em;
+  color: rgba(215, 201, 167, 0.5);
+  margin-bottom: 0.5rem;
+  font-size: 0.8em;
 }
 
 .description {
-  color: rgba(215, 201, 167, 0.75);
+  color: rgba(215, 201, 167, 0.7);
   font-style: italic;
-  margin: 0.5rem 0 0;
+  margin: 0;
+  font-size: 0.95em;
 }
 
 .blog-post {

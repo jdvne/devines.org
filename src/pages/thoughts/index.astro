@@ -20,18 +20,17 @@ const posts = allPosts
       <div class="postsList">
         {posts.map(post => (
           <article class="postSummary">
+            {post.data.date && (
+              <div class="postMeta">
+                {new Date(post.data.date).toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' })}
+              </div>
+            )}
             <h2>
               <a href={`/thoughts/${post.slug}`}>{post.data.title}</a>
             </h2>
-            {post.data.date && (
-              <div class="postMeta">
-                {new Date(post.data.date).toLocaleDateString()}
-              </div>
-            )}
             {post.data.description && (
               <p class="postDesc">{post.data.description}</p>
             )}
-            <a href={`/thoughts/${post.slug}`} class="readMore">Read more →</a>
           </article>
         ))}
       </div>
@@ -57,12 +56,6 @@ const posts = allPosts
   color: #D7C9A7;
 }
 
-/* breadcrumb overrides */
-#thoughts-main :global(.breadcrumb) { color: #D7C9A7; }
-#thoughts-main :global(.link) { color: #D7C9A7; }
-#thoughts-main :global(.operator) { color: #DFBD22; }
-#thoughts-main :global(.method) { color: #D7C9A7; }
-#thoughts-main :global(.parens) { color: rgba(215, 201, 167, 0.45); }
 
 .blogContainer {
   max-width: 800px;
@@ -73,31 +66,33 @@ const posts = allPosts
 .postsList {
   display: flex;
   flex-direction: column;
-  gap: 2rem;
-  margin-top: 2rem;
+  gap: 2.5rem;
+  margin-top: 2.5rem;
 }
 
 .postSummary {
-  padding: 1.5rem;
-  border: 1px solid #3D1916;
-  border-radius: 8px;
-  transition: all 0.3s ease;
-  background: #5C1A14;
+  border-left: 2px solid #3D1916;
+  padding-left: 1rem;
+  transition: border-color 0.2s;
 }
 
 .postSummary:hover {
-  transform: translateY(-2px);
   border-color: #DFBD22;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+}
+
+.postMeta {
+  color: rgba(215, 201, 167, 0.5);
+  font-size: 0.8rem;
+  margin-bottom: 0.35rem;
 }
 
 .postSummary h2 {
-  margin: 0 0 0.75rem;
-  color: #D7C9A7;
+  margin: 0 0 0.5rem;
+  font-size: 1.1rem;
 }
 
 .postSummary h2 a {
-  color: inherit;
+  color: #D7C9A7;
   text-decoration: none;
 }
 
@@ -105,31 +100,10 @@ const posts = allPosts
   color: #DFBD22;
 }
 
-.postMeta {
-  color: rgba(215, 201, 167, 0.55);
-  font-size: 0.85rem;
-  margin-bottom: 0.75rem;
-}
-
 .postDesc {
-  color: rgba(215, 201, 167, 0.75);
-  margin: 0;
-}
-
-.readMore {
-  display: inline-block;
-  margin-top: 1rem;
-  color: #DFBD22;
-  text-decoration: none;
-  border: 1px solid #DFBD22;
-  padding: 0.4rem 1.2rem;
-  border-radius: 4px;
-  transition: all 0.2s ease;
+  color: rgba(215, 201, 167, 0.65);
   font-size: 0.9rem;
-}
-
-.readMore:hover {
-  color: #5C1A14;
-  background-color: #DFBD22;
+  margin: 0;
+  line-height: 1.5;
 }
 </style>

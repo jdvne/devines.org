@@ -1,0 +1,513 @@
+# Travel locations
+# Add a new entry for each place you've visited.
+# lat/lng: coordinates (search "place name coordinates" on Google)
+# caption: optional comment shown when clicking the pin
+# date: optional date of first visit (e.g. "2019-06" or "2019" or "June 2019")
+# type: optional pin color category — omit for default gold
+#   visited  gold   — places you've been
+#   lived    red    — places you've lived
+#   want     blue   — places you want to go
+#   family   green  — family locations
+#   work     purple — work travel
+#   parks    forest — national parks visited
+
+# Canada
+- name: "Gatineau, QC"
+  lat: 45.4765
+  lng: -75.7013
+
+- name: "Montreal, QC"
+  lat: 45.5017
+  lng: -73.5673
+
+- name: "Ottawa, ON"
+  lat: 45.4215
+  lng: -75.6972
+
+- name: "Saint-Armand, QC"
+  lat: 45.0333
+  lng: -72.9833
+
+- name: "Toronto, ON"
+  lat: 43.6532
+  lng: -79.3832
+
+# Greece
+- name: "Athens, Greece"
+  lat: 37.9838
+  lng: 23.7275
+
+- name: "Mykonos, Greece"
+  lat: 37.4467
+  lng: 25.3289
+
+# Italy
+- name: "Florence, Italy"
+  lat: 43.7696
+  lng: 11.2558
+
+- name: "Rome, Italy"
+  lat: 41.9028
+  lng: 12.4964
+
+- name: "Venice, Italy"
+  lat: 45.4408
+  lng: 12.3155
+
+# Japan
+- name: "Chiyoda, Tokyo"
+  lat: 35.6940
+  lng: 139.7536
+
+- name: "Minato, Tokyo"
+  lat: 35.6581
+  lng: 139.7514
+
+- name: "Shibuya, Tokyo"
+  lat: 35.6580
+  lng: 139.7016
+
+- name: "Shinjuku, Tokyo"
+  lat: 35.6938
+  lng: 139.7034
+
+- name: "Taito, Tokyo"
+  lat: 35.7126
+  lng: 139.7802
+
+- name: "Tokyo, Japan"
+  lat: 35.6762
+  lng: 139.6503
+
+# United Kingdom
+- name: "London, UK"
+  lat: 51.5074
+  lng: -0.1278
+
+- name: "Silverstone, UK"
+  lat: 52.0736
+  lng: -1.0169
+
+# United States
+- name: "Abingdon, VA"
+  lat: 36.7098
+  lng: -81.9774
+
+- name: "Assateague Island National Seashore"
+  lat: 38.0538
+  lng: -75.2132
+  type: parks
+  date: "September 1, 2025"
+
+- name: "Baltimore, MD"
+  lat: 39.2904
+  lng: -76.6122
+
+- name: "Bethesda, MD"
+  lat: 38.9807
+  lng: -77.1002
+
+- name: "Binghamton, NY"
+  lat: 42.0987
+  lng: -75.9180
+
+- name: "Blacksburg, VA"
+  lat: 37.2296
+  lng: -80.4139
+
+- name: "Bland, VA"
+  lat: 37.1023
+  lng: -81.1176
+
+- name: "Bluefield, VA"
+  lat: 37.2515
+  lng: -81.2776
+
+- name: "Boone, NC"
+  lat: 36.2168
+  lng: -81.6746
+
+- name: "Bristol, VA"
+  lat: 36.5959
+  lng: -82.1887
+
+- name: "Brooklyn, NY"
+  lat: 40.6782
+  lng: -73.9442
+
+- name: "Charlotte, NC"
+  lat: 35.2271
+  lng: -80.8431
+
+- name: "Charlottesville, VA"
+  lat: 38.0293
+  lng: -78.4767
+  caption: "UVA"
+
+- name: "Chesapeake, VA"
+  lat: 36.7682
+  lng: -76.2875
+
+- name: "Chicago, IL"
+  lat: 41.8781
+  lng: -87.6298
+
+- name: "Chilhowie, VA"
+  lat: 36.7968
+  lng: -81.6826
+
+- name: "Christiansburg, VA"
+  lat: 37.1296
+  lng: -80.4090
+
+- name: "Cincinnati, OH"
+  lat: 39.1031
+  lng: -84.5120
+
+- name: "Cleveland, OH"
+  lat: 41.4993
+  lng: -81.6944
+
+- name: "Dublin, VA"
+  lat: 37.1040
+  lng: -80.6887
+
+- name: "Durham, NC"
+  lat: 35.9940
+  lng: -78.8986
+
+- name: "Floyd, VA"
+  lat: 36.9143
+  lng: -80.3153
+
+- name: "Frederick, MD"
+  lat: 39.4143
+  lng: -77.4105
+
+- name: "Front Royal, VA"
+  lat: 38.9184
+  lng: -78.1947
+
+- name: "Gaithersburg, MD"
+  lat: 39.1434
+  lng: -77.2014
+
+- name: "Galax, VA"
+  lat: 36.6612
+  lng: -80.9237
+
+- name: "Gastonia, NC"
+  lat: 35.2621
+  lng: -81.1873
+
+- name: "Gatlinburg, TN"
+  lat: 35.7143
+  lng: -83.5113
+
+- name: "Gettysburg NMP"
+  lat: 39.8309
+  lng: -77.2311
+  type: parks
+  date: "November 29, 2025"
+
+- name: "Harpers Ferry NHP"
+  lat: 39.3251
+  lng: -77.7458
+  type: parks
+  date: "April 27, 2025"
+
+- name: "Harrisonburg, VA"
+  lat: 38.4496
+  lng: -78.8689
+
+- name: "Hickory, NC"
+  lat: 35.7332
+  lng: -81.3412
+
+- name: "Hillsville, VA"
+  lat: 36.7626
+  lng: -80.7340
+
+- name: "Independence, VA"
+  lat: 36.6195
+  lng: -81.1548
+
+- name: "Kings Mountain, NC"
+  lat: 35.2457
+  lng: -81.3409
+
+- name: "Luray, VA"
+  lat: 38.6635
+  lng: -78.4583
+
+- name: "Lynchburg, VA"
+  lat: 37.4138
+  lng: -79.1422
+
+- name: "Marion, VA"
+  lat: 36.8340
+  lng: -81.5143
+
+- name: "Max Meadows, VA"
+  lat: 36.9440
+  lng: -81.0673
+
+- name: "Morganton, NC"
+  lat: 35.7451
+  lng: -81.6846
+
+- name: "Mount Airy, NC"
+  lat: 36.4990
+  lng: -80.6073
+
+- name: "Myrtle Beach, SC"
+  lat: 33.6891
+  lng: -78.8867
+
+- name: "Natural Bridge, VA"
+  lat: 37.6318
+  lng: -79.5428
+
+- name: "New York City, NY"
+  lat: 40.7128
+  lng: -74.0060
+
+- name: "Theodore Roosevelt Birthplace NHS"
+  lat: 40.7385
+  lng: -73.9891
+  type: parks
+  date: "February 6, 2026"
+
+- name: "African Burial Ground NM"
+  lat: 40.7143
+  lng: -74.0068
+  type: parks
+  date: "February 6, 2026"
+
+- name: "Stonewall NM"
+  lat: 40.7335
+  lng: -74.0021
+  type: parks
+  date: "February 6, 2026"
+
+- name: "Federal Hall NM"
+  lat: 40.7073
+  lng: -74.0102
+  type: parks
+  date: "February 6, 2026"
+
+- name: "Castle Clinton NM"
+  lat: 40.7034
+  lng: -74.0170
+  type: parks
+  date: "February 6, 2026"
+
+- name: "Niagara Falls, NY"
+  lat: 43.0962
+  lng: -79.0377
+
+- name: "Norfolk, VA"
+  lat: 36.8508
+  lng: -76.2859
+
+- name: "Orlando, FL"
+  lat: 28.5383
+  lng: -81.3792
+
+- name: "Philadelphia, PA"
+  lat: 39.9526
+  lng: -75.1652
+
+- name: "Pigeon Forge, TN"
+  lat: 35.7884
+  lng: -83.5541
+
+- name: "Poughkeepsie, NY"
+  lat: 41.7004
+  lng: -73.9210
+
+- name: "Pulaski, VA"
+  lat: 37.0534
+  lng: -80.7762
+
+- name: "Radford, VA"
+  lat: 37.1318
+  lng: -80.5762
+
+- name: "Raleigh, NC"
+  lat: 35.7796
+  lng: -78.6382
+
+- name: "Red Bank, NJ"
+  lat: 40.3468
+  lng: -74.0646
+
+- name: "Reston, VA"
+  lat: 38.9687
+  lng: -77.3411
+
+- name: "Richmond, VA"
+  lat: 37.5407
+  lng: -77.4360
+
+- name: "Roanoke, VA"
+  lat: 37.2710
+  lng: -79.9414
+
+- name: "Rock Hill, SC"
+  lat: 34.9249
+  lng: -81.0251
+
+- name: "Rockville, MD"
+  lat: 39.0840
+  lng: -77.1528
+
+- name: "Rural Retreat, VA"
+  lat: 36.8968
+  lng: -81.2737
+
+- name: "Saint Simons Island, GA"
+  lat: 31.1454
+  lng: -81.3673
+
+- name: "Savannah, GA"
+  lat: 32.0809
+  lng: -81.0912
+
+- name: "Shenandoah NP — Dickey Ridge"
+  lat: 38.8527
+  lng: -78.1831
+  type: parks
+  date: "May 30, 2025"
+
+- name: "Shenandoah NP — Big Meadows"
+  lat: 38.5291
+  lng: -78.4385
+  type: parks
+  date: "May 31, 2025"
+
+- name: "Silver Spring, MD"
+  lat: 38.9907
+  lng: -77.0261
+
+- name: "South of the Border, SC"
+  lat: 34.8968
+  lng: -79.3064
+
+- name: "St. Augustine, FL"
+  lat: 29.8947
+  lng: -81.3145
+
+- name: "Tallahassee, FL"
+  lat: 30.4518
+  lng: -84.2807
+
+- name: "Timonium, MD"
+  lat: 39.4537
+  lng: -76.6191
+
+- name: "Tybee Island, GA"
+  lat: 31.9987
+  lng: -80.8451
+
+- name: "Tysons Corner, VA"
+  lat: 38.9187
+  lng: -77.2311
+
+- name: "Virginia Beach, VA"
+  lat: 36.8529
+  lng: -75.9780
+
+- name: "Washington, DC"
+  lat: 38.9072
+  lng: -77.0369
+
+- name: "Williamsburg, VA"
+  lat: 37.2707
+  lng: -76.7075
+
+- name: "Winston-Salem, NC"
+  lat: 36.0999
+  lng: -80.2442
+
+- name: "Wytheville, VA"
+  lat: 36.9482
+  lng: -81.0848
+
+- name: "C&O Canal NHP"
+  lat: 38.9022
+  lng: -77.0596
+  type: parks
+  date: "March 30, 2025"
+
+- name: "Greenbelt Park"
+  lat: 38.9957
+  lng: -76.8800
+  type: parks
+  date: "April 5, 2025"
+
+- name: "Baltimore-Washington Pkwy"
+  lat: 39.0368
+  lng: -76.8734
+  type: parks
+  date: "April 5, 2025"
+
+- name: "Potomac Heritage NST"
+  lat: 38.9350
+  lng: -77.1400
+  type: parks
+  date: "May 16, 2025"
+
+- name: "Antietam NB"
+  lat: 39.4616
+  lng: -77.7481
+  type: parks
+  date: "May 16, 2025"
+
+- name: "Monocacy NB"
+  lat: 39.3560
+  lng: -77.3935
+  type: parks
+  date: "May 16, 2025"
+
+- name: "Arlington House"
+  lat: 38.8820
+  lng: -77.0721
+  type: parks
+  date: "August 31, 2025"
+
+- name: "Arlington National Cemetery"
+  lat: 38.8786
+  lng: -77.0694
+  type: parks
+  date: "August 31, 2025"
+
+- name: "Great Falls Park"
+  lat: 38.9959
+  lng: -77.2520
+  type: parks
+  date: "September 20, 2025"
+
+- name: "Fort McHenry NM"
+  lat: 39.2630
+  lng: -76.5798
+  type: parks
+  date: "November 23, 2025"
+
+- name: "Maggie L. Walker NHS"
+  lat: 37.5481
+  lng: -77.4357
+  type: parks
+  date: "December 27, 2025"
+
+- name: "Eisenhower NHS"
+  lat: 39.7933
+  lng: -77.2748
+  type: parks
+  date: "January 17, 2026"
+
+- name: "Hampton NHS"
+  lat: 39.4302
+  lng: -76.6039
+  type: parks
+  date: "January 18, 2026"

@@ -7,13 +7,16 @@
   "scripts": {
     "dev": "astro dev",
     "build": "astro build",
-    "preview": "astro preview"
+    "preview": "astro preview",
+    "convert-trails": "node scripts/convert-trails.mjs"
   },
   "dependencies": {
-    "astro": "^5.0.0",
-    "@astrojs/mdx": "^4.0.0"
+    "@astrojs/mdx": "^4.0.0",
+    "astro": "^5.0.0"
   },
   "devDependencies": {
-    "@rollup/plugin-yaml": "^4.0.0"
+    "@mapbox/togeojson": "^0.16.2",
+    "@rollup/plugin-yaml": "^4.0.0",
+    "@xmldom/xmldom": "^0.8.11"
   }
 }
