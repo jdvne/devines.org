@@ -511,3 +511,141 @@
   lng: -76.6039
   type: parks
   date: "January 18, 2026"
+
+- name: "Rock Creek Park"
+  lat: 38.9540
+  lng: -77.0458
+  type: parks
+  date: "April 6, 2025"
+
+- name: "President's Park"
+  lat: 38.8977
+  lng: -77.0366
+  type: parks
+  date: "May 11, 2025"
+
+- name: "National WWI Memorial"
+  lat: 38.8951
+  lng: -77.0396
+  type: parks
+  date: "May 11, 2025"
+
+- name: "Ford's Theatre NHS"
+  lat: 38.8966
+  lng: -77.0259
+  type: parks
+  date: "May 11, 2025"
+
+- name: "Belmont-Paul Women's Equality NM"
+  lat: 38.8928
+  lng: -77.0048
+  type: parks
+  date: "May 11, 2025"
+
+- name: "National Mall and Memorial Parks"
+  lat: 38.8895
+  lng: -77.0407
+  type: parks
+  date: "May 11, 2025"
+
+- name: "Dwight D. Eisenhower Memorial"
+  lat: 38.8843
+  lng: -77.0188
+  type: parks
+  date: "May 11, 2025"
+
+- name: "National Cherry Blossom Festival"
+  lat: 38.8830
+  lng: -77.0385
+  type: parks
+  date: "May 11, 2025"
+
+- name: "Washington Monument"
+  lat: 38.8895
+  lng: -77.0353
+  type: parks
+  date: "May 11, 2025"
+
+- name: "Vietnam Veterans Memorial"
+  lat: 38.8913
+  lng: -77.0476
+  type: parks
+  date: "May 11, 2025"
+
+- name: "Lincoln Memorial"
+  lat: 38.8893
+  lng: -77.0502
+  type: parks
+  date: "May 11, 2025"
+
+- name: "Korean War Veterans Memorial"
+  lat: 38.8871
+  lng: -77.0474
+  type: parks
+  date: "May 11, 2025"
+
+- name: "US Park Police Horse Stables"
+  lat: 38.8798
+  lng: -77.0505
+  type: parks
+  date: "May 11, 2025"
+
+- name: "MLK Memorial"
+  lat: 38.8862
+  lng: -77.0441
+  type: parks
+  date: "May 11, 2025"
+
+- name: "WWII Memorial"
+  lat: 38.8894
+  lng: -77.0408
+  type: parks
+  date: "May 11, 2025"
+
+- name: "Pennsylvania Avenue NHP"
+  lat: 38.8954
+  lng: -77.0263
+  type: parks
+  date: "May 11, 2025"
+
+- name: "FDR Memorial"
+  lat: 38.8831
+  lng: -77.0447
+  type: parks
+  date: "May 11, 2025"
+
+- name: "Jefferson Memorial"
+  lat: 38.8814
+  lng: -77.0365
+  type: parks
+  date: "May 11, 2025"
+
+- name: "Theodore Roosevelt Island"
+  lat: 38.8963
+  lng: -77.0623
+  type: parks
+  date: "September 20, 2025"
+
+- name: "LBJ Memorial Grove"
+  lat: 38.8782
+  lng: -77.0645
+  type: parks
+  date: "September 20, 2025"
+
+- name: "Pullman NHS"
+  lat: 41.7000
+  lng: -87.5975
+  type: parks
+  date: "September 5, 2025"
+
+- name: "Emmett Till and Mamie Till-Mobley NM"
+  lat: 41.8193
+  lng: -87.6230
+  type: parks
+  date: "September 5, 2025"
+
+- name: "Indiana Dunes National Park"
+  lat: 41.6533
+  lng: -87.0524
+  type: parks
+  date: "September 8, 2025"
