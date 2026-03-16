@@ -1,0 +1,26 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+---
+
+<BaseLayout title="Picture of the Day" bodyClass="potd-page-body">
+  <iframe
+    src="/potd/new_tab.html"
+    title="Wikipedia Picture of the Day"
+    allowfullscreen
+  ></iframe>
+</BaseLayout>
+
+<style>
+:global(.potd-page-body) {
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+}
+
+iframe {
+  display: block;
+  width: 100vw;
+  height: 100vh;
+  border: none;
+}
+</style>

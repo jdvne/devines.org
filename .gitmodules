@@ -1,0 +1,3 @@
+[submodule "public/potd"]
+	path = public/potd
+	url = https://github.com/jdvne/potd.git
