@@ -533,4 +533,15 @@ const trails = (trailsMeta ?? []).map((meta) => {
   padding-right: 0.65rem;
   text-align: center;
 }
+
+@media (max-width: 480px) {
+  .info-panel {
+    min-width: 0;
+    max-width: calc(100% - 2rem);
+    left: 1rem;
+    right: 1rem;
+    bottom: 1rem;
+    box-sizing: border-box;
+  }
+}
 </style>

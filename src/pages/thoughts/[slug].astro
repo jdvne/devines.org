@@ -60,11 +60,12 @@ const formatDate = (date?: Date) => {
   position: absolute;
   top: 0;
   left: 0;
-  width: 100vw;
+  width: 100%;
   min-height: 100vh;
   background: #7A251E;
   font-family: 'Courier New', Courier, monospace;
   color: #D7C9A7;
+  overflow-x: hidden;
 }
 
 
@@ -83,7 +84,7 @@ const formatDate = (date?: Date) => {
 .metadata h1 {
   margin: 0 0 0.4rem;
   color: #D7C9A7;
-  font-size: 1.6em;
+  font-size: clamp(1.2rem, 5vw, 1.6em);
 }
 
 .date {
@@ -111,7 +112,7 @@ const formatDate = (date?: Date) => {
 .blog-post :global(ul),
 .blog-post :global(ol) { margin: 1rem 0; padding-left: 2rem; color: #D7C9A7; }
 .blog-post :global(li) { margin-bottom: 0.5rem; line-height: 1.6; }
-.blog-post :global(pre) { background: #5C1A14; padding: 1rem; border-radius: 4px; overflow-x: auto; margin: 1.5rem 0; border: 1px solid #3D1916; }
+.blog-post :global(pre) { background: #5C1A14; padding: 1rem; border-radius: 4px; overflow-x: auto; margin: 1.5rem 0; border: 1px solid #3D1916; max-width: 100%; box-sizing: border-box; }
 .blog-post :global(code) { font-family: 'Courier New', Courier, monospace; font-size: 0.9em; color: rgba(215, 201, 167, 0.85); }
 .blog-post :global(img) { max-width: 100%; height: auto; margin: 1.5rem 0; }
 .blog-post :global(a) { color: #DFBD22; text-decoration: none; }

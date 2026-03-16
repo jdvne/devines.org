@@ -157,8 +157,9 @@ import BaseLayout from '../layouts/BaseLayout.astro';
   position: absolute;
   top: 0;
   left: 0;
-  width: 100vw;
+  width: 100%;
   min-height: 100vh;
+  overflow-x: hidden;
   background:
     radial-gradient(circle at 20% 80%, rgba(255, 215, 0, 0.1) 0%, transparent 50%),
     radial-gradient(circle at 80% 20%, rgba(255, 107, 107, 0.1) 0%, transparent 50%),
@@ -500,7 +501,7 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 }
 
 @media (max-width: 768px) {
-  .slotsContainer { padding: 0.5rem; max-width: 100vw; }
+  .slotsContainer { padding: 0.5rem; max-width: 100%; }
   .slotsTitle { font-size: 1.6rem; margin: 0 0 1rem 1rem; }
   .slotMachine { flex-direction: row; gap: 0.8rem; margin: 0.3rem 0 1rem; max-width: 100%; }
   .slotsDisplay { gap: 0; padding: 0.4rem; flex: 1; }
@@ -520,5 +521,14 @@ import BaseLayout from '../layouts/BaseLayout.astro';
   .slot { width: 50px; height: 50px; }
   .lever { width: 14px; height: 100px; }
   .lever::before { width: 20px; height: 20px; top: -10px; }
+}
+
+@media (max-width: 360px) {
+  .slot { width: 42px; height: 42px; }
+  .emoji { font-size: 1.1rem; }
+  .lever { width: 12px; height: 90px; }
+  .lever::before { width: 18px; height: 18px; top: -9px; }
+  .slotsDisplay { padding: 0.25rem; }
+  .slotsTitle { font-size: 1.2rem; }
 }
 </style>
