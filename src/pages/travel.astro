@@ -5,13 +5,9 @@ import trailsMeta from '../data/trails.yml';
 
 const locations = travelData;
 
-const geojsonFiles = import.meta.glob('../data/trails/*.geojson', { eager: true });
-
-const trails = (trailsMeta ?? []).map((meta) => {
-  const key     = `../data/trails/${meta.file}`;
-  const geojson = (geojsonFiles[key] as any)?.default ?? geojsonFiles[key];
-  return geojson ? { ...meta, geojson } : null;
-}).filter(Boolean);
+const trails = (trailsMeta ?? []).map(({ file, name, type, date, caption, color }) => ({
+  file, name, type, date, caption, color,
+}));
 ---
 
 <BaseLayout title="travel - devines.org" bodyClass="travel-body">
@@ -228,24 +224,7 @@ const trails = (trailsMeta ?? []).map((meta) => {
       map.on('load', function () {
         map.addSource('trails', {
           type: 'geojson',
-          data: {
-            type: 'FeatureCollection',
-            features: trails.map(function (t) {
-              var color = t.color || pinColor(t.type);
-              // GeoJSON from AllTrails is a FeatureCollection — extract the first feature's geometry
-              var geometry = t.geojson.features ? t.geojson.features[0].geometry : t.geojson.geometry;
-              return {
-                type: 'Feature',
-                properties: {
-                  name:    t.name,
-                  color:   color,
-                  date:    t.date    || '',
-                  caption: t.caption || '',
-                },
-                geometry: geometry,
-              };
-            }),
-          },
+          data: { type: 'FeatureCollection', features: [] },
         });
 
         map.addLayer({
@@ -289,6 +268,32 @@ const trails = (trailsMeta ?? []).map((meta) => {
           });
           map.on('mouseleave', id, function () {
             map.getCanvas().style.cursor = '';
+          });
+        });
+
+        Promise.all(
+          trails.map(function (t) {
+            return fetch('/trails/' + t.file)
+              .then(function (r) { return r.json(); })
+              .then(function (geojson) {
+                var color = t.color || pinColor(t.type);
+                var geometry = geojson.features ? geojson.features[0].geometry : geojson.geometry;
+                return {
+                  type: 'Feature',
+                  properties: {
+                    name:    t.name,
+                    color:   color,
+                    date:    t.date    || '',
+                    caption: t.caption || '',
+                  },
+                  geometry: geometry,
+                };
+              });
+          })
+        ).then(function (features) {
+          map.getSource('trails').setData({
+            type: 'FeatureCollection',
+            features: features,
           });
         });
       });

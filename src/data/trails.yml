@@ -1,5 +1,5 @@
 # Trails
-# Each entry references a .geojson file in src/data/trails/.
+# Each entry references a .geojson file in public/trails/.
 # Run `npm run convert-trails` to generate .geojson files from .gpx files dropped in the repo root.
 #
 # file:    filename inside src/data/trails/ (required)
@@ -29,3 +29,8 @@
   type: parks
   date: "September 2, 2024"
   caption: "walked with Steph from home"
+
+- file: "evening-runjog-at-james-river-north-bank-and-buttermilk-loop-trail.geojson"
+  name: "James River North Bank and Buttermilk Loop Trail"
+  type: parks
+  date: "September 4, 2023"

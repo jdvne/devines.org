@@ -1,5 +1,5 @@
 #!/usr/bin/env node
-// Converts all .gpx files in the repo root to GeoJSON in src/data/trails/
+// Converts all .gpx files in the repo root to GeoJSON in public/trails/
 // Usage: npm run convert-trails
 
 import pkg from '@mapbox/togeojson';
@@ -10,7 +10,7 @@ import path from 'path';
 import { fileURLToPath } from 'url';
 
 const rootDir = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
-const outDir  = path.join(rootDir, 'src/data/trails');
+const outDir  = path.join(rootDir, 'public/trails');
 
 fs.mkdirSync(outDir, { recursive: true });
 
@@ -35,5 +35,5 @@ for (const file of gpxFiles) {
   const outPath = path.join(outDir, `${slug}.geojson`);
   fs.writeFileSync(outPath, JSON.stringify(geojson, null, 2));
   console.log(`✓  ${file}`);
-  console.log(`   → src/data/trails/${slug}.geojson`);
+  console.log(`   → public/trails/${slug}.geojson`);
 }
