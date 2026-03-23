@@ -2,6 +2,15 @@
 @import url('https://fonts.googleapis.com/css2?family=Oleo+Script&display=swap');
 
 :root {
+  /* dark theme (home, thoughts) */
+  --dark-bg: #7a251e;
+  --dark-bg-deep: #3d1916;
+  --dark-bg-mid: #5c1a14;
+  --dark-text: #d7c9a7;
+  --dark-text-muted: rgba(215, 201, 167, 0.7);
+  --dark-text-faint: rgba(215, 201, 167, 0.5);
+  --dark-accent: #dfbd22;
+
   /* cookbook color palette */
   --caribbean-current: #006d77ff;
   --tiffany-blue: #83c5beff;

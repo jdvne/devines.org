@@ -43,7 +43,7 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 
 <style>
 :global(.home-body) {
-  background: #7A251E;
+  background: var(--dark-bg);
   margin: 0;
   padding: 0;
 }
@@ -54,9 +54,9 @@ import BaseLayout from '../layouts/BaseLayout.astro';
   left: 0;
   width: 100%;
   min-height: 100vh;
-  background: #7A251E;
+  background: var(--dark-bg);
   font-family: 'Courier New', Courier, monospace;
-  color: #D7C9A7;
+  color: var(--dark-text);
   overflow-x: hidden;
 }
 
@@ -72,13 +72,13 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 
 .name {
   text-decoration: none;
-  color: #D7C9A7;
+  color: var(--dark-text);
   font-size: clamp(1.5rem, 5vw, 2.5rem);
 }
 
 .dev {
-  color: #DFBD22;
-  text-decoration: underline wavy #DFBD22 1px;
+  color: var(--dark-accent);
+  text-decoration: underline wavy var(--dark-accent) 1px;
   text-underline-offset: 3px;
   position: relative;
   cursor: pointer;
@@ -91,7 +91,7 @@ import BaseLayout from '../layouts/BaseLayout.astro';
   top: 100%;
   font-size: 0.75rem;
   font-style: normal;
-  color: #DFBD22;
+  color: var(--dark-accent);
   white-space: nowrap;
   opacity: 0;
   transition: opacity 0.2s;
@@ -114,7 +114,7 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 }
 
 .navLink {
-  color: rgba(215, 201, 167, 0.7);
+  color: var(--dark-text-muted);
   text-decoration: none;
   font-size: 1.1rem;
   font-weight: 500;
@@ -122,11 +122,11 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 }
 
 .navLink:hover {
-  color: #D7C9A7;
+  color: var(--dark-text);
 }
 
 .navSep {
-  color: rgba(215, 201, 167, 0.7);
+  color: var(--dark-text-muted);
   font-size: 1rem;
   user-select: none;
 }
@@ -139,7 +139,7 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 }
 
 .socialLink {
-  color: rgba(215, 201, 167, 0.7);
+  color: var(--dark-text-muted);
   text-decoration: none;
   font-size: 1.1rem;
   font-weight: 500;
@@ -147,11 +147,11 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 }
 
 .socialLink:visited {
-  color: rgba(215, 201, 167, 0.7);
+  color: var(--dark-text-muted);
 }
 
 .socialLink:hover {
-  color: #D7C9A7;
+  color: var(--dark-text);
 }
 
 .socialLink::after {
@@ -175,7 +175,7 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 }
 
 .resume-label {
-  color: #DFBD22;
+  color: var(--dark-accent);
   min-width: 3.5rem;
   flex-shrink: 0;
 }
@@ -184,7 +184,7 @@ import BaseLayout from '../layouts/BaseLayout.astro';
   margin: 0;
   padding: 0;
   list-style: none;
-  color: rgba(215, 201, 167, 0.7);
+  color: var(--dark-text-muted);
 }
 
 .resume li::before {

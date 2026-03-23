@@ -8,7 +8,9 @@
     "dev": "astro dev",
     "build": "astro build",
     "preview": "astro preview",
-    "convert-trails": "node scripts/convert-trails.mjs"
+    "convert-trails": "node scripts/convert-trails.mjs",
+    "lint": "eslint .",
+    "format": "prettier --write ."
   },
   "dependencies": {
     "@astrojs/mdx": "^4.0.0",
@@ -17,6 +19,12 @@
   "devDependencies": {
     "@mapbox/togeojson": "^0.16.2",
     "@rollup/plugin-yaml": "^4.0.0",
-    "@xmldom/xmldom": "^0.8.11"
+    "@typescript-eslint/parser": "^8.57.1",
+    "@xmldom/xmldom": "^0.8.11",
+    "eslint": "^10.1.0",
+    "eslint-config-prettier": "^10.1.8",
+    "eslint-plugin-astro": "^1.6.0",
+    "prettier": "^3.8.1",
+    "prettier-plugin-astro": "^0.14.1"
   }
 }

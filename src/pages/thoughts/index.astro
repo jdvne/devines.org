@@ -40,7 +40,7 @@ const posts = allPosts
 
 <style>
 :global(.thoughts-body) {
-  background: #7A251E;
+  background: var(--dark-bg);
   margin: 0;
   padding: 0;
 }
@@ -51,9 +51,9 @@ const posts = allPosts
   left: 0;
   width: 100%;
   min-height: 100vh;
-  background: #7A251E;
+  background: var(--dark-bg);
   font-family: 'Courier New', Courier, monospace;
-  color: #D7C9A7;
+  color: var(--dark-text);
   overflow-x: hidden;
 }
 
@@ -72,17 +72,17 @@ const posts = allPosts
 }
 
 .postSummary {
-  border-left: 2px solid #3D1916;
+  border-left: 2px solid var(--dark-bg-deep);
   padding-left: 1rem;
   transition: border-color 0.2s;
 }
 
 .postSummary:hover {
-  border-color: #DFBD22;
+  border-color: var(--dark-accent);
 }
 
 .postMeta {
-  color: rgba(215, 201, 167, 0.5);
+  color: var(--dark-text-faint);
   font-size: 0.8rem;
   margin-bottom: 0.35rem;
 }
@@ -93,16 +93,16 @@ const posts = allPosts
 }
 
 .postSummary h2 a {
-  color: #D7C9A7;
+  color: var(--dark-text);
   text-decoration: none;
 }
 
 .postSummary h2 a:hover {
-  color: #DFBD22;
+  color: var(--dark-accent);
 }
 
 .postDesc {
-  color: rgba(215, 201, 167, 0.65);
+  color: var(--dark-text-muted);
   font-size: 0.9rem;
   margin: 0;
   line-height: 1.5;
