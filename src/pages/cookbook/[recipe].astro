@@ -1,6 +1,7 @@
 ---
 import { getCollection } from 'astro:content';
 import BaseLayout from '../../layouts/BaseLayout.astro';
+import SectionHeader from '../../components/SectionHeader.astro';
 
 export async function getStaticPaths() {
   const recipes = await getCollection('cookbook');
@@ -19,11 +20,7 @@ const title = meta.title || recipe.slug;
 <BaseLayout title={`${title} - devines.org`} bodyClass="cookbook-body">
   <div class="recipePage">
     <div class="recipeContainer">
-      <div class="recipeTitleContainer">
-        <h1 class="recipeTitle">{title}</h1>
-        <a href="/cookbook" class="recipeBackLink">Back to Cookbook</a>
-      </div>
-      <div class="recipeHorizontalBar"></div>
+      <SectionHeader title={title} backHref="/cookbook" backLabel="Back to Cookbook" />
 
       {(meta.preparationTime || meta.cookTime || meta.cookTemperature || meta.totalTime) && (
         <div class="recipeContent">
@@ -43,33 +40,7 @@ const title = meta.title || recipe.slug;
 </BaseLayout>
 
 <script>
-  const STORAGE_KEY = `recipe-checks-${window.location.pathname}`;
-
-  function saveChecks() {
-    const checks: Record<string, boolean> = {};
-    document.querySelectorAll<HTMLInputElement>('input[type="checkbox"]').forEach((cb, i) => {
-      checks[i] = cb.checked;
-    });
-    localStorage.setItem(STORAGE_KEY, JSON.stringify(checks));
-  }
-
-  function loadChecks() {
-    const saved = localStorage.getItem(STORAGE_KEY);
-    if (!saved) return;
-    try {
-      const checks: Record<string, boolean> = JSON.parse(saved);
-      document.querySelectorAll<HTMLInputElement>('input[type="checkbox"]').forEach((cb, i) => {
-        cb.checked = checks[i] ?? false;
-      });
-    } catch {}
-  }
-
-  document.addEventListener('DOMContentLoaded', () => {
-    loadChecks();
-    document.querySelectorAll('input[type="checkbox"]').forEach(cb => {
-      cb.addEventListener('change', saveChecks);
-    });
-  });
+  import '../../scripts/recipe-checks.js';
 </script>
 
 <style>
@@ -92,25 +63,9 @@ const title = meta.title || recipe.slug;
   border-radius: 8px;
   max-width: 800px;
   margin: 0 auto;
-}
-
-.recipeTitleContainer {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  margin-bottom: 10px;
-}
-
-.recipeTitle {
-  font-family: "Playfair Display", sans-serif;
-  font-size: clamp(1.4rem, 6vw, 2.5em);
-  color: var(--atomic-tangerine);
-  margin: 0;
-}
-
-.recipeHorizontalBar {
-  border-bottom: 1px solid var(--tiffany-blue);
-  margin-bottom: 20px;
+  --section-title-color: var(--atomic-tangerine);
+  --section-bar-color: var(--tiffany-blue);
+  --section-back-color: var(--tiffany-blue);
 }
 
 .recipeContent {
@@ -126,16 +81,6 @@ const title = meta.title || recipe.slug;
 .recipeMetadataLabel {
   font-weight: bold;
   color: var(--tiffany-blue);
-}
-
-.recipeBackLink {
-  color: var(--tiffany-blue);
-  text-decoration: none;
-  font-weight: bold;
-}
-
-.recipeBackLink:hover {
-  text-decoration: underline;
 }
 
 .blog-post {
@@ -166,11 +111,6 @@ const title = meta.title || recipe.slug;
 @media (max-width: 768px) {
   .recipeContainer {
     padding: 12px;
-  }
-  .recipeTitleContainer {
-    flex-direction: column;
-    align-items: flex-start;
-    gap: 0.5rem;
   }
 }
 </style>

@@ -1,6 +1,7 @@
 ---
 import { getCollection } from 'astro:content';
 import BaseLayout from '../../layouts/BaseLayout.astro';
+import SectionHeader from '../../components/SectionHeader.astro';
 
 const allRecipes = await getCollection('cookbook');
 const recipes = allRecipes
@@ -15,11 +16,7 @@ const categories = [...categorySet];
 <BaseLayout title="The Devine Table - devines.org" bodyClass="cookbook-body">
   <div class="recipePage">
     <div class="recipeContainer">
-      <div class="recipeTitleContainer">
-        <h1 class="recipeTitle">The Devine Table</h1>
-        <a href="/" class="recipeBackLink">Back to Home</a>
-      </div>
-      <div class="recipeHorizontalBar"></div>
+      <SectionHeader title="The Devine Table" backHref="/" backLabel="Back to Home" />
 
       <div class="recipeContent">
         <div class="categoryChips">
@@ -95,39 +92,13 @@ const categories = [...categorySet];
   border-radius: 8px;
   max-width: 800px;
   margin: 0 auto;
-}
-
-.recipeTitleContainer {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  margin-bottom: 10px;
-}
-
-.recipeTitle {
-  font-family: "Playfair Display", sans-serif;
-  font-size: clamp(1.5rem, 6vw, 2.5em);
-  color: var(--atomic-tangerine);
-  margin: 0;
-}
-
-.recipeHorizontalBar {
-  border-bottom: 1px solid var(--tiffany-blue);
-  margin-bottom: 20px;
+  --section-title-color: var(--atomic-tangerine);
+  --section-bar-color: var(--tiffany-blue);
+  --section-back-color: var(--tiffany-blue);
 }
 
 .recipeContent {
   margin-bottom: 20px;
-}
-
-.recipeBackLink {
-  color: var(--tiffany-blue);
-  text-decoration: none;
-  font-weight: bold;
-}
-
-.recipeBackLink:hover {
-  text-decoration: underline;
 }
 
 .categoryChips {
@@ -161,14 +132,6 @@ const categories = [...categorySet];
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(min(200px, 100%), 1fr));
   gap: 20px;
-}
-
-@media (max-width: 480px) {
-  .recipeTitleContainer {
-    flex-direction: column;
-    align-items: flex-start;
-    gap: 0.5rem;
-  }
 }
 
 .recipeGridItem {
