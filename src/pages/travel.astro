@@ -43,8 +43,17 @@ const trails = (trailsMeta ?? []).map(({ file, name, type, date, caption, color 
     parks:   '#4A7C3F',
   };
 
+  const TRAIL_COLORS = {
+    hike: '#4A7C3F',
+    run:  '#C44B3A',
+  };
+
   function pinColor(type) {
     return PIN_COLORS[type] || PIN_COLORS.visited;
+  }
+
+  function trailColor(type) {
+    return TRAIL_COLORS[type] || TRAIL_COLORS.hike;
   }
 
   function trailLegendSvg(color) {
@@ -276,13 +285,15 @@ const trails = (trailsMeta ?? []).map(({ file, name, type, date, caption, color 
             return fetch('/trails/' + t.file)
               .then(function (r) { return r.json(); })
               .then(function (geojson) {
-                var color = t.color || pinColor(t.type);
+                var type = t.type || 'hike';
+                var color = t.color || trailColor(type);
                 var geometry = geojson.features ? geojson.features[0].geometry : geojson.geometry;
                 return {
                   type: 'Feature',
                   properties: {
                     name:    t.name,
                     color:   color,
+                    type:    type,
                     date:    t.date    || '',
                     caption: t.caption || '',
                   },
@@ -305,6 +316,7 @@ const trails = (trailsMeta ?? []).map(({ file, name, type, date, caption, color 
     const captionEl = document.getElementById('info-caption');
     const closeBtn = document.getElementById('info-close');
 
+    var markersByPinType = {};
     locations.forEach(function (loc) {
       const color = pinColor(loc.type);
       const el = document.createElement('div');
@@ -314,6 +326,10 @@ const trails = (trailsMeta ?? []).map(({ file, name, type, date, caption, color 
       const marker = new maplibregl.Marker({ element: el, anchor: 'bottom' })
         .setLngLat([loc.lng, loc.lat])
         .addTo(map);
+
+      var t = loc.type || 'visited';
+      if (!markersByPinType[t]) markersByPinType[t] = [];
+      markersByPinType[t].push(marker);
 
       el.addEventListener('click', function (e) {
         e.stopPropagation();
@@ -327,6 +343,16 @@ const trails = (trailsMeta ?? []).map(({ file, name, type, date, caption, color 
       });
     });
 
+    var hiddenTrailTypes = new Set();
+    function updateTrailFilter() {
+      var visible = Object.keys(TRAIL_COLORS).filter(function (t) { return !hiddenTrailTypes.has(t); });
+      var filter = visible.length === 0
+        ? ['==', '1', '2']
+        : ['in', ['get', 'type'], ['literal', visible]];
+      map.setFilter('trails-line', filter);
+      map.setFilter('trails-underline', filter);
+    }
+
     map.on('click', function () {
       panel.classList.add('hidden');
     });
@@ -337,8 +363,9 @@ const trails = (trailsMeta ?? []).map(({ file, name, type, date, caption, color 
 
     // Build legend from types present in data
     var usedPinTypes   = [...new Set(locations.map(function (l) { return l.type || 'visited'; }))];
-    var usedTrailTypes = [...new Set(trails.map(function (t) { return t.type || 'visited'; }))];
+    var usedTrailTypes = [...new Set(trails.map(function (t) { return t.type || 'hike'; }))];
     var order = Object.keys(PIN_COLORS);
+    var trailOrder = Object.keys(TRAIL_COLORS);
 
     if (usedPinTypes.length > 1 || usedTrailTypes.length > 0) {
       var legend = document.getElementById('legend');
@@ -348,19 +375,54 @@ const trails = (trailsMeta ?? []).map(({ file, name, type, date, caption, color 
         usedPinTypes.sort(function (a, b) { return order.indexOf(a) - order.indexOf(b); });
         usedPinTypes.forEach(function (type) {
           var color = pinColor(type);
-          var tr = document.createElement('tr');
           var label = type === 'visited' ? 'visits' : type === 'parks' ? 'national parks' : type;
           var svg = type === 'parks' ? passportStampLegendSvg(color) : pinLegendSvg(color);
-          tr.innerHTML = '<td>' + svg + '</td><td>' + label + '</td>';
+          var tr = document.createElement('tr');
+          var cb = document.createElement('input');
+          cb.type = 'checkbox';
+          cb.checked = true;
+          cb.style.accentColor = color;
+          cb.addEventListener('change', function () {
+            var markers = markersByPinType[type] || [];
+            markers.forEach(function (m) {
+              m.getElement().style.display = cb.checked ? '' : 'none';
+            });
+          });
+          var tdCb = document.createElement('td');
+          tdCb.appendChild(cb);
+          var tdIcon = document.createElement('td');
+          tdIcon.innerHTML = svg;
+          var tdLabel = document.createElement('td');
+          tdLabel.textContent = label;
+          tr.appendChild(tdCb);
+          tr.appendChild(tdIcon);
+          tr.appendChild(tdLabel);
           tbody.appendChild(tr);
         });
       }
 
-      usedTrailTypes.sort(function (a, b) { return order.indexOf(a) - order.indexOf(b); });
+      usedTrailTypes.sort(function (a, b) { return trailOrder.indexOf(a) - trailOrder.indexOf(b); });
       usedTrailTypes.forEach(function (type) {
-        var color = pinColor(type);
+        var color = trailColor(type);
         var tr = document.createElement('tr');
-        tr.innerHTML = '<td>' + trailLegendSvg(color) + '</td><td>hikes</td>';
+        var cb = document.createElement('input');
+        cb.type = 'checkbox';
+        cb.checked = true;
+        cb.style.accentColor = color;
+        cb.addEventListener('change', function () {
+          if (cb.checked) hiddenTrailTypes.delete(type);
+          else hiddenTrailTypes.add(type);
+          updateTrailFilter();
+        });
+        var tdCb = document.createElement('td');
+        tdCb.appendChild(cb);
+        var tdIcon = document.createElement('td');
+        tdIcon.innerHTML = trailLegendSvg(color);
+        var tdLabel = document.createElement('td');
+        tdLabel.textContent = type + 's';
+        tr.appendChild(tdCb);
+        tr.appendChild(tdIcon);
+        tr.appendChild(tdLabel);
         tbody.appendChild(tr);
       });
 
@@ -558,8 +620,20 @@ const trails = (trailsMeta ?? []).map(({ file, name, type, date, caption, color 
 }
 
 .legend td:first-child {
+  padding-right: 0.4rem;
+  text-align: center;
+}
+
+.legend td:nth-child(2) {
   padding-right: 0.65rem;
   text-align: center;
+}
+
+.legend input[type="checkbox"] {
+  cursor: pointer;
+  width: 0.75rem;
+  height: 0.75rem;
+  margin: 0;
 }
 
 @media (max-width: 480px) {

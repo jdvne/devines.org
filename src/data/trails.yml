@@ -4,33 +4,69 @@
 #
 # file:    filename inside src/data/trails/ (required)
 # name:    label shown when clicking the trail (required)
-# type:    pin color category — same options as locations (default: visited/gold)
+# type:    hike (green, default) | run (red)
 # date:    optional date of first hike
 # caption: optional comment
 
-- file: "afternoon-hike-at-humpback-rocks-and-dobie-mountain.geojson"
+- file: "christiansburg-5k.geojson"
+  name: "Christiansburg 5k"
+  type: run
+  date: "October 28, 2023"
+
+- file: "dutch-gap-conservation-area.geojson"
+  name: "Dutch Gap Conservation Area"
+  type: hike
+  date: "January 26, 2024"
+
+- file: "humpback-rocks-and-dobie-mountain.geojson"
   name: "Humpback Rocks & Dobie Mountain"
-  type: parks
+  type: hike
   date: "December 9, 2023"
 
-- file: "afternoon-hike-at-riprap-trail.geojson"
+- file: "james-river-north-bank-and-buttermilk-loop-trail.geojson"
+  name: "James River North Bank and Buttermilk Loop Trail"
+  type: run
+  date: "September 4, 2023"
+
+- file: "maryland-heights-trail.geojson"
+  name: "Maryland Heights Trail"
+  type: hike
+  date: "March 7, 2026"
+
+- file: "pocahontas-state-park.geojson"
+  name: "Pocahontas State Park"
+  type: hike
+  date: "October 9, 2023"
+
+- file: "riprap-trail.geojson"
   name: "Riprap Trail"
-  type: parks
+  type: hike
   date: "March 10, 2024"
 
-- file: "afternoon-hike-at-sligo-creek-trail.geojson"
-  name: "Sligo Creek Trail"
-  type: parks
-  date: "May 18, 2025"
-  caption: "long hike with Steph"
-
-- file: "afternoon-hike-at-rock-creek-to-washington-monument.geojson"
+- file: "rock-creek-to-washington-monument.geojson"
   name: "Rock Creek to Washington Monument"
-  type: parks
+  type: hike
   date: "September 2, 2024"
   caption: "walked with Steph from home"
 
-- file: "evening-runjog-at-james-river-north-bank-and-buttermilk-loop-trail.geojson"
-  name: "James River North Bank and Buttermilk Loop Trail"
-  type: parks
-  date: "September 4, 2023"
+- file: "sligo-creek-trail.geojson"
+  name: "Sligo Creek Trail"
+  type: hike
+  date: "May 18, 2025"
+  caption: "long hike with Steph"
+
+- file: "ukrops-monument-avenue-10k.geojson"
+  name: "Ukrop's Monument Avenue 10k"
+  type: run
+  date: "April 20, 2024"
+  caption: "first 10k!"
+
+- file: "virginia-capital-trail-day-1.geojson"
+  name: "Virginia Capital Trail Day 1"
+  type: hike
+  date: "November 4, 2023"
+
+- file: "virginia-capital-trail-day-2.geojson"
+  name: "Virginia Capital Trail Day 2"
+  type: hike
+  date: "November 10, 2023"
