@@ -21,8 +21,9 @@ function loadChecks() {
 }
 
 document.addEventListener('DOMContentLoaded', () => {
-  loadChecks();
   document.querySelectorAll('input[type="checkbox"]').forEach(cb => {
+    cb.removeAttribute('disabled');
     cb.addEventListener('change', saveChecks);
   });
+  loadChecks();
 });
