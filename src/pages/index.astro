@@ -12,7 +12,7 @@ import BaseLayout from '../layouts/BaseLayout.astro';
         <div class="resume-section">
           <span class="resume-label">now</span>
           <ul>
-            <li>sr. swe @ capital one</li>
+            <li>sr. swe @ capital one<span id="tenure"></span></li>
             <li>aws certified solutions architect</li>
           </ul>
         </div>
@@ -191,3 +191,23 @@ import BaseLayout from '../layouts/BaseLayout.astro';
   content: '— ';
 }
 </style>
+
+<script>
+  function updateTenure() {
+    const start = new Date(2022, 7, 22, 9, 0, 0);
+    const now = new Date();
+
+    if (now < start) {
+      document.getElementById('tenure').textContent = '';
+      return;
+    }
+
+    const totalMonths = (now.getFullYear() - start.getFullYear()) * 12 + (now.getMonth() - start.getMonth());
+    const rounded = Math.round(totalMonths / 6) / 2;
+    const label = rounded === 1 ? 'yr' : 'yrs';
+
+    document.getElementById('tenure').textContent = `, ${rounded} ${label}`;
+  }
+
+  updateTenure();
+</script>
