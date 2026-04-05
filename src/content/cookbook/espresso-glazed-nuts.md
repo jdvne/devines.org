@@ -1,6 +1,6 @@
 ---
 title: Espresso Glazed Nuts
-category: Snack
+category: Dessert
 preparationTime: 15 minutes
 cookTime: 20 minutes
 totalTime: 35 minutes

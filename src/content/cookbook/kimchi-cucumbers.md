@@ -4,7 +4,7 @@ preparationTime: 20 minutes
 cookTime: None
 cookTemperature: N/A
 totalTime: 20 Minutes
-category: Snacks
+category: Sides
 ---
 
 ## Ingredients
