@@ -11,6 +11,7 @@ node_modules
 dist
 dist-ssr
 .astro
+.claude
 *.local
 
 # Editor directories and files
